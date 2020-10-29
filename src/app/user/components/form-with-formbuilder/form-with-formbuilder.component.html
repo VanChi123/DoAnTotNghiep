@@ -1,0 +1,85 @@
+<p>form-with-formbuilder works!</p>
+<form [formGroup]="profileForm">
+
+  <label>
+    First Name:
+    <input type="text" formControlName="firstName">
+    <div *ngIf="profileForm.controls['firstName'].invalid && (profileForm.controls['firstName'].dirty || profileForm.controls['firstName'].touched)"
+         class="alert alert-danger">
+
+      <div *ngIf="profileForm.controls['firstName'].errors.required">
+        Name is required.
+      </div>
+      <div *ngIf="profileForm.controls['firstName'].errors.minlength">
+
+          Name must be at least 4 characters long.
+      </div>
+
+    </div>
+  </label>
+
+  <label>
+    Last Name:
+    <input type="text" formControlName="lastName">
+
+<!--    -->
+<!--    //có 2 cách để truy cập vào form : .controler.tên biến trong form hoặc-->
+<!--    // .get('tên biến')-->
+    <div class="col alert alert-danger" role="alert"
+      *ngIf="profileForm.controls.lastName?.errors?.required && profileForm.controls.lastName?.touched">
+        Last Name is required
+    </div>
+
+  </label>
+  <fieldset formGroupName="address">
+    <h3>Address</h3>
+
+    <label>
+      Street:
+      <input type="text" formControlName="street">
+      <div *ngIf="profileForm.get('address.street').invalid && (profileForm.get('address.street').dirty || profileForm.get('address.street').touched)"
+           class="alert alert-danger">
+
+        <div *ngIf="profileForm.get('address.street').errors.required">
+          Name is required.
+        </div>
+        <div *ngIf="profileForm.get('address.street').errors.minlength">
+          Name must be at least 2 characters long.
+        </div>
+
+      </div>
+
+    </label>
+
+    <label>
+      City:
+      <input type="text" formControlName="city">
+    </label>
+
+    <label>
+      State:
+      <input type="text" formControlName="state" >
+
+    </label>
+
+    <label>
+      Zip Code:
+      <input type="text" formControlName="zip" minlength="4">
+      <div *ngIf="profileForm.get('address.zip').invalid && (profileForm.get('address.zip').dirty || profileForm.get('address.zip').touched)"
+           class="alert alert-danger">
+        <div *ngIf="profileForm.get('address.zip').errors.minlength">
+          Name must be at least 2 characters long.
+        </div>
+
+      </div>
+    </label>
+  </fieldset>
+</form>
+<p>
+  <button (click)="updateProfile()">Update Profile</button>
+</p>
+
+<!--//hiển thị kết quả phải có |json ko nó hiện Object Objec-->
+kết quả : {{profileForm.value|json}}
+lỗi : {{profileForm.controls.firstName?.errors  |json}}
+lấy giá trị: {{profileForm.controls.firstName?.value  |json}}

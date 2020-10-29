@@ -1,0 +1,24 @@
+<p>form-group works!</p>
+<form [formGroup]="profileForm" (ngSubmit)="onSubmit()">
+
+  <label>
+    First Name:
+    <input type="text" formControlName="firstName">
+    <div *ngIf="profileForm.controls['firstName'].invalid && (profileForm.controls['firstName'].dirty || profileForm.controls['firstName'].touched)"
+         class="alert alert-danger">
+
+      <div *ngIf="profileForm.controls['firstName'].errors.required">
+        Name is required.
+      </div>
+      <div *ngIf="profileForm.controls['firstName'].errors.minlength">
+        Name must be at least 2 characters long.
+      </div>
+    </div>
+  </label>
+
+  <label>
+    Last Name:
+    <input type="text" formControlName="lastName">
+  </label>
+  <button type="submit" class="btn btn-dark" [disabled]="!profileForm.valid">Submit</button>
+</form>

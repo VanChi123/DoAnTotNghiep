@@ -1,0 +1,47 @@
+<div class="container" style="padding: 4px;background: white">
+  <div class="row">
+    <div class="col-3"></div>
+    <div class="col-6">
+      <form [formGroup]="formRegister">
+        <h2>Đăng ký tài khoản</h2>
+        <div class="row">
+          <div class="col-4">Tên đăng nhập <span class="text-danger">*</span></div>
+          <div class="col-8">
+            <input type="text" [pattern]="unamePattern" class="form-control" formControlName="userName">
+            <span *ngIf="formRegister.get('userName').errors?.pattern" class="er">UserName không hợp lệ</span>
+            <span *ngIf="formRegister.get('userName').errors?.required" class="er">Không được để trống</span>
+            <span *ngIf="formRegister.get('userName').errors?.maxlength" class="er">Vượt quá số lượng kí tự</span>
+          </div>
+          <div class="col-4">Mật khẩu <span class="text-danger">*</span></div>
+          <div class="col-8">
+            <input type="password" [pattern]="unamePattern" class="form-control" formControlName="password">
+            <span *ngIf="formRegister.get('password').errors?.pattern" class="er">UserName không hợp lệ</span>
+            <span *ngIf="formRegister.get('password').errors?.required" class="er">Không được để trống</span>
+            <span *ngIf="formRegister.get('password').errors?.maxlength" class="er">Vượt quá số lượng kí tự</span>
+          </div>
+
+          <div class="col-4">Nhập lại mật khẩu <span class="text-danger">*</span></div>
+          <div class="col-8">
+            <input type="password" class="form-control" formControlName="rePassword">
+            <span *ngIf="formRegister.get('rePassword').errors?.pattern" class="er">UserName không hợp lệ</span>
+            <span *ngIf="formRegister.get('rePassword').errors?.required" class="er">Không được để trống</span>
+            <span *ngIf="formRegister.get('rePassword').errors?.maxlength" class="er">Vượt quá số lượng kí tự</span>
+            <span *ngIf="formRegister.get('rePassword').value!==formRegister.value.password" class="er">Mật khẩu không khớp</span>
+          </div>
+
+          <div class="col-4">Email <span class="text-danger">*</span></div>
+          <div class="col-8">
+            <input type="text" class="form-control" formControlName="email">
+            <span *ngIf="formRegister.get('email').errors?.pattern" class="er">Email không hợp lệ</span>
+            <span *ngIf="formRegister.get('email').errors?.required" class="er">Không được để trống</span>
+            <span *ngIf="formRegister.get('email').errors?.maxlength" class="er">Vượt quá số lượng kí tự</span>
+<!--            <span *ngIf="formRegister.get('email').invalid&&formRegister.get('email').touched" class="er">Email không đúng</span>-->
+          </div>
+        </div>
+
+        <button class="btn btn-success" [disabled]="!formRegister.valid" (click)="onRegister()"><mat-icon>login</mat-icon>Đăng ký</button>
+      </form>
+    </div>
+    <div class="col-3"></div>
+  </div>
+</div>

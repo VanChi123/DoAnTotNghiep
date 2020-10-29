@@ -1,0 +1,159 @@
+{
+  "posts": [
+    {
+      "id": 1,
+      "title": "json-server",
+      "author": "typicode"
+    },
+    {
+      "id": 2
+    },
+    {
+      "id": 3
+    }
+  ],
+  "comments": [
+    {
+      "id": 1,
+      "body": "some comment",
+      "postId": 1
+    }
+  ],
+  "profile": {
+    "name": "typicode"
+  },
+  "products": [
+    {
+      "Id": 1,
+      "MaSanPham": "SP01",
+      "TenSanPham": "Đồng hồ nữ Hàn Quốc JULIUS-SP01",
+      "Gia": 300000.00,
+      "DoiTuongSuDung": "Nữ giới, yêu thích thời trang và xyz",
+      "KichThuocBeMat": 3.20,
+      "ChatLieuMatKinh": "Mặt kính khoáng cao cấp trong suốt rõ nét, độ cứng cao",
+      "ChatLieuDay": "Dây da",
+      "DoDay": 0.70,
+      "DoDai": 23.00,
+      "DoRongCuaDay": 1.00,
+      "KieuKhoa": "Khóa cài",
+      "ChatLieuVoMay": "Hợp kim mạ ion, sử dụng công nghệ mạ IP chân không tiên tiến giúp đem lại độ sáng bóng và bền màu   Chống thấm nước 3ATM (30m) có thể đi mưa, rửa tay, rửa mặt. Tránh tiếp xúc với môi trường hóa chất như giặt đồ, tấm gội.",
+      "May": "Quartz Nhật MIYOTA 2035 (thuộc tập đoàn Citizen Nhật)",
+      "KhaNangChiuNuoc": "Chống thấm nước 3ATM (30m) có thể đi mưa, rửa tay, rửa mặt. Tránh tiếp xúc với môi trường hóa chất như giặt đồ, tấm gội. ",
+      "GiamGia": 5,
+      "IdThuongHieu": 1,
+      "IdLoaiSanPham": 1,
+      "Img": 1,
+      "NgayCapNhap": "2020-12-08"
+    },
+    {
+      "Id": 2,
+      "MaSanPham": "SP02",
+      "TenSanPham": "Đồng hồ nữ Hàn Quốc JULIUS-SP02",
+      "Gia": 200000.00,
+      "DoiTuongSuDung": "Nữ giới, yêu thích thời trang và xyz",
+      "KichThuocBeMat": 3.20,
+      "ChatLieuMatKinh": "Mặt kính khoáng cao cấp trong suốt rõ nét, độ cứng cao",
+      "ChatLieuDay": "Dây da",
+      "DoDay": 0.70,
+      "DoDai": 23.00,
+      "DoRongCuaDay": 1.00,
+      "KieuKhoa": "Khóa cài",
+      "ChatLieuVoMay": "Hợp kim mạ ion, sử dụng công nghệ mạ IP chân không tiên tiến giúp đem lại độ sáng bóng và bền màu   Chống thấm nước 3ATM (30m) có thể đi mưa, rửa tay, rửa mặt. Tránh tiếp xúc với môi trường hóa chất như giặt đồ, tấm gội.",
+      "May": "Quartz Nhật MIYOTA 2035 (thuộc tập đoàn Citizen Nhật)",
+      "KhaNangChiuNuoc": "Chống thấm nước 3ATM (30m) có thể đi mưa, rửa tay, rửa mặt. Tránh tiếp xúc với môi trường hóa chất như giặt đồ, tấm gội. ",
+      "GiamGia": 5,
+      "IdThuongHieu": 1,
+      "IdLoaiSanPham": 1,
+      "Img": 2,
+      "NgayCapNhap": "2020-12-08"
+    },
+    {
+      "Id": 3,
+      "MaSanPham": "SP03",
+      "TenSanPham": "Đồng hồ nữ Hàn Quốc JULIUS-SP03",
+      "Gia": 100000.00,
+      "DoiTuongSuDung": "Nữ giới, yêu thích thời trang và xyz",
+      "KichThuocBeMat": 3.20,
+      "ChatLieuMatKinh": "Mặt kính khoáng cao cấp trong suốt rõ nét, độ cứng cao",
+      "ChatLieuDay": "Dây da",
+      "DoDay": 0.70,
+      "DoDai": 23.00,
+      "DoRongCuaDay": 1.00,
+      "KieuKhoa": "Khóa cài",
+      "ChatLieuVoMay": "Hợp kim mạ ion, sử dụng công nghệ mạ IP chân không tiên tiến giúp đem lại độ sáng bóng và bền màu   Chống thấm nước 3ATM (30m) có thể đi mưa, rửa tay, rửa mặt. Tránh tiếp xúc với môi trường hóa chất như giặt đồ, tấm gội.",
+      "May": "Quartz Nhật MIYOTA 2035 (thuộc tập đoàn Citizen Nhật)",
+      "KhaNangChiuNuoc": "Chống thấm nước 3ATM (30m) có thể đi mưa, rửa tay, rửa mặt. Tránh tiếp xúc với môi trường hóa chất như giặt đồ, tấm gội. ",
+      "GiamGia": 5,
+      "IdThuongHieu": 1,
+      "IdLoaiSanPham": 1,
+      "Img": 3,
+      "NgayCapNhap": "2020-12-08"
+    },
+    {
+      "Id": 4,
+      "MaSanPham": "SP04",
+      "TenSanPham": "Đồng hồ nữ Hàn Quốc JULIUS-SP04",
+      "Gia": 3450000.00,
+      "DoiTuongSuDung": "Nữ giới, yêu thích thời trang và xyz",
+      "KichThuocBeMat": 3.20,
+      "ChatLieuMatKinh": "Mặt kính khoáng cao cấp trong suốt rõ nét, độ cứng cao",
+      "ChatLieuDay": "Dây da",
+      "DoDay": 0.70,
+      "DoDai": 23.00,
+      "DoRongCuaDay": 1.00,
+      "KieuKhoa": "Khóa cài",
+      "ChatLieuVoMay": "Hợp kim mạ ion, sử dụng công nghệ mạ IP chân không tiên tiến giúp đem lại độ sáng bóng và bền màu   Chống thấm nước 3ATM (30m) có thể đi mưa, rửa tay, rửa mặt. Tránh tiếp xúc với môi trường hóa chất như giặt đồ, tấm gội.",
+      "May": "Quartz Nhật MIYOTA 2035 (thuộc tập đoàn Citizen Nhật)",
+      "KhaNangChiuNuoc": "Chống thấm nước 3ATM (30m) có thể đi mưa, rửa tay, rửa mặt. Tránh tiếp xúc với môi trường hóa chất như giặt đồ, tấm gội. ",
+      "GiamGia": 5,
+      "IdThuongHieu": 1,
+      "IdLoaiSanPham": 1,
+      "Img": 4,
+      "NgayCapNhap": "2020-12-08"
+    },
+    {
+      "Id": 5,
+      "MaSanPham": "SP05",
+      "TenSanPham": "Đồng hồ nữ Hàn Quốc JULIUS-SP05",
+      "Gia": 3450000.00,
+      "DoiTuongSuDung": "Nữ giới, yêu thích thời trang và xyz",
+      "KichThuocBeMat": 3.20,
+      "ChatLieuMatKinh": "Mặt kính khoáng cao cấp trong suốt rõ nét, độ cứng cao",
+      "ChatLieuDay": "Dây da",
+      "DoDay": 0.70,
+      "DoDai": 23.00,
+      "DoRongCuaDay": 1.00,
+      "KieuKhoa": "Khóa cài",
+      "ChatLieuVoMay": "Hợp kim mạ ion, sử dụng công nghệ mạ IP chân không tiên tiến giúp đem lại độ sáng bóng và bền màu   Chống thấm nước 3ATM (30m) có thể đi mưa, rửa tay, rửa mặt. Tránh tiếp xúc với môi trường hóa chất như giặt đồ, tấm gội.",
+      "May": "Quartz Nhật MIYOTA 2035 (thuộc tập đoàn Citizen Nhật)",
+      "KhaNangChiuNuoc": "Chống thấm nước 3ATM (30m) có thể đi mưa, rửa tay, rửa mặt. Tránh tiếp xúc với môi trường hóa chất như giặt đồ, tấm gội. ",
+      "GiamGia": 5,
+      "IdThuongHieu": 1,
+      "IdLoaiSanPham": 1,
+      "Img": 5,
+      "NgayCapNhap": "2020-12-08"
+    },
+    {
+      "Id": 6,
+      "MaSanPham": "SP06",
+      "TenSanPham": "Đồng hồ nữ Hàn Quốc JULIUS-SP06",
+      "Gia": 3450000.00,
+      "DoiTuongSuDung": "Nữ giới, yêu thích thời trang và xyz",
+      "KichThuocBeMat": 3.20,
+      "ChatLieuMatKinh": "Mặt kính khoáng cao cấp trong suốt rõ nét, độ cứng cao",
+      "ChatLieuDay": "Dây da",
+      "DoDay": 0.70,
+      "DoDai": 23.00,
+      "DoRongCuaDay": 1.00,
+      "KieuKhoa": "Khóa cài",
+      "ChatLieuVoMay": "Hợp kim mạ ion, sử dụng công nghệ mạ IP chân không tiên tiến giúp đem lại độ sáng bóng và bền màu   Chống thấm nước 3ATM (30m) có thể đi mưa, rửa tay, rửa mặt. Tránh tiếp xúc với môi trường hóa chất như giặt đồ, tấm gội.",
+      "May": "Quartz Nhật MIYOTA 2035 (thuộc tập đoàn Citizen Nhật)",
+      "KhaNangChiuNuoc": "Chống thấm nước 3ATM (30m) có thể đi mưa, rửa tay, rửa mặt. Tránh tiếp xúc với môi trường hóa chất như giặt đồ, tấm gội. ",
+      "GiamGia": 5,
+      "IdThuongHieu": 1,
+      "IdLoaiSanPham": 1,
+      "Img": 6,
+      "NgayCapNhap": "2020-12-08"
+    }
+  ]
+}

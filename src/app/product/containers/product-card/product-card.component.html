@@ -1,0 +1,40 @@
+<div class="container" *ngIf="listProductInCart.length>0">
+  <div class="row"  *ngFor="let product of listProductInCart">
+    <div class="col-3">
+      <img style="width: 100px;height: 80px" src="/assets/images/product/{{displayImg(product.img)}}.jpg">
+    </div>
+    <div class="col-2">
+      <h5>{{product.tenSanPham}}</h5>
+    </div>
+    <div class="col-2">
+      <h5>Giá: {{product.gia}}</h5>
+    </div>
+    <div class="col-2">
+      <span class="material-icons" [ngClass]="{'noProduct': checkQuantityInCart(product.maSanPham) === 0  }"  (click)="removeAProduct(product.maSanPham)">
+        remove
+      </span>
+      <input type="number" min="0" [(ngModel)]="product.soLuong" style="width: 40px">
+      <span class="material-icons" (click)="addAProduct(product.maSanPham)">
+        add
+      </span>
+      <button class="btn btn-info" (click)="removeAllProduct(product.maSanPham)">Xóa</button>
+    </div>
+    <div class="col-1">
+      tỉ lệ giảm giá : {{(product.giamGia/100) | percent}}
+    </div>
+
+    <div class="col-1">
+      tiền giảm giá: <span >{{product.soLuong *(product.giamGia * product.gia * 0.01) | currency: 'VND'}}</span>
+    </div>
+    <div class="col-1">
+      Thành tiền : <span #thanhTien>{{(product.gia - (product.giamGia * product.gia * 0.01))*product.soLuong|currency: 'VND'}}</span>
+    </div>
+  </div>
+  <br>
+  <div class="row">
+    <div class="col-6"></div>
+    <div class="col-6 text-right text-danger">
+      Tổng tiền: {{total() | currency : 'VND'}}
+    </div>
+</div>
+</div>

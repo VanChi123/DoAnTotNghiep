@@ -1,0 +1,142 @@
+<div class="container">
+  <div class="card">
+    <div class="card-body">
+      <button *ngIf="editable" (click)="editable = !editable" class="btn btn-primary pull-right"><i
+        class="fa fa-edit mr-2"></i>Edit
+      </button>
+      <button *ngIf="!editable" (click)="onSave()" class="btn btn-primary pull-right"><i class="fa fa-edit mr-2"></i>Save
+      </button>
+      <h4 class="card-title">Khách hàng</h4>
+
+      <hr>
+      <form [formGroup]="formUser">
+        <div class="row">
+          <div class="col-2">
+<!--            <img src="../../../../assets/images/{{formUser.value.imgBase64.replace('/\s/g', '')}}"-->
+<!--                 class="img-fluid">-->
+<!--            <img [src]="handleGetAvatar(formUser.value.imgBase64)"-->
+<!--                 class="img-fluid"> -->
+<!--            {{formUser.value.imgBase64}}-->
+            <img [src]="handleGetAvatar(formUser.value.imgBase64)"
+                 class="img-fluid">
+            <input *ngIf="!editable" (change)="onChooseFile($event)" type="file" #file>
+          </div>
+          <div class="col-10">
+
+            <div class="row">
+              <div class="col-2"></div>
+              <div class="col-2">
+                Mã Khách hàng
+              </div>
+              <div class="col-6">
+                <input type="text" class="form-control" [readOnly]="editable" formControlName="maKhachHang">
+              </div>
+              <div class="col-2"></div>
+            </div>
+
+            <div class="row">
+              <div class="col-2"></div>
+              <div class="col-2">
+                Tên Khách Hàng
+              </div>
+              <div class="col-6">
+                <input type="text" class="form-control" [readOnly]="editable" formControlName="tenKhachHang">
+              </div>
+              <div class="col-2"></div>
+            </div>
+
+            <div class="row">
+              <div class="col-2"></div>
+              <div class="col-2">
+                Ngày sinh
+              </div>
+              <div class="col-6">
+
+                <mat-form-field class="w-50" appearance="fill">
+                  <mat-label>Ngày-Tháng-Năm</mat-label>
+                  <input matInput [disabled]="editable"
+                         [matDatepicker]="ngaySinh"
+                         id="ngaySinh"
+                         formControlName="ngaySinh"
+                  >
+<!--                  [min]="tomorrow"-->
+<!--                  [max]="formCr.value.hieuLucDen"-->
+                  <mat-datepicker-toggle matSuffix [for]="ngaySinh"></mat-datepicker-toggle>
+                  <mat-datepicker #ngaySinh></mat-datepicker>
+                </mat-form-field>
+
+<!--                <input type="text" class="form-control" [readOnly]="editable" formControlName="ngaySinh">-->
+              </div>
+              <div class="col-2"></div>
+            </div>
+
+            <div class="row">
+              <div class="col-2"></div>
+              <div class="col-2">
+                Giới tính
+              </div>
+              <div class="col-6">
+                <!--                <input type="text" class="form-control"  >-->
+                <mat-form-field>
+
+                  <mat-select formControlName="gioiTinh" [disabled]="editable">
+                    <mat-option [value]="true">Nam</mat-option>
+                    <mat-option [value]="false">Nữ</mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+              <div class="col-2"></div>
+            </div>
+
+            <div class="row">
+              <div class="col-2"></div>
+              <div class="col-2">
+                Địa chỉ
+              </div>
+              <div class="col-6">
+                <input type="text" class="form-control" [readOnly]="editable" formControlName="diaChi">
+              </div>
+              <div class="col-2"></div>
+            </div>
+
+            <div class="row">
+              <div class="col-2"></div>
+              <div class="col-2">
+                Số điện thoại
+              </div>
+              <div class="col-6">
+                <input type="text" class="form-control" [readOnly]="editable" formControlName="soDienThoai">
+              </div>
+              <div class="col-2"></div>
+            </div>
+
+
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+
+</div>
+<!--<form [formGroup]="formUser">-->
+
+<!--  -->
+<!--  <input type="text" class="form-control" disabled formControlName="tenKhachHang">-->
+<!--  <input type="text" class="form-control" disabled formControlName="ngaySinh">-->
+<!--  <input type="text" class="form-control" disabled formControlName="gioiTinh">-->
+<!--  <input type="text" class="form-control" disabled formControlName="diaChi">-->
+<!--  <input type="text" class="form-control" disabled formControlName="soDienThoai">-->
+<!--  <input type="text" class="form-control"  formControlName="idTaiKhoan">-->
+
+<!--</form>-->
+<!--<form [formGroup]="formUser">-->
+<!--  <input type="text" class="form-control" disabled formControlName="id">-->
+<!--  <input type="text" class="form-control"  formControlName="maKhachHang">-->
+<!--  <input type="text" class="form-control" disabled formControlName="tenKhachHang">-->
+<!--  <input type="text" class="form-control" disabled formControlName="ngaySinh">-->
+<!--  <input type="text" class="form-control" disabled formControlName="gioiTinh">-->
+<!--  <input type="text" class="form-control" disabled formControlName="diaChi">-->
+<!--  <input type="text" class="form-control" disabled formControlName="soDienThoai">-->
+<!--  <input type="text" class="form-control"  formControlName="idTaiKhoan">-->
+
+<!--</form>-->

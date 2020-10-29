@@ -1,0 +1,13 @@
+<!--<app-carousel-header></app-carousel-header>-->
+
+<app-type-header ></app-type-header>
+<ng-container *ngIf="dataFull">
+  <app-a-product-list [products]="dataFull.content">
+  </app-a-product-list>
+
+<mat-paginator [length]="dataFull.totalElements" (page)="onChangePage($event)"
+               [pageSize]="pageMeta.pageSize"
+               [pageSizeOptions]="numberOfProductSearch()"
+>
+</mat-paginator>
+</ng-container>

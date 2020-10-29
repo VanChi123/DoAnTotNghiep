@@ -1,0 +1,49 @@
+<p>user-home works!</p>
+<!--<div class="container">-->
+<!--  <div class="row">-->
+<!--    <div class="col-3">-->
+<!--      <ul class="list-group">-->
+<!--        <li class="list-group-item" routerLink="/user/" routerLinkActive="active" [routerLinkActiveOptions]="{exact:-->
+<!--true}" (click)="guiIdLenGiaoDien(1)">List</li>-->
+<!--        <li class="list-group-item" routerLink="/user/create" routerLinkActive="active"  (click)="guiIdLenGiaoDien(2)">Form</li>-->
+<!--        <li class="list-group-item">Morbi leo risus</li>-->
+<!--        <li class="list-group-item">Porta ac consectetur ac</li>-->
+<!--        <li class="list-group-item">Vestibulum at eros</li>-->
+<!--      </ul>-->
+<!--    </div>-->
+<!--    <div class="col-9">-->
+<!--      chúng ta phải xây dựng phân trang, nút next -> previous-->
+<!--      <router-outlet></router-outlet>-->
+<!--    </div>-->
+<!--  </div>-->
+<!--</div>-->
+
+<mat-sidenav-container>
+  <mat-sidenav mode="side" [(opened)]="isOpenNav">Menu
+
+
+    <ul class="list-group">
+      <li class="list-group-item" routerLink="/user/" routerLinkActive="active" [routerLinkActiveOptions]="{exact:
+      true}" (click)="guiIdLenGiaoDien(1)">List
+      </li>
+      <li class="list-group-item" routerLink="/user/create" routerLinkActive="active" (click)="guiIdLenGiaoDien(2)">
+        Form
+      </li>
+      <li class="list-group-item">Morbi leo risus</li>
+      <li class="list-group-item">Porta ac consectetur ac</li>
+      <li class="list-group-item">Vestibulum at eros</li>
+    </ul>
+
+
+  </mat-sidenav>
+  <mat-sidenav-content>Main :chúng ta phải xây dựng phân trang, nút next -> previous
+    <router-outlet></router-outlet>
+    <br>
+    <button (click)="isOpenNav=!isOpenNav">Toggle SideBar</button>
+    <!--    <button *ngIf="!isOpenNav">Open SideBar</button>-->
+  </mat-sidenav-content>
+</mat-sidenav-container>
+
+<!--có một cách khác để gọi nav ra là : #nav vào mat-sidenav-->
+<!--và ở button gọi các phươn thức: (click)="nav.close()/open()/toogle()"-->
+

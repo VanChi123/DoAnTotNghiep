@@ -1,0 +1,29 @@
+<div class="container" style="padding: 4px;background: white">
+  <div class="row">
+    <div class="col-4"></div>
+    <div class="col-4">
+      <form [formGroup]="formLogin">
+        <h2>Đăng nhập tài khoản</h2>
+        <div class="row">
+          <div class="col-3">Tên đăng nhập</div>
+          <div class="col-9">
+            <input type="text" [pattern]="unamePattern" class="form-control" formControlName="userName">
+            <span *ngIf="formLogin.get('userName').errors?.pattern" class="er">UserName không hợp lệ</span>
+            <span *ngIf="formLogin.get('userName').errors?.required" class="er">Không được để trống</span>
+            <span *ngIf="formLogin.get('userName').errors?.maxlength" class="er">Vượt quá số lượng kí tự</span>
+          </div>
+          <div class="col-3">Mật khẩu</div>
+          <div class="col-9">
+            <input type="password" [pattern]="unamePattern" class="form-control" formControlName="password">
+            <span *ngIf="formLogin.get('password').errors?.pattern" class="er">UserName không hợp lệ</span>
+            <span *ngIf="formLogin.get('password').errors?.required" class="er">Không được để trống</span>
+            <span *ngIf="formLogin.get('password').errors?.maxlength" class="er">Vượt quá số lượng kí tự</span>
+          </div>
+        </div>
+
+        <button class="btn btn-success" (click)="onLogin()"><mat-icon>login</mat-icon>Đăng nhập</button>
+      </form>
+    </div>
+    <div class="col-4"></div>
+  </div>
+</div>

@@ -1,0 +1,31 @@
+<p>article-list works!</p>
+<div class="row"
+     *ngIf="articles$ | async as articles else loadingTmpl">
+  <div class="col-md-3"
+       *ngFor="let article of articles">
+    <div class="card text-center">
+      <div class="card-header">
+        {{ article.title }}
+      </div>
+      <div class="card-body">
+        <p class="card-text">{{ article.content }}</p>
+        <a [routerLink]="article.slug"
+           class="btn btn-primary">Xem {{ article.title }}</a>
+      </div>
+    </div>
+  </div>
+</div>
+<ng-template #loadingTmpl>
+  Loading...
+</ng-template>
+
+<hr>
+<hr>
+<hr>
+<h1> NGX Highlight Text Example</h1>
+<div>
+  <div>
+    <input type="text" [(ngModel)]="query" placeholder="Query..." />
+  </div>
+  <p [innerHTML]="highlight()"></p>
+</div>

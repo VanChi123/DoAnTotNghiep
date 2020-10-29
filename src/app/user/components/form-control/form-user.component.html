@@ -1,0 +1,47 @@
+<p>form-user works!</p>
+<h3 *ngIf="title">{{title}}</h3>
+<!--<label>  cho div kia vào trong label sẽ hiện ô có màu chữ hồng khi lỗi-->
+<label>
+  Name:
+<!--  //sử dụng sự kiện change cũng ok , bên kia sẽ value change hoặc là bắt chữ luôn-->
+  <input type="text" [formControl]="name" required (ngModelChange)="changeValue()">
+  <div *ngIf="name.invalid && (name.dirty || name.touched)"
+       class="alert alert-danger">
+
+    <div *ngIf="name.errors.required">
+      Name is required.
+    </div>
+    <div *ngIf="name.errors.minlength">
+      Name must be at least 4 characters long.
+    </div>
+
+    <div *ngIf="name.errors.forbiddenName">
+      Name cannot be Bob.
+    </div>
+  </div>
+</label>
+<button type="button" class="btn btn-primary" (click)="xuLyDuLieu()">Primary</button>
+<h1>Kết quả : </h1>
+<p>
+  Value: {{ name.value }}
+</p>
+<h3>Test Age: </h3>
+<label>
+  age:
+  <input type="text" [formControl]="age" required minlength="4">
+  <div *ngIf="age.invalid && (age.dirty || age.touched)"
+       class="alert alert-danger">
+
+    <div *ngIf="age.errors.required">
+      AGe is required.
+    </div>
+    <div *ngIf="age.errors.minlength">
+      Name must be at least 4 characters long.
+    </div>
+
+  </div>
+</label>
+
+
+
+

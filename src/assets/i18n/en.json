@@ -1,0 +1,11 @@
+{
+  "APP_FEATURE": {
+    "COMMON": {
+      "SELECT": "--- Selection ---",
+      "ERROR403": "Forbidden",
+      "NOTIFICATION": "Notification",
+      "ERROR": "Error",
+      "TITLE": "Vietnamese"
+    }
+  }
+}

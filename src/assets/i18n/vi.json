@@ -1,0 +1,11 @@
+{
+  "APP_FEATURE": {
+    "COMMON": {
+      "SELECT": "--- Chọn ---",
+      "ERROR403": "Bị cấm",
+      "NOTIFICATION": "Thông báo",
+      "ERROR": "Lỗi",
+      "TITLE": "Tiếng việt"
+    }
+  }
+}

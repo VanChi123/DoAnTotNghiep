@@ -1,0 +1,35 @@
+<div *ngIf="product" class="mt-3 ml-3">
+  <img style="height: 250px;width: 240px"
+       src="/assets/images/product/{{displayImg(product.img)}}.jpg">
+
+  <a [routerLink]="['/product/view', product.maSanPham, product.id]"><h5>{{product.tenSanPham}}</h5></a>
+  <div class="price">
+    <span>{{displayValueAfterOff(product.gia, product.giamGia)|currency: 'VND'}}</span>
+    <span class="ml-4" matBadgeColor="warn" matBadgeOverlap=false matBadgeSize="large" [matBadge]="displayValueOff(product.giamGia)">{{product.gia|currency: 'VND'}}</span>
+  </div>
+  <div class="ratingresult">
+    <i class="icontgdd-ystar"></i>
+    <i class="icontgdd-ystar"></i>
+    <i class="icontgdd-gstar"></i>
+    <i class="icontgdd-gstar"></i>
+    <i class="icontgdd-gstar"></i>
+    <span>77 đánh giá</span>
+  </div>
+
+  <p class="installment">Trả góp 0%</p>
+
+  <button class="btn btn-light" style="border: 1px solid lightgray" (click)="addCart(product)">
+    <mat-icon>add</mat-icon>
+    Thêm vào giỏ
+  </button>
+  <button class="btn btn-light" style="border: 1px solid lightgray">
+    <mat-icon>shopping-cart</mat-icon>
+    Mua hàng
+  </button>
+
+</div>
+
+
+
+
+

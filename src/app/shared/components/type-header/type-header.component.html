@@ -1,0 +1,137 @@
+<div class="container">
+  <div class="row">
+
+    <div class="fl price">
+      <label>Chọn mức giá: </label>
+      <a href="/may-tinh-bang?p=duoi-3-trieu" class=" " data-id="292">
+        Dưới 3 triệu
+      </a>
+      <a href="/may-tinh-bang?p=tu-3-10-trieu" class=" " data-id="294">
+        Từ 3 - 10 triệu
+      </a>
+      <a href="/may-tinh-bang?p=tren-10-trieu" class=" " data-id="296">
+        Trên 10 triệu
+      </a>
+    </div>
+
+    <div class="fl feature expand">
+      <span class="criteria">Bộ lọc <i class="fa fa-angle-down pull-right" (click)="displayTypes()"></i></span>
+      <ng-container *ngIf="displayType">
+        <div class="property " style="display: block;">
+          <a href="javascript:;" class="closefilter"><i class="icontgdd-closefilter"></i></a>
+          <div class="prop ">
+            <strong>Màn hình</strong>
+            <a href="/may-tinh-bang?g=khoang-7" class="" data-id="40457">
+<!--              <i class="icontgdd-checkbox"></i>-->
+              <input type="checkbox">
+              Khoảng 7"
+            </a>
+            <a href="/may-tinh-bang?g=khoang-8" class="" data-id="40456">
+              <i class="icontgdd-checkbox"></i>
+              <input type="checkbox">
+              Khoảng 8"
+            </a>
+            <a href="/may-tinh-bang?g=khoang-9" class="" data-id="40455">
+              <i class="icontgdd-checkbox"></i>
+              <input type="checkbox">
+              Khoảng 9"
+            </a>
+            <a href="/may-tinh-bang?g=tren-10" class="" data-id="40454">
+              <i class="icontgdd-checkbox"></i>
+              <input type="checkbox">
+              Trên 10"
+            </a>
+          </div>
+          <div class="prop ">
+            <strong>RAM</strong>
+            <a href="/may-tinh-bang?g=1-gb" class="" data-id="15453">
+              <i class="icontgdd-checkbox"></i> <input type="checkbox">
+              1 GB
+            </a>
+            <a href="/may-tinh-bang?g=2-gb" class="" data-id="15454">
+              <i class="icontgdd-checkbox"></i> <input type="checkbox">
+              2 GB
+            </a>
+            <a href="/may-tinh-bang?g=3-gb" class="" data-id="15455">
+              <i class="icontgdd-checkbox"></i> <input type="checkbox">
+              3 GB
+            </a>
+            <a href="/may-tinh-bang?g=4-gb" class="" data-id="15456">
+              <i class="icontgdd-checkbox"></i> <input type="checkbox">
+              4 GB
+            </a>
+          </div>
+          <div class="prop ">
+            <strong>Camera sau</strong>
+            <a href="/may-tinh-bang?g=duoi-3-mp" class="" data-id="54248">
+              <i class="icontgdd-checkbox"></i> <input type="checkbox">
+              Dưới 3 MP
+            </a>
+            <a href="/may-tinh-bang?g=tu-3-5-mp" class="" data-id="54249">
+              <i class="icontgdd-checkbox"></i> <input type="checkbox">
+              Từ 3 - 5 MP
+            </a>
+            <a href="/may-tinh-bang?g=tren-5-mp" class="" data-id="54250">
+              <i class="icontgdd-checkbox"></i> <input type="checkbox">
+              Trên 5 MP
+            </a>
+          </div>
+          <div class="yesno">
+            <strong>Tính năng đặc biệt</strong>
+            <a href="/may-tinh-bang?f=2-sim" class="" data-id="8479" data-smoothurl="">
+              <i class="icontgdd-checkbox"></i> <input type="checkbox">
+              2 SIM
+            </a>
+            <a href="/may-tinh-bang?f=thuc-hien-cuoc-goi" class="" data-id="7839" data-smoothurl="">
+              <i class="icontgdd-checkbox"></i> <input type="checkbox">
+              Thực hiện cuộc gọi
+            </a>
+            <a href="/may-tinh-bang?f=pin-su-dung-tren-8-gio" class="" data-id="7842" data-smoothurl="">
+              <i class="icontgdd-checkbox"></i> <input type="checkbox">
+              Pin sử dụng trên 8 giờ
+            </a>
+            <a href="/may-tinh-bang?f=ho-tro-otg" class="" data-id="9061" data-smoothurl="">
+              <i class="icontgdd-checkbox"></i> <input type="checkbox">
+              Hỗ trợ OTG
+            </a>
+          </div>
+          <p class="doit"></p>
+          <p class="cslder">
+                    <span class="cswrap">
+                        <span class="csdot"></span>
+                        <span class="csdot"></span>
+                        <span class="csdot"></span>
+                    </span>
+          </p>
+        </div>
+      </ng-container>
+
+    </div>
+
+    <div class="fl barpage">
+      <a href="?s=moi-ra-mat" data-id="moi-ra-mat" class="">
+        <i class="icontgdd-checkbox"></i> <input type="checkbox"> Mới
+      </a>
+      <a href="?s=tra-gop-0-phan-tram" data-id="tra-gop-0-phan-tram" class="">
+        <i class="icontgdd-checkbox"></i> <input type="checkbox"> Trả góp 0%
+      </a>
+    </div>
+
+
+    <div class="fr sort">
+      <span class="criteria">Sắp xếp <i class="fa fa-angle-down pull-right" (click)="displayOrders()"></i></span>
+      <div [hidden]="displayOrder">
+        <label class="closefilter"><i class="icontgdd-closefilter"></i></label>
+        <a href="javascript:;" class="" data-id="5"><i class="icontgdd-checklist"></i>Nổi bật nhất</a>
+        <a href="javascript:;" data-id="6" class=""><i class="icontgdd-checklist"></i>Bán chạy nhất</a>
+
+        <a href="javascript:;" data-id="1" class="check"><i class="icontgdd-checklist"></i>Giá cao đến thấp</a>
+        <a href="javascript:;" data-id="2"><i class="icontgdd-checklist"></i>Giá thấp đến cao</a>
+      </div>
+    </div>
+
+  </div>
+  <hr>
+</div>
+
+
