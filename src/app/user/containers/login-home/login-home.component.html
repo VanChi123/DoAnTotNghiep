@@ -1,29 +1,63 @@
-<div class="container" style="padding: 4px;background: white">
+<div class="container" style="padding: 4px;background: lavender">
   <div class="row">
-    <div class="col-4"></div>
-    <div class="col-4">
+    <div class="col-2"></div>
+    <div class="col-8">
       <form [formGroup]="formLogin">
-        <h2>Đăng nhập tài khoản</h2>
-        <div class="row">
-          <div class="col-3">Tên đăng nhập</div>
-          <div class="col-9">
+        <header class="heading">Đăng nhập {{'APP_FEATURE.COMMON.TITLE' | translate}}</header>
+        <hr>
+        <div class="row mt-2">
+          <div class="col-4 ">Tên đăng nhập <span class="text-danger ml-2">*</span></div>
+          <div class="col-8">
             <input type="text" [pattern]="unamePattern" class="form-control" formControlName="userName">
             <span *ngIf="formLogin.get('userName').errors?.pattern" class="er">UserName không hợp lệ</span>
             <span *ngIf="formLogin.get('userName').errors?.required" class="er">Không được để trống</span>
             <span *ngIf="formLogin.get('userName').errors?.maxlength" class="er">Vượt quá số lượng kí tự</span>
           </div>
-          <div class="col-3">Mật khẩu</div>
-          <div class="col-9">
+        </div>
+        <div class="row mt-2">
+          <div class="col-4">Mật khẩu <span class="text-danger ml-2">*</span></div>
+          <div class="col-8">
             <input type="password" [pattern]="unamePattern" class="form-control" formControlName="password">
             <span *ngIf="formLogin.get('password').errors?.pattern" class="er">UserName không hợp lệ</span>
             <span *ngIf="formLogin.get('password').errors?.required" class="er">Không được để trống</span>
             <span *ngIf="formLogin.get('password').errors?.maxlength" class="er">Vượt quá số lượng kí tự</span>
           </div>
         </div>
+        <div class="row mt-2">
+          <div class="col-4">Nhớ mật khẩu</div>
+          <div class="col-8">
+            <!--            để css cho check box thì ta phải bao thẻ check box bởi label-->
+            <!--            <label class="memoryPass">-->
+            <!--              <input type="checkbox" class="form-check-input" formControlName="memoryPass">-->
+            <!--            </label>-->
 
-        <button class="btn btn-success" (click)="onLogin()"><mat-icon>login</mat-icon>Đăng nhập</button>
+            <label class="switch">
+              <input type="checkbox" formControlName="memoryPass">
+              <span class="slider round"></span>
+            </label>
+          </div>
+        </div>
+        <div class="row mt-2">
+          <div class="col-4"></div>
+          <div class="col-8">
+            <button class="btn btn-success" [disabled]="formLogin.invalid" style="display: inline-flex" (click)="onLogin()">
+              <mat-icon>login</mat-icon>
+              Đăng nhập
+            </button>
+          </div>
+        </div>
       </form>
     </div>
-    <div class="col-4"></div>
+    <div class="col-2"></div>
   </div>
+
+
+  <!--        <div class="col-xs-4 male">-->
+  <!--          <input type="radio" name="gender" value="boy" />Male-->
+  <!--        </div>-->
+
+  <!--        <div class="col-xs-4 female">-->
+  <!--          <input type="radio"  name="gender"value="girl" />Female-->
+  <!--        </div>-->
+
 </div>

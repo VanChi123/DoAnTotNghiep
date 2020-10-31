@@ -6,10 +6,10 @@ import { AppComponent } from './app.component';
 import {BrowserAnimationsModule, NoopAnimationsModule} from '@angular/platform-browser/animations';
 import {AppBreadcrumbComponent} from './app-breadcrumb.component';
 import {SharedModule} from './shared/shared.module';
-import {HttpClientModule} from "@angular/common/http";
-import {CommonModule} from "@angular/common";
-import {ToastrModule} from "ngx-toastr";
-import {LoginGuardGuard} from "./user/guards/login-guard.guard";
+import {HttpClientModule} from '@angular/common/http';
+import {ToastrModule} from 'ngx-toastr';
+import {LoginGuardGuard} from './user/guards/login-guard.guard';
+import {CoreModule} from './core/core.module';
 
 @NgModule({
   declarations: [ // gọi componnent nào ở app.component.html thì phải khai báo ở đây
@@ -21,17 +21,18 @@ import {LoginGuardGuard} from "./user/guards/login-guard.guard";
     AppRoutingModule,
     NoopAnimationsModule,
     SharedModule, // dùng component foooter thì mới import thawngfn này,
-    HttpClientModule // khai báo sử dụng httpclient thì dùng thằng này, viết ở đây thì ở các module bên
+    HttpClientModule, // khai áo sử dụng httpclient thì dùng thằng này, viết ở đây thì ở các module bên
     // trong đều có thể sử dụng, nếu ko lỗi provider,
-    , CommonModule,
 
     BrowserAnimationsModule, // required animations module
-    ToastrModule.forRoot(), // ToastrModule added
+    ToastrModule.forRoot(), // ToastrModule added,
+
+    CoreModule
+
   ],
     providers: [LoginGuardGuard,
     ],
     exports: [
-
     ],
     bootstrap: [AppComponent]
 })

@@ -1,3 +1,33 @@
 .er{
   color: red;
 }
+
+.er{
+  color: red;
+}
+
+/*---for heading-----*/
+.heading{
+  text-decoration: none;
+  text-align : center;
+  font-size:30px;
+  color:#F96;
+  padding-top:10px;
+}
+
+.container{
+  //font-family: Roboto, sans-serif;
+  //background-image: url(https://image.freepik.com/free-vector/dark-blue-blurred-background_1034-589.jpg);
+  border-style: 1px solid grey;
+  margin: 0 auto;
+  /* text-align: center; */
+  /* opacity: 0.8; */
+  box-shadow: 2px 5px 5px 0px #eee;
+  max-width: 800px;
+  padding-top: 10px;
+  height: 400px;
+}
+
+.col-8 .row{
+  margin-top: 6px;
+}

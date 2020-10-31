@@ -3,6 +3,7 @@ import { ActivatedRoute, Router, NavigationEnd, PRIMARY_OUTLET } from '@angular/
 import { filter, takeUntil} from 'rxjs/operators';
 // import { TranslateService } from '@ngx-translate/core';
 import { Subject } from 'rxjs';
+import {TranslateService} from "@ngx-translate/core";
 
 @Component({
   selector: 'ebid-breadcrumb',
@@ -22,6 +23,7 @@ import { Subject } from 'rxjs';
   styles: [`
     ul.egp-breadcrumb {
       padding: 10px 14px;
+      margin-bottom: 0px;
     }
 
   `]
@@ -34,7 +36,7 @@ export class AppBreadcrumbComponent implements OnInit, OnDestroy {
   constructor(
     private router: Router,
     private route: ActivatedRoute,
-    // private translateService: TranslateService
+    private translateService: TranslateService
     ) { }
 
   ngOnInit() {
@@ -84,8 +86,8 @@ export class AppBreadcrumbComponent implements OnInit, OnDestroy {
 
       // add breadcrumb
       const breadcrumb: Breadcrumb = {
-        // label: this.getI18nMsg(child.snapshot.data[ROUTE_DATA_BREADCRUMB]),
-        label: child.snapshot.data[ROUTE_DATA_BREADCRUMB],
+        label: this.getI18nMsg(child.snapshot.data[ROUTE_DATA_BREADCRUMB]),
+        // label: child.snapshot.data[ROUTE_DATA_BREADCRUMB],
         url: url
       };
       breadcrumbs.push(breadcrumb);
@@ -96,15 +98,15 @@ export class AppBreadcrumbComponent implements OnInit, OnDestroy {
     return breadcrumbs;
   }
 
-  // private getI18nMsg(key: string): string {
-  //   let i18nMsg: string = '';
-  //   this.translateService.get(key).pipe(takeUntil(this.unsubcribe$)).subscribe(res => {
-  //     if (res) {
-  //       i18nMsg = res;
-  //     }
-  //   })
-  //   return i18nMsg;
-  // }
+  private getI18nMsg(key: string): string {
+    let i18nMsg: string = '';
+    this.translateService.get(key).pipe(takeUntil(this.unsubcribe$)).subscribe(res => {
+      if (res) {
+        i18nMsg = res;
+      }
+    })
+    return i18nMsg;
+  }
 
   onClick(){
     console.log('xin chào');

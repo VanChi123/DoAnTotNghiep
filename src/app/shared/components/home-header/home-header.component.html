@@ -9,22 +9,27 @@
     <div class="col-10">
       <div class="row header-one">
         <div class="col-5 one-left">
+          <p class="text-primary pull-right">Hôm nay: {{ now | date : 'dd-MM-yyyy hh:mm:ss a' }}</p>
           <a style="text-decoration: none" href="tel:0347373332"><i class="fa fa-phone"></i>
             0347373332</a>
-          <a style="text-decoration: none; margin-left:10px"
+          <br>
+          <a style="text-decoration: none"
              href="mailto:cwatch@gmail.com}}"><i class="fa fa-envelope"></i>
             cwatch@gmail.com</a>
+
         </div>
 
-        <div class="col-3">
+        <div class="col-4" style="max-width: 31%">
           <div class="dropdown d-inline-block">
-            <button class="btn nut-account  btn-outline-success dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              <b *ngIf="checkUser()">C</b><i *ngIf="!checkUser()" class="fa fa-user" aria-hidden="true"></i>Tài khoản
+            <button class="btn nut-account  btn-outline-success dropdown-toggle" type="button" id="dropdownMenuButton"
+                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <b *ngIf="checkUser()">{{getNameUser()}}</b><i *ngIf="!checkUser()" class="fa fa-user"
+                                                             aria-hidden="true"></i>Tài khoản
             </button>
             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-<!--              <a class="dropdown-item" href="#">Action</a>-->
-<!--              <a class="dropdown-item" href="#">Another action</a>-->
-<!--              <a class="dropdown-item" href="#">Something else here</a>-->
+              <!--              <a class="dropdown-item" href="#">Action</a>-->
+              <!--              <a class="dropdown-item" href="#">Another action</a>-->
+              <!--              <a class="dropdown-item" href="#">Something else here</a>-->
               <button mat-menu-item *ngIf="!checkUser()" (click)="register()">
                 Đăng kí tài khoản
               </button>
@@ -47,26 +52,31 @@
           </div>
 
           <div class="dropdown d-inline-block ml-2">
-            <button class="btn btn-outline-success dropdown-toggle" type="button" id="dropdownMenuLanguage" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              <i class="fa fa-language" aria-hidden="true"></i>Ngôn ngữ
+            <button class="btn btn-outline-success dropdown-toggle" type="button" id="dropdownMenuLanguage"
+                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <b style="color: rgba(165, 42, 42, 0.66)">{{translate.currentLang == 'vi' ? 'VI' : 'EN'}}</b>
+              <i class="fa fa-language" aria-hidden="true"></i>
+              Ngôn ngữ
             </button>
+
             <div class="dropdown-menu" aria-labelledby="dropdownMenuLanguage">
-              <a class="dropdown-item" href="#">Tiếng Việt</a>
-              <a class="dropdown-item" href="#">Tiếng Anh</a>
+              <a class="dropdown-item" href="javascript:;" (click)="translate.use('vi')">Tiếng Việt</a>
+              <a class="dropdown-item" href="javascript:;" (click)="translate.use('en')">Tiếng Anh</a>
             </div>
           </div>
         </div>
 
-        <div class="col-4" >
-<!--          <form id="search-site" autocomplete="on" class="form-horizontal">-->
-            <div class="input-group">
-              <input type="text" [(ngModel)]="valueSearch" class="form-control" placeholder="Bạn muốn tìm gì...">
-              <span >
-                <button class="btn btn-primary" type="submit" aria-label="tìm kiếm" (click)="onSearch()"><i class="fa fa-search"></i> Tìm kiếm</button>
+        <div class="col-3">
+          <!--          <form id="search-site" autocomplete="on" class="form-horizontal">-->
+          <div class="input-group">
+            <input type="text" [(ngModel)]="valueSearch" class="form-control" placeholder="Bạn muốn tìm gì...">
+            <span>
+                <button class="btn btn-primary" type="submit" aria-label="tìm kiếm" (click)="onSearch()"><i
+                  class="fa fa-search"></i> Tìm kiếm</button>
               </span>
-            </div>
+          </div>
 
-<!--          </form>-->
+          <!--          </form>-->
         </div>
 
       </div>

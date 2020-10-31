@@ -6,7 +6,7 @@ import { UsersListComponent } from './containers/users-list/users-list.component
 import { UsersFormComponent } from './containers/users-form/users-form.component';
 import { FormUserComponent } from './components/form-control/form-user.component';
 import { FormListComponent } from './components/form-list/form-list.component';
-import {ReactiveFormsModule} from "@angular/forms";
+import {ReactiveFormsModule} from '@angular/forms';
 import { FormGroupComponent } from './components/form-group/form-group.component';
 import { FormNestedComponent } from './components/form-nested/form-nested.component';
 import { FormWithFormbuilderComponent } from './components/form-with-formbuilder/form-with-formbuilder.component';
@@ -18,10 +18,12 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatButtonModule} from '@angular/material/button';
 import {MatSelectModule} from '@angular/material/select';
 import {MatDatepickerModule} from '@angular/material/datepicker';
-import {DateAdapter, MAT_DATE_FORMATS, MatNativeDateModule} from "@angular/material/core";
-import {MatInputModule} from "@angular/material/input";
-import {MatFormFieldModule} from "@angular/material/form-field";
-import {DatePickerAdapter, DEPS, FORMAT_MAT_DATEPICKER} from "../shared/directives/dateFormat";
+import {DateAdapter, MAT_DATE_FORMATS, MatNativeDateModule} from '@angular/material/core';
+import {MatInputModule} from '@angular/material/input';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {DatePickerAdapter, DEPS, FORMAT_MAT_DATEPICKER} from '../shared/directives/dateFormat';
+import {SharedModule} from "../shared/shared.module";
+import {TranslateModule} from "@ngx-translate/core";
 
 
 @NgModule({
@@ -40,8 +42,14 @@ import {DatePickerAdapter, DEPS, FORMAT_MAT_DATEPICKER} from "../shared/directiv
     MatDatepickerModule,
     MatNativeDateModule,
     MatInputModule,
-    MatFormFieldModule
+    MatFormFieldModule,
     // end for mat-date picker + must follow providers
+
+    // import share module để sử dụng module Translate vì bên kia nó cả import lẫn export
+    // // Translation
+    SharedModule,
+    // TranslateModule,
+    // TranslateModule,
   ],
   providers: [
     MatDatepickerModule,
@@ -52,5 +60,8 @@ import {DatePickerAdapter, DEPS, FORMAT_MAT_DATEPICKER} from "../shared/directiv
     },
     {provide: MAT_DATE_FORMATS, useValue: FORMAT_MAT_DATEPICKER}
   ],
+  exports: [
+    // TranslateModule
+    ]
 })
 export class UserModule { }

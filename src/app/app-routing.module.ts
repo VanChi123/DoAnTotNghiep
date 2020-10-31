@@ -1,8 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import {UserHomeComponent} from './user/containers/user-home/user-home.component';
-import {HomeComponent} from './home/components';
-
 
 const routes: Routes = [
   {
@@ -19,7 +17,7 @@ const routes: Routes = [
   {
     path: 'routing',
     // data: { breadcrumb: 'RoutingDemo' },
-    data: { breadcrumb: 'APP_FEATURE.ADMIN.TITLE' },
+    data: { breadcrumb: 'APP_FEATURE.COMMON.TITLE' },
     loadChildren: () => import('./routing/routing.module').then(m => m.RoutingModule)
   },
   {

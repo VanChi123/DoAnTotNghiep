@@ -26,3 +26,7 @@ Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protrac
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
 "# DoAnTotNghiep" 
+
+## đẩy code lên : git push origin main
+## các bước để tạo repo: tạo mới, thực hiện các câu lệnh hướng dẫn -> (main là nhánh chính)
+## sau đó đẩy code lên : git add / commit / push origin main
