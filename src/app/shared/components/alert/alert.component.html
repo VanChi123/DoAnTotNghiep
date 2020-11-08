@@ -1,0 +1,34 @@
+<h2 class="alert-title" mat-dialog-title>{{ clientData.title}}</h2>
+<mat-dialog-content>
+  <div class="row">
+    <div class="col-3 pd-righr-0">
+      <div class="alert-ico">
+        <i [ngClass]="clientData.icon"></i>
+      </div>
+    </div>
+    <div class="col-9">
+      {{ clientData.message}}
+      <span style="color: red;" *ngIf="clientData.value">{{clientData.value}}</span>
+    </div>
+  </div>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <div class="default" *ngIf="!clientData.buttons">
+    <button mat-raised-button cdkFocusInitial [mat-dialog-close]="false">
+      Cancel
+    </button>
+    <button mat-raised-button color="primary" [mat-dialog-close]="true">
+      Ok
+    </button>
+  </div>
+  <div class="has-buttons" *ngIf="clientData.buttons">
+    <button
+      *ngFor="let button of clientData.buttons"
+      color="{{button.color}}"
+      [mat-dialog-close]="button.value"
+      mat-button
+    >
+      {{ button.name }}
+    </button>
+  </div>
+</mat-dialog-actions>

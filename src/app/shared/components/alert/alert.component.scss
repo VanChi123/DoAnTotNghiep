@@ -1,0 +1,34 @@
+:host {
+  display: block;
+  width: 100%;
+  max-width: 420px;
+  min-width: 320px;
+}
+
+mat-dialog-actions {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.mat-dialog-title {
+  margin: 0 0 0px;
+  display: block;
+}
+
+[mat-button] {
+  padding: 0;
+}
+h2.alert-title {
+  margin-bottom: 15px;
+}
+
+.alert-ico {
+  width: 100%;
+  text-align: center;
+  font-size: 26pt;
+  //color: #f5803e!important;
+}
+
+.pd-righr-0 {
+  padding-right: 0px;
+}
