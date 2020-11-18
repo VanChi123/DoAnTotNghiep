@@ -1,6 +1,7 @@
 import {Component, ElementRef, Input, OnChanges, OnInit, SimpleChanges} from '@angular/core';
 import {Product} from '../../models/product.model';
 import {DataService} from '../../services/data.service';
+import {DomSanitizer} from "@angular/platform-browser";
 
 @Component({
   selector: 'app-product-detail',
@@ -8,11 +9,13 @@ import {DataService} from '../../services/data.service';
   styleUrls: ['./product-detail.component.scss']
 })
 export class ProductDetailComponent implements OnInit, OnChanges {
-  @Input() product: Product;
+  @Input() product: any;
 
-  prods: Product[];
+  prods: any[];
 
-  constructor(private data: DataService) {
+  constructor(private data: DataService,
+              private sanitizer: DomSanitizer,
+              ) {
     this.data.currentMessage.subscribe(messa => {
       this.prods = messa;
     });
@@ -60,10 +63,10 @@ export class ProductDetailComponent implements OnInit, OnChanges {
     }
     return -1;
   }
-  // hiển thị ảnh
-  displayImg(imgName: string): string{
-    return Number(imgName.replace(' ', '')).toString();
-  }
+  // // hiển thị ảnh
+  // displayImg(imgName: string): string{
+  //   return Number(imgName.replace(' ', '')).toString();
+  // }
 
   // phần trăm giảm giá
   displayValueOff(price: number): string{
@@ -73,6 +76,20 @@ export class ProductDetailComponent implements OnInit, OnChanges {
   // giá sau giảm giá
   displayValueAfterOff(price: number, portion: number): number{
     return price - price * portion * 0.01;
+  }
+
+  // hiển thị ảnh
+  handleGetAvatar(avatar: string) {
+    return this.sanitizer.bypassSecurityTrustResourceUrl(`data:image/png;base64, ${avatar}`);
+  }
+
+  // khởi tạo mảng chứa số ông sao
+  initStar(count: number): any[]{
+    const numberArr = [];
+    for (let i = 0; i < count ; i++){
+      numberArr.push(i);
+    }
+    return numberArr;
   }
 }
 

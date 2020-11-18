@@ -1,21 +1,24 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import {UsersListComponent} from './containers/users-list/users-list.component';
-import {UsersFormComponent} from './containers/users-form/users-form.component';
-import {CustomerInformationComponent, LoginHomeComponent, UserDetailComponent} from './containers';
-import {LoginGuardGuard} from './guards/login-guard.guard';
-import {RegisterHomeComponent} from "./containers/register-home/register-home.component";
+
+import {
+  ChangePasswordComponent,
+  CustomerInformationComponent,
+  LoginHomeComponent, RegisterHomeComponent,
+  UserDetailComponent
+} from './containers';
+
 
 
 const routes: Routes = [
-  {
-    path: '',
-    component: UsersListComponent
-  },
-  {
-    path: 'create',
-    component: UsersFormComponent
-  },
+  // {
+  //   path: '',
+  //   component: UsersListComponent
+  // },
+  // {
+  //   path: 'create',
+  //   component: UsersFormComponent
+  // },
   {
     path: 'create/:idGiDo',  // để sử dụng phải import Router + inject constructor, ở giao diện phải navigate đến đường dấn đó
     // ở bên nhận phải khai báo Activateroute và lấy trên đường dẫn
@@ -28,6 +31,12 @@ const routes: Routes = [
     component: LoginHomeComponent
   },
   {
+    path: 'change-password',
+    // data: { breadcrumb: 'Đăng Nhập' },
+    data: { breadcrumb: 'APP_FEATURE.COMMON.TITLE' },
+    component: ChangePasswordComponent
+  },
+  {
     path: 'register',
     data: { breadcrumb: 'Đăng Ký Tài Khoản' },
     component: RegisterHomeComponent
@@ -36,7 +45,12 @@ const routes: Routes = [
     path: 'info',
     data: { breadcrumb: 'Thông tin cá nhân' },
     component: CustomerInformationComponent
-  }
+  },
+  // {
+  //   path: 'list',
+  //   data: { breadcrumb: 'Danh Sách tài khoản' },
+  //   component: AccountListComponent
+  // }
 
 ];
 

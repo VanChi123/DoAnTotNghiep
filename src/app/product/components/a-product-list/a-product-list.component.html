@@ -1,7 +1,11 @@
 <div class="container">
   <div class="row">
+
     <ng-container *ngFor="let product of products">
-      <app-product-detail [product]="product"></app-product-detail>
+      <div class="col-3">
+        <app-product-detail [product]="product"></app-product-detail>
+      </div>
+
     </ng-container>
   </div>
 </div>

@@ -8,7 +8,7 @@ import {Product} from '../../../shared/models/product.model';
 })
 export class AProductListComponent implements OnInit, OnChanges {
 
-  @Input() products: Product[];
+  @Input() products: any[];
 
   constructor() { }
 

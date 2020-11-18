@@ -6,6 +6,32 @@
       "NOTIFICATION": "Thông báo",
       "ERROR": "Lỗi",
       "TITLE": "Tiếng việt"
+    },
+    "HEADER": {
+      "TODAY": "Hôm nay",
+      "ACCOUNT": "Tài khoản",
+      "REGISTER": "Đăng kí tài khoản",
+      "LOG_IN": "Đăng nhập",
+      "LOG_OUT": "Đăng xuất",
+      "CHANGE_PASSWORD": "Đổi mật khẩu",
+      "PRIVATE_INFO": "Thông tin cá nhân",
+      "BOUGHT_HISTORY": "Lịch sử mua hàng",
+      "LANGUAGE": "Ngôn ngữ",
+      "VIETNAM": "Tiếng Việt",
+      "ENGLISH": "Tiếng Anh",
+      "TITLE_SEARCH": "Bạn muốn tìm gì ? ",
+      "BUTTON_SEARCH": "Tìm kiếm",
+      "HOME": "Trang Chủ",
+      "PRODUCT": "Sản Phẩm",
+      "CART": "Giỏ Hàng"
+    },
+    "USER": {
+      "ACCOUNT": {
+        "TITLE": "Quản lý tài khoản"
+      }
+    },
+    "PRODUCT": {
+      "TITLE": "Quản lý sản phẩm"
     }
   }
 }

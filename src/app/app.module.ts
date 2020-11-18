@@ -1,8 +1,8 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import {BrowserModule} from '@angular/platform-browser';
+import {NgModule} from '@angular/core';
 
-import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
+import {AppRoutingModule} from './app-routing.module';
+import {AppComponent} from './app.component';
 import {BrowserAnimationsModule, NoopAnimationsModule} from '@angular/platform-browser/animations';
 import {AppBreadcrumbComponent} from './app-breadcrumb.component';
 import {SharedModule} from './shared/shared.module';
@@ -10,6 +10,7 @@ import {HttpClientModule} from '@angular/common/http';
 import {ToastrModule} from 'ngx-toastr';
 import {LoginGuardGuard} from './user/guards/login-guard.guard';
 import {CoreModule} from './core/core.module';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [ // gọi componnent nào ở app.component.html thì phải khai báo ở đây
@@ -27,13 +28,13 @@ import {CoreModule} from './core/core.module';
     BrowserAnimationsModule, // required animations module
     ToastrModule.forRoot(), // ToastrModule added,
 
-    CoreModule
+    CoreModule, NgbModule
 
   ],
-    providers: [LoginGuardGuard,
-    ],
-    exports: [
-    ],
-    bootstrap: [AppComponent]
+  providers: [LoginGuardGuard,
+  ],
+  exports: [],
+  bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+}

@@ -19,7 +19,17 @@
 <!--            {{formUser.value.imgBase64}}-->
             <img [src]="handleGetAvatar(formUser.value.imgBase64)"
                  class="img-fluid">
-            <input *ngIf="!editable" (change)="onChooseFile($event)" type="file" #file>
+<!--            <input *ngIf="!editable" (change)="onChooseFile($event)" type="file" #file>-->
+
+            <div class="row" *ngIf="!editable">
+              <input type="text" class="form-control" #nameFile>
+            </div>
+            <div class="row" *ngIf="!editable">
+              <button class="btn btn-info" (click)="onUploadFile()">
+                <input type="file" #uploadFile style="display: none" accept="image/*" (change)="onChooseFile($event)">Chọn file
+              </button>
+            </div>
+
           </div>
           <div class="col-10">
 

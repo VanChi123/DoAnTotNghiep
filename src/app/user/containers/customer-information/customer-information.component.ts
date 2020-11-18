@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {Router} from "@angular/router";
-import {UserManagementService} from "../../services/user-management.service";
+import {UserManagementService} from "../../../admin-manage/services/user-management.service";
 import {ToastrService} from "ngx-toastr";
 import {DomSanitizer} from "@angular/platform-browser";
 
@@ -48,7 +48,6 @@ export class CustomerInformationComponent implements OnInit {
         this.formUser.controls.filePathOld.patchValue(this.formUser.value.img);
         }
       );
-
     }
   }
 
@@ -76,6 +75,16 @@ export class CustomerInformationComponent implements OnInit {
     return this.sanitizer.bypassSecurityTrustResourceUrl(`data:image/png;base64, ${avatar}`);
   }
 
+  // file
+  @ViewChild('uploadFile') uploadFileInput: ElementRef;
+  @ViewChild('nameFile') nameFile: ElementRef;
+
+  // begin: process file
+  onUploadFile() {
+    this.uploadFileInput.nativeElement.value = '';
+    this.uploadFileInput.nativeElement.click();
+  }
+
   file: any;
   onChooseFile(e){
     console.log('e là ', e);
@@ -89,6 +98,9 @@ export class CustomerInformationComponent implements OnInit {
     this.formUser.controls.img.patchValue(fileNameTailArr[fileNameTailArr.length - 2]);
 
     if (this.file) {
+
+      this.nameFile.nativeElement.value = e.target.files[0].name;
+
       const reader = new FileReader();
 
       reader.onload = this.handleReaderLoaded.bind(this);

@@ -1,0 +1,201 @@
+
+<div class="container">
+  <br>
+  <h4 style="color: #428bca">{{typeDialog === 'add' ? 'Thêm mới Sản phẩm' : 'Cập nhật sản phẩm'}}</h4>
+  <hr>
+  <form [formGroup]="formAdd">
+    <div class="row">
+      <div class="col-2">
+        <p>Mã sản phẩm</p>
+      </div>
+      <div class="col-4">
+        <input type="text" formControlName="maSanPham" class="form-control">
+      </div>
+
+      <div class="col-2">
+        <p>Tên sản phẩm</p>
+      </div>
+      <div class="col-4">
+        <input type="text" formControlName="tenSanPham" class="form-control">
+      </div>
+
+    </div>
+
+    <div class="row">
+      <div class="col-2">
+        <p>Giá</p>
+      </div>
+      <div class="col-4">
+        <input type="number" formControlName="gia" class="form-control">
+      </div>
+
+      <div class="col-2">
+        <p>Đối tượng sử dụng</p>
+      </div>
+      <div class="col-4">
+        <input type="text" formControlName="doiTuongSuDung" class="form-control">
+      </div>
+
+    </div>
+
+    <div class="row">
+      <div class="col-2">
+        <p>Kích thước bề mặt</p>
+      </div>
+      <div class="col-4">
+        <input type="number" formControlName="kichThuocBeMat" class="form-control">
+      </div>
+
+      <div class="col-2">
+        <p>Chất liệu mặt kính</p>
+      </div>
+      <div class="col-4">
+        <input type="text" formControlName="chatLieuMatKinh" class="form-control">
+      </div>
+
+    </div>
+
+    <div class="row">
+      <div class="col-2">
+        <p>Chất liệu dây</p>
+      </div>
+      <div class="col-4">
+        <input type="text" formControlName="chatLieuDay" class="form-control">
+      </div>
+
+      <div class="col-2">
+        <p>Độ dày</p>
+      </div>
+      <div class="col-4">
+        <input type="number" formControlName="doDay" class="form-control">
+      </div>
+
+    </div>
+
+    <div class="row">
+      <div class="col-2">
+        <p>Độ dài</p>
+      </div>
+      <div class="col-4">
+        <input type="number" formControlName="doDai" class="form-control">
+      </div>
+
+      <div class="col-2">
+        <p>Độ rộng của dây</p>
+      </div>
+      <div class="col-4">
+        <input type="number" formControlName="doRongCuaDay" class="form-control">
+      </div>
+
+    </div>
+
+    <div class="row">
+      <div class="col-2">
+        <p>Kiểu khóa</p>
+      </div>
+      <div class="col-4">
+        <input type="text" formControlName="kieuKhoa" class="form-control">
+      </div>
+
+      <div class="col-2">
+        <p>Máy</p>
+      </div>
+      <div class="col-4">
+        <input type="text" formControlName="may" class="form-control">
+      </div>
+
+    </div>
+
+    <div class="row">
+      <div class="col-2">
+        <p>Khả năng chịu nước</p>
+      </div>
+      <div class="col-4">
+        <input type="text" formControlName="khaNangChiuNuoc" class="form-control">
+      </div>
+
+      <div class="col-2">
+        <p>Giảm giá</p>
+      </div>
+      <div class="col-4">
+        <input type="number" formControlName="giamGia" class="form-control">
+      </div>
+
+    </div>
+
+    <div class="row">
+      <div class="col-2">
+        <p>Thương hiệu</p>
+      </div>
+      <div class="col-4">
+        <select formControlName="thuongHieuEntity" class="form-control">
+          <option [value]="value.id" *ngFor="let value of models">{{value.tenThuongHieu}}</option>
+        </select>
+      </div>
+
+      <div class="col-2">
+        <p>Loại sản phẩm</p>
+      </div>
+      <div class="col-4">
+        <select formControlName="loaiSanPham" class="form-control">
+
+          <option [value]="value.id" *ngFor="let value of categories">{{value.tenLoaiSanPham}}</option>
+        </select>
+      </div>
+
+    </div>
+
+    <div class="row">
+      <div class="col-2">
+        <p>Ảnh</p>
+      </div>
+      <div class="col-4">
+        <input type="text" class="form-control" #nameFile>
+      </div>
+
+      <div class="col-2" >
+        <a *ngIf="typeDialog==='update'" href="javascript:void(0);" style="padding-top: 2px; text-decoration: underline" (click)="onViewImg()">Xem ảnh</a>
+      </div>
+      <div class="col-4">
+        <button class="btn btn-info" (click)="onUploadFile()">
+          <input type="file" #uploadFile style="display: none" accept="image/*" (change)="onChooseFile($event)">Chọn file
+        </button>
+      </div>
+
+    </div>
+
+    <div class="row">
+      <div class="col-2">
+        <p>Ngày cập nhật</p>
+      </div>
+      <div class="col-4">
+        <input type="text" [value]="formAdd.value.ngayCapNhap | date: 'dd-MM-yyyy hh:mm:ss'" disabled class="form-control" formControlName="ngayCapNhap">
+      </div>
+
+      <div class="col-2" >
+
+      </div>
+      <div class="col-4">
+
+      </div>
+
+    </div>
+
+<!--nút-->
+    <div class="row" style="padding-top: 25px !important;">
+      <div class="col-3"></div>
+      <div class="col-6 text-center">
+        <button class="btn btn-primary" *ngIf="typeDialog=== 'add'" (click)="onAddAccount()">Thêm</button>
+        <button class="btn btn-primary" *ngIf="typeDialog=== 'update'" (click)="onUpdateAccount()">Cập nhật</button>
+        <button class="btn btn-danger ml-3" routerLink="/admin/product-list" >Quay lại</button>
+      </div>
+      <div class="col-3"></div>
+
+    </div>
+  </form>
+  <br>
+</div>
+
+
+
+

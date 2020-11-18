@@ -8,15 +8,16 @@ import {Router} from "@angular/router";
 })
 export class UserHomeComponent implements OnInit {
 
-  isOpenNav = false;
+  isOpenNav = true;
 
   constructor(private router: Router ) { }
 
   ngOnInit(): void {
   }
 
-  guiIdLenGiaoDien(id){
-    this.router.navigate(['/user/create',id]);
-  }
+  // guiIdLenGiaoDien(id){
+  //   // this.router.navigate(['/user/create',id]);
+  //   // this.router.navigate(['/user/list']);
+  // }
 
 }

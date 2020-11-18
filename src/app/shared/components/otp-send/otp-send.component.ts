@@ -1,6 +1,6 @@
 import {Component, Inject, OnInit} from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
-import {UserManagementService} from '../../../user/services/user-management.service';
+import {UserManagementService} from '../../../admin-manage/services/user-management.service';
 import {ToastrService} from "ngx-toastr";
 
 @Component({
@@ -12,7 +12,6 @@ export class OtpSendComponent implements OnInit {
   otpNumber: any;
 
   interval: any;
-  message = '';
   seconds = 0; // countdown for resend Email OTP
   countVal = 60; // default countdown value
 

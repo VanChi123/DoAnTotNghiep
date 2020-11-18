@@ -1,1 +1,353 @@
-<p>users-list works!</p>
+
+<!--  <p class="title" style="font-size: 19px;text-align: center;text-decoration: none">Danh mục-->
+<!--    Tài khoản người dùng</p>-->
+
+<!--  <section>-->
+<!--    <p style="padding: 4px">Tìm kiếm Tài khoản người dùng-->
+<!--      <span style="margin-left: 4px">-->
+<!--      <i class="fa fa-caret-down" style="padding: 2px 11px; background: lightgray;" *ngIf="!showSearch" (click)="showSearch = !showSearch" aria-hidden="true"></i>-->
+<!--      <i class="fa fa-caret-up"  style="padding: 2px 11px; background: lightgray;" *ngIf="showSearch" (click)="showSearch = !showSearch" aria-hidden="true"></i>-->
+<!--      </span>-->
+<!--    </p>-->
+<!--  </section>-->
+
+<!--  <section class="action-search-advance" *ngIf="showSearch">-->
+
+<!--    <form class="" [formGroup]="formSearch">-->
+<!--      <div class="row">-->
+
+<!--        <div class="col-1">-->
+<!--          Tên đăng nhập-->
+<!--        </div>-->
+<!--&lt;!&ndash;        <div class="col-2 ">&ndash;&gt;-->
+<!--&lt;!&ndash;          <mat-form-field style="width: 95%;height: 40px">&ndash;&gt;-->
+<!--&lt;!&ndash;            <mat-select formControlName="templateType" multiple>&ndash;&gt;-->
+<!--&lt;!&ndash;              <mat-select-trigger *ngIf="formSearch.get('templateType').value[0]===0">&ndash;&gt;-->
+<!--&lt;!&ndash;                Tất cả&ndash;&gt;-->
+<!--&lt;!&ndash;              </mat-select-trigger>&ndash;&gt;-->
+<!--&lt;!&ndash;              <mat-option #allSelectedDocument (click)="toggleAllSelection(allSelectedDocument, formSearch.controls.templateType, documentKind )" [value]="0">Tất cả</mat-option>&ndash;&gt;-->
+<!--&lt;!&ndash;              <mat-option *ngFor="let item of documentKind" [value]="item.code" (click)="tosslePerOne(allSelectedDocument.viewValue, allSelectedDocument, formSearch.value.templateType.length, documentKind.length)">&ndash;&gt;-->
+<!--&lt;!&ndash;                {{item.name}}&ndash;&gt;-->
+<!--&lt;!&ndash;              </mat-option>&ndash;&gt;-->
+<!--&lt;!&ndash;            </mat-select>&ndash;&gt;-->
+<!--&lt;!&ndash;          </mat-form-field>&ndash;&gt;-->
+<!--&lt;!&ndash;        </div>&ndash;&gt;-->
+
+<!--&lt;!&ndash;        <div class="col-1">&ndash;&gt;-->
+<!--&lt;!&ndash;          Loại hồ sơ&ndash;&gt;-->
+<!--&lt;!&ndash;        </div>&ndash;&gt;-->
+<!--&lt;!&ndash;        <div class="col-2">&ndash;&gt;-->
+<!--&lt;!&ndash;          <mat-form-field style="width: 95%;height: 40px">&ndash;&gt;-->
+<!--&lt;!&ndash;            <mat-select formControlName="fileType" multiple>&ndash;&gt;-->
+<!--&lt;!&ndash;              <mat-select-trigger *ngIf="formSearch.get('fileType').value[0]===0">&ndash;&gt;-->
+<!--&lt;!&ndash;                Tất cả&ndash;&gt;-->
+<!--&lt;!&ndash;              </mat-select-trigger>&ndash;&gt;-->
+<!--&lt;!&ndash;              <mat-option #allSelectedFileType (click)="toggleAllSelection(allSelectedFileType, formSearch.controls.fileType, profileKind )" [value]="0">Tất cả</mat-option>&ndash;&gt;-->
+<!--&lt;!&ndash;              <mat-option *ngFor="let item of profileKind" [value]="item.code" (click)="tosslePerOne(allSelectedFileType.viewValue, allSelectedFileType, formSearch.value.fileType.length, profileKind.length)">&ndash;&gt;-->
+<!--&lt;!&ndash;                {{item.name}}&ndash;&gt;-->
+<!--&lt;!&ndash;              </mat-option>&ndash;&gt;-->
+<!--&lt;!&ndash;            </mat-select>&ndash;&gt;-->
+<!--&lt;!&ndash;          </mat-form-field>&ndash;&gt;-->
+<!--&lt;!&ndash;        </div>&ndash;&gt;-->
+
+<!--&lt;!&ndash;        <div class="col-1">&ndash;&gt;-->
+<!--&lt;!&ndash;          Trạng thái xử lý&ndash;&gt;-->
+<!--&lt;!&ndash;        </div>&ndash;&gt;-->
+<!--&lt;!&ndash;        <div class="col-2">&ndash;&gt;-->
+<!--&lt;!&ndash;          &lt;!&ndash;          <mat-form-field class="" style="width: 95%;height: 40px">&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;          &lt;!&ndash;            &lt;!&ndash;            <mat-label>Trạng thái xử lý</mat-label>&ndash;&gt;&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;          &lt;!&ndash;            <mat-select formControlName="status" multiple&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;          &lt;!&ndash;            >&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;          &lt;!&ndash;              <mat-option *ngFor="let item of statusProcess" [value]="item.code">{{item.name}}</mat-option>&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;          &lt;!&ndash;            </mat-select>&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;          &lt;!&ndash;          </mat-form-field>&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;          <mat-form-field style="width: 95%;height: 40px">&ndash;&gt;-->
+<!--&lt;!&ndash;            <mat-select formControlName="status" multiple>&ndash;&gt;-->
+<!--&lt;!&ndash;              <mat-select-trigger *ngIf="formSearch.get('status').value[0]===0">&ndash;&gt;-->
+<!--&lt;!&ndash;                Tất cả&ndash;&gt;-->
+<!--&lt;!&ndash;              </mat-select-trigger>&ndash;&gt;-->
+<!--&lt;!&ndash;              <mat-option #allSelectedStatus (click)="toggleAllSelection(allSelectedStatus, formSearch.controls.status, statusProcess )" [value]="0">Tất cả</mat-option>&ndash;&gt;-->
+<!--&lt;!&ndash;              <mat-option *ngFor="let item of statusProcess" [value]="item.code" (click)="tosslePerOne(allSelectedStatus.viewValue, allSelectedStatus, formSearch.value.status.length, statusProcess.length)">&ndash;&gt;-->
+<!--&lt;!&ndash;                {{item.name}}&ndash;&gt;-->
+<!--&lt;!&ndash;              </mat-option>&ndash;&gt;-->
+<!--&lt;!&ndash;            </mat-select>&ndash;&gt;-->
+<!--&lt;!&ndash;          </mat-form-field>&ndash;&gt;-->
+<!--&lt;!&ndash;        </div>&ndash;&gt;-->
+
+<!--      </div>-->
+
+<!--      &lt;!&ndash;     end row&ndash;&gt;-->
+<!--      <br>-->
+<!--&lt;!&ndash;      <div class="row">&ndash;&gt;-->
+
+<!--&lt;!&ndash;        <div class="col-1">Lĩnh vực</div>&ndash;&gt;-->
+<!--&lt;!&ndash;        <div class="col-2">&ndash;&gt;-->
+<!--&lt;!&ndash;          &lt;!&ndash;          <mat-form-field class="" style="width: 95%;height: 40px">&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;          &lt;!&ndash;            &lt;!&ndash;            <mat-label>Lĩnh vực</mat-label>&ndash;&gt;&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;          &lt;!&ndash;            <mat-select formControlName="field" multiple&ndash;&gt;&ndash;&gt;-->
+
+<!--&lt;!&ndash;          &lt;!&ndash;            >&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;          &lt;!&ndash;              <mat-option *ngFor="let item of field" [value]="item.code">{{item.name}}</mat-option>&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;          &lt;!&ndash;            </mat-select>&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;          &lt;!&ndash;          </mat-form-field>&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;          <mat-form-field style="width: 95%;height: 40px">&ndash;&gt;-->
+<!--&lt;!&ndash;            <mat-select formControlName="field" multiple>&ndash;&gt;-->
+<!--&lt;!&ndash;              <mat-select-trigger *ngIf="formSearch.get('field').value[0]===0">&ndash;&gt;-->
+<!--&lt;!&ndash;                Tất cả&ndash;&gt;-->
+<!--&lt;!&ndash;              </mat-select-trigger>&ndash;&gt;-->
+<!--&lt;!&ndash;              <mat-option #allSelectedField (click)="toggleAllSelection(allSelectedField, formSearch.controls.field, field )" [value]="0">Tất cả</mat-option>&ndash;&gt;-->
+<!--&lt;!&ndash;              <mat-option *ngFor="let item of field" [value]="item.code" (click)="tosslePerOne(allSelectedField.viewValue, allSelectedField, formSearch.value.field.length, field.length)">&ndash;&gt;-->
+<!--&lt;!&ndash;                {{item.name}}&ndash;&gt;-->
+<!--&lt;!&ndash;              </mat-option>&ndash;&gt;-->
+<!--&lt;!&ndash;            </mat-select>&ndash;&gt;-->
+<!--&lt;!&ndash;          </mat-form-field>&ndash;&gt;-->
+<!--&lt;!&ndash;        </div>&ndash;&gt;-->
+
+<!--&lt;!&ndash;        <div class="col-1">&ndash;&gt;-->
+<!--&lt;!&ndash;          Phân loại mẫu&ndash;&gt;-->
+<!--&lt;!&ndash;        </div>&ndash;&gt;-->
+<!--&lt;!&ndash;        <div class="col-2">&ndash;&gt;-->
+<!--&lt;!&ndash;          &lt;!&ndash;          <mat-form-field class="" style="width: 95%;height: 40px">&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;          &lt;!&ndash;            &lt;!&ndash;            <mat-label>Phân loại mẫu</mat-label>&ndash;&gt;&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;          &lt;!&ndash;            <mat-select multiple&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;          &lt;!&ndash;                        formControlName="template">&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;          &lt;!&ndash;              <mat-option *ngFor="let item of templateClassification" [value]="item.code">{{item.name}}</mat-option>&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;          &lt;!&ndash;            </mat-select>&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;          &lt;!&ndash;          </mat-form-field>&ndash;&gt;&ndash;&gt;-->
+
+<!--&lt;!&ndash;          <mat-form-field style="width: 95%;height: 40px">&ndash;&gt;-->
+<!--&lt;!&ndash;            <mat-select formControlName="templateClass" multiple>&ndash;&gt;-->
+<!--&lt;!&ndash;              <mat-select-trigger *ngIf="formSearch.get('templateClass').value[0]===0">&ndash;&gt;-->
+<!--&lt;!&ndash;                Tất cả&ndash;&gt;-->
+<!--&lt;!&ndash;              </mat-select-trigger>&ndash;&gt;-->
+<!--&lt;!&ndash;              <mat-option #allSelectedTemplate (click)="toggleAllSelection(allSelectedTemplate, formSearch.controls.templateClass, templateClassification )" [value]="0">Tất cả</mat-option>&ndash;&gt;-->
+<!--&lt;!&ndash;              <mat-option *ngFor="let item of templateClassification" [value]="item.code" (click)="tosslePerOne(allSelectedTemplate.viewValue, allSelectedTemplate, formSearch.value.templateClass.length, templateClassification.length)">&ndash;&gt;-->
+<!--&lt;!&ndash;                {{item.name}}&ndash;&gt;-->
+<!--&lt;!&ndash;              </mat-option>&ndash;&gt;-->
+<!--&lt;!&ndash;            </mat-select>&ndash;&gt;-->
+<!--&lt;!&ndash;          </mat-form-field>&ndash;&gt;-->
+<!--&lt;!&ndash;        </div>&ndash;&gt;-->
+
+<!--&lt;!&ndash;        <div class="col-1">&ndash;&gt;-->
+<!--&lt;!&ndash;          Ký hiệu mẫu&ndash;&gt;-->
+<!--&lt;!&ndash;        </div>&ndash;&gt;-->
+<!--&lt;!&ndash;        <div class="col-2">&ndash;&gt;-->
+<!--&lt;!&ndash;          <mat-form-field style="width: 95%;height: 40px">&ndash;&gt;-->
+<!--&lt;!&ndash;            &lt;!&ndash;            <mat-label>Ký hiệu mẫu</mat-label>&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;            <input matInput formControlName="templateSign"/>&ndash;&gt;-->
+<!--&lt;!&ndash;          </mat-form-field>&ndash;&gt;-->
+<!--&lt;!&ndash;        </div>&ndash;&gt;-->
+
+<!--        <div class="col-3">-->
+<!--          <button mat-button class="btn-search" (click)="onSearch()">-->
+<!--            <mat-icon>search</mat-icon>-->
+<!--            Tìm kiếm-->
+<!--          </button>-->
+<!--          <button mat-button class="btn-reset ml-2" (click)="resetForm()">-->
+<!--            <mat-icon>clear</mat-icon>-->
+<!--            Xóa-->
+<!--          </button>-->
+<!--        </div>-->
+
+<!--&lt;!&ndash;      </div> &lt;!&ndash; end row 2 &ndash;&gt;&ndash;&gt;-->
+
+<!--    </form>-->
+
+<!--  </section>-->
+
+<!--  <section style="height: 40px">-->
+<!--    <button class="btn" *ngIf="pageHome==='home'"-->
+<!--            style="background-color: #28a745;border-color: #28a745;color: white;float: right;padding: 3px;margin-top: 4px"-->
+<!--            routerLink="/admin/directory-management/add">Thêm mới-->
+<!--    </button>-->
+<!--    <p style="padding: 11px 4px">-->
+<!--      Tổng số bản ghi: {{totalNumberTemplates ? totalNumberTemplates : 0}}-->
+<!--    </p>-->
+
+<!--  </section>-->
+<!--  <section class="table">-->
+
+<!--    <p class="title-table">Danh mục mẫu tài liệu</p>-->
+
+<!--    <div class="table-responsive">-->
+<!--      <table class="table table-hover table-condensed table-bordered">-->
+<!--        <thead class="bg-light">-->
+
+<!--        <tr class="text-dark">-->
+<!--          <th>STT</th>-->
+<!--          <th scope="col" sortable="code" (sort)="onSort($event)">Mã tài liệu</th>-->
+<!--          <th scope="col" sortable="templateSign" (sort)="onSort($event)">Ký hiệu mẫu</th>-->
+<!--          <th scope="col" sortable="templateType" (sort)="onSort($event)">Loại tài liệu</th>-->
+<!--          <th scope="col" sortable="field" (sort)="onSort($event)">Lĩnh vực</th>-->
+<!--          <th scope="col" sortable="fileType" (sort)="onSort($event)">Loại hồ sơ</th>-->
+<!--          <th scope="col" sortable="templateClass" (sort)="onSort($event)">Phân loại mẫu</th>-->
+<!--          <th scope="col" sortable="name" (sort)="onSort($event)">Tên tài liệu</th>-->
+
+<!--          <th scope="col" sortable="effective" (sort)="onSort($event)">Ngày hiệu lực VBPL</th>-->
+<!--          <th scope="col" sortable="lastModifiedDate" (sort)="onSort($event)">Ngày cập nhật</th>-->
+<!--          <th scope="col" sortable="status" (sort)="onSort($event)">Trạng thái</th>-->
+
+<!--          <th scope="col" [attr.width.px]="100" class="text-center">Hành động</th>-->
+
+<!--        </tr>-->
+<!--        </thead>-->
+<!--        <tbody>-->
+<!--        <tr *ngFor="let itemrow of data; let i=index;let l=last">-->
+
+<!--          <th scope="col" style="text-align: center;">{{i + 1}}</th>-->
+
+<!--          <td scope="col" style="text-align: left;">{{itemrow.code}}</td>-->
+
+<!--          <td style="text-align: left;">-->
+<!--            {{itemrow.templateSign}}-->
+<!--          </td>-->
+
+<!--          <td style="text-align: left;">-->
+<!--            {{getValue(documentKind, itemrow.templateType)}}-->
+<!--          </td>-->
+
+<!--          <td style="text-align: left;">-->
+<!--            {{getValue(field, itemrow.field)}}-->
+<!--          </td>-->
+
+<!--          <td style="text-align: left;">-->
+<!--            {{getValue(profileKind, itemrow.fileType)}}-->
+<!--          </td>-->
+
+<!--          <td style="text-align: left;">-->
+<!--            {{getValue(templateClassification, itemrow.templateClass)}}-->
+<!--          </td>-->
+
+<!--          <td style="text-align: left;">{{itemrow.name}}-->
+<!--          </td>-->
+
+<!--          <td style="text-align: left;">{{itemrow.effective | date : 'dd/MM/yyyy'}}-->
+<!--            &lt;!&ndash;              <td style="text-align: left;">{{compareDateEffTo(itemrow.effTo)}}&ndash;&gt;-->
+<!--          </td>-->
+
+<!--          <td style="text-align: left;">{{itemrow.lastModifiedDate | date: 'dd/MM/yyyy hh:mm:ss a'}}</td>-->
+<!--          <td style="text-align: left;">{{getValue(this.statusProcess, itemrow.status)}}</td>-->
+
+<!--          <td style="text-align: center;">-->
+<!--            <div class="btn-group" *ngIf="pageHome==='home'||pageHome==='history'">-->
+<!--              &lt;!&ndash;              <button class="btn btn-primary" (click)="view(i, 1)">&ndash;&gt;-->
+<!--              &lt;!&ndash;&lt;!&ndash;                Xem&ndash;&gt;&ndash;&gt;-->
+<!--              &lt;!&ndash;                &ndash;&gt;-->
+<!--              &lt;!&ndash;              </button>&ndash;&gt;-->
+<!--              <i class="fa fa-eye" [matTooltip]="'Xem'" (click)="view(i, 1)" style="padding: 0px 3px;color: blue;font-size: 130%" aria-hidden="true"></i>-->
+<!--              &lt;!&ndash;              <button class="btn btn-primary ml-1"&ndash;&gt;-->
+<!--              &lt;!&ndash;                      [disabled]="!(itemrow.status!=='XOA_HUY'&&itemrow.status!=='CHO_PHE_DUYET')"&ndash;&gt;-->
+<!--              &lt;!&ndash;                      (click)="onEditTemplate(i)">&ndash;&gt;-->
+<!--              &lt;!&ndash;&lt;!&ndash;                Sửa&ndash;&gt;&ndash;&gt;-->
+<!--              &lt;!&ndash;               &ndash;&gt;-->
+<!--              &lt;!&ndash;              </button>&ndash;&gt;-->
+<!--              <i class="fa fa-pencil-square-o" [matTooltip]="'Sửa'" (click)="!(itemrow.status==='XOA_HUY'||itemrow.status==='CHO_PHE_DUYET') ? onEditTemplate(i) : null"  [ngClass]="{'fa-disabled': (itemrow.status==='XOA_HUY'||itemrow.status==='CHO_PHE_DUYET')}" style="padding: 0px 3px;color: blue;font-size: 130%" aria-hidden="true"></i>-->
+<!--              &lt;!&ndash;              <button class="btn btn-primary ml-1"&ndash;&gt;-->
+<!--              &lt;!&ndash;                      [disabled]="itemrow.status!== 'SOAN_THAO' && itemrow.status!=='TU_CHOI'"&ndash;&gt;-->
+<!--              &lt;!&ndash;                      (click)="onDeleteTemplate(itemrow._id)">&ndash;&gt;-->
+<!--              &lt;!&ndash;&lt;!&ndash;                Hủy&ndash;&gt;&ndash;&gt;-->
+<!--              &lt;!&ndash;              &ndash;&gt;-->
+<!--              &lt;!&ndash;              </button>&ndash;&gt;-->
+<!--              <i class="fa fa-times" [matTooltip]="'Hủy'" (click)="!(itemrow.status!== 'SOAN_THAO' && itemrow.status!=='TU_CHOI') ? onDeleteTemplate(itemrow._id) : null" [ngClass]="{'fa-disabled': itemrow.status!== 'SOAN_THAO' && itemrow.status!=='TU_CHOI' }" style="padding: 0px 3px;color: blue;font-size: 130%" aria-hidden="true"></i>-->
+<!--              &lt;!&ndash;              <button class="btn ml-1 btn-primary" (click)="viewHistory(i)">&ndash;&gt;-->
+<!--              &lt;!&ndash;&lt;!&ndash;                Lịch sử&ndash;&gt;&ndash;&gt;-->
+<!--              &lt;!&ndash;               &ndash;&gt;-->
+<!--              &lt;!&ndash;              </button>&ndash;&gt;-->
+<!--              <i class="fa fa-history" (click)="viewHistory(i)" [matTooltip]="'Lịch sử'" style="padding: 0px 3px;color: blue;font-size: 130%" aria-hidden="true"></i>-->
+<!--            </div>-->
+<!--            <div class="btn-group" *ngIf="pageHome==='approve'">-->
+<!--              &lt;!&ndash;              <button class="btn btn-primary" *ngIf="itemrow.status === 'CHO_PHE_DUYET'" (click)="approveTemplate(i)">&ndash;&gt;-->
+<!--              &lt;!&ndash;                Chi tiết&ndash;&gt;-->
+<!--              &lt;!&ndash;              </button>&ndash;&gt;-->
+<!--              &lt;!&ndash;              <button class="btn btn-primary" style="min-width: 76px" *ngIf="itemrow.status !== 'CHO_PHE_DUYET'"&ndash;&gt;-->
+<!--              &lt;!&ndash;                      (click)="view(i, 3)">Xem&ndash;&gt;-->
+<!--              &lt;!&ndash;              </button>&ndash;&gt;-->
+<!--              <i class="fa fa-info-circle" (click)="viewHistory(i)" *ngIf="itemrow.status === 'CHO_PHE_DUYET'" (click)="approveTemplate(i)" [matTooltip]="'Chi tiết'" style="padding: 0px 3px;color: blue;font-size: 130%" aria-hidden="true"></i>-->
+<!--              <i class="fa fa-history" (click)="viewHistory(i)" *ngIf="itemrow.status !== 'CHO_PHE_DUYET'" (click)="view(i, 3)" [matTooltip]="'Xem'" style="padding: 0px 3px;color: blue;font-size: 130%" aria-hidden="true"></i>-->
+<!--            </div>-->
+<!--          </td>-->
+
+<!--        </tr>-->
+
+<!--        </tbody>-->
+<!--      </table>-->
+
+<!--    </div>-->
+
+<!--  </section>-->
+<!--</ng-container>-->
+<!--<ng-template #history>-->
+<!--  <p class="title" style="font-size: 19px;text-align: center;text-decoration: none">Lịch sử mẫu tài liệu</p>-->
+<!--  <div class="container-fluid" style="background: white;padding: 5px 5px">-->
+
+<!--    <section>-->
+
+<!--      <table class="table table-hover table-condensed table-bordered">-->
+<!--        <thead class="bg-light">-->
+
+<!--        <tr class="text-dark">-->
+<!--          <th>STT</th>-->
+
+<!--          <th scope="col">Mã tài liệu</th>-->
+<!--          <th scope="col">Ký hiệu mẫu</th>-->
+<!--          <th scope="col">Tên tài liệu</th>-->
+
+<!--          <th scope="col">Người tạo</th>-->
+<!--          <th scope="col">Ngày tạo</th>-->
+<!--          <th scope="col">Người thay đổi</th>-->
+<!--          <th scope="col">Ngày thay đổi</th>-->
+
+<!--          <th scope="col">Phiên bản</th>-->
+<!--          <th scope="col">Trạng thái xử lý</th>-->
+<!--          <th scope="col">Ghi chú</th>-->
+
+<!--          <th scope="col">Chi tiết</th>-->
+<!--          &lt;!&ndash;      <th style="width: 8%;"></th>&ndash;&gt;-->
+<!--        </tr>-->
+<!--        </thead>-->
+<!--        <tbody>-->
+<!--        <tr *ngFor="let value of histories; let i = index">-->
+<!--          <th scope="row" style="text-align: center;">{{i + 1}}</th>-->
+
+<!--          <td style="text-align: left;">{{value.code}}</td>-->
+<!--          <td style="text-align: left;">{{value.templateSign}}</td>-->
+<!--          <td style="text-align: left;">{{value.name}}</td>-->
+
+<!--          <td style="text-align: left;">{{value.createdBy}}</td>-->
+<!--          <td style="text-align: left;">{{value.createdDate | date: 'dd/MM/yyyy hh:mm:ss a'}}</td>-->
+<!--          <td style="text-align: left;">{{value.lastModifiedBy}}</td>-->
+<!--          <td style="text-align: left;">{{value.lastModifiedDate | date: 'dd/MM/yyyy hh:mm:ss a'}}</td>-->
+<!--          &lt;!&ndash;<td style="text-align: left;">{{template.effFrom  | date: 'dd/MM/yyyy'}}</td>&ndash;&gt;-->
+
+<!--          <td style="text-align: left;">{{getVersion(value.version)}}</td>-->
+<!--          <td style="text-align: left;">{{getValue(statusProcess, value.status)}}</td>-->
+<!--          <td style="text-align: left;"><span-->
+<!--            *ngIf="value.status==='PHE_DUYET'||value.status==='TU_CHOI'">{{value.content}}</span></td>-->
+
+<!--          <td style="text-align: center;">-->
+<!--            &lt;!&ndash;            <button class="btn btn-primary" (click)="view(i, 2)">Xem</button>&ndash;&gt;-->
+<!--            <i class="fa fa-eye" [matTooltip]="'Xem'" (click)="view(i, 2)" style="padding: 0px 3px;color: blue;font-size: 130%" aria-hidden="true"></i>-->
+<!--          </td>-->
+<!--        </tr>-->
+
+<!--        </tbody>-->
+<!--      </table>-->
+<!--      <br>-->
+<!--      &lt;!&ndash;  <button class="ml-3" type="button" [routerLink]="['/admin/directory-management']" class="btn btn-sm">&ndash;&gt;-->
+<!--      <button class="ml-3" type="button" class="btn btn-sm" (click)="onBack()">-->
+<!--        <i class="fa fa-step-backward"></i> Quay lại-->
+<!--      </button>-->
+<!--    </section>-->
+<!--  </div>-->
+
+<!--</ng-template>-->
+
+
+
+
+
+
+
+
+
+

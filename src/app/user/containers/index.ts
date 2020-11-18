@@ -5,6 +5,7 @@ import {UserDetailComponent} from './user-detail/user-detail.component';
 import {LoginHomeComponent} from './login-home/login-home.component';
 import {RegisterHomeComponent} from './register-home/register-home.component';
 import {CustomerInformationComponent} from './customer-information/customer-information.component';
+import {ChangePasswordComponent} from './change-password/change-password.component';
 
 export const containers: any[] = [
   UserHomeComponent,
@@ -13,7 +14,9 @@ export const containers: any[] = [
   UserDetailComponent,
   LoginHomeComponent,
   RegisterHomeComponent,
-  CustomerInformationComponent
+  CustomerInformationComponent,
+  ChangePasswordComponent,
+
 ];
 
 export * from './user-home/user-home.component';
@@ -23,3 +26,5 @@ export * from './user-detail/user-detail.component';
 export * from './login-home/login-home.component';
 export * from './register-home/register-home.component';
 export * from './customer-information/customer-information.component';
+export * from './change-password/change-password.component';
+

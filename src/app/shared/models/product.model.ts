@@ -20,4 +20,7 @@ export interface Product {
   img?: string;
   ngayCapNhap?: Date;
   soLuong?: number;
+
+  imgBase64?: string;
+  fileTail?: string;
 }

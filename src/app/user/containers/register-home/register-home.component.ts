@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {Router} from "@angular/router";
-import {UserManagementService} from "../../services/user-management.service";
+import {UserManagementService} from "../../../admin-manage/services/user-management.service";
 import {ToastrService} from "ngx-toastr";
 import {MatDialog} from "@angular/material/dialog";
 import {OtpSendComponent} from "../../../shared/components";

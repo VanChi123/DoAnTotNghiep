@@ -10,9 +10,6 @@ import {MatTabsModule} from '@angular/material/tabs';
 import {MatIconModule} from '@angular/material/icon';
 import {FormsModule} from '@angular/forms';
 import {MatPaginatorModule} from '@angular/material/paginator';
-import {ToastrService} from "ngx-toastr";
-import {AProductListComponent} from "./components";
-
 
 @NgModule({
   declarations: [
@@ -30,7 +27,7 @@ import {AProductListComponent} from "./components";
 
   ],
   exports: [
-    AProductListComponent
+    fromComponents.AProductListComponent
   ]
 })
 export class ProductModule { }

@@ -1,0 +1,98 @@
+<!--  <div class="row">-->
+<!--    <header>Thêm mới Tài khoản</header>-->
+
+<!--  </div>-->
+<div mat-dialog-title class="tieu-de">
+  <p align="left" *ngIf="typeDialog=== 'add'" style="font-size: 21px;font-weight: bold">Thêm mới Tài khoản<span class="material-icons"
+                                                                                       (click)="dialogRef.close(true)"
+                                                                                       style="float: right;cursor:pointer;font-weight: bold; font-size: 18px">close</span>
+  </p>
+
+  <p align="left" *ngIf="typeDialog=== 'update'" style="font-size: 21px;font-weight: bold">Cập nhật Tài khoản<span class="material-icons"
+                                                                                       (click)="dialogRef.close(true)"
+                                                                                       style="float: right;cursor:pointer;font-weight: bold; font-size: 18px">close</span>
+  </p>
+</div>
+<div class="container">
+  <br>
+  <form [formGroup]="formAdd">
+    <div class="row">
+      <div class="col-2"></div>
+      <div class="col-8">
+        <p>Tên đăng nhập</p>
+        <input type="text" formControlName="tenDangNhap" class="form-control">
+      </div>
+      <div class="col-2"></div>
+    </div>
+    <br>
+    <div class="row">
+      <div class="col-2"></div>
+      <div class="col-8">
+        <p>Mật Khẩu</p>
+        <input type="password" formControlName="matKhau" class="form-control">
+      </div>
+      <div class="col-2"></div>
+    </div>
+
+    <div class="row">
+      <div class="col-2"></div>
+      <div class="col-8">
+        <p>Email</p>
+        <input type="text" formControlName="email" class="form-control">
+      </div>
+      <div class="col-2"></div>
+    </div>
+
+    <div class="row">
+      <div class="col-2"></div>
+      <div class="col-8">
+        <p>Chọn quyền</p>
+
+        <section class="example-section">
+
+        <span class="example-list-section">
+    <mat-checkbox class="example-margin"
+                  [checked]="allComplete"
+                  [indeterminate]="someComplete()"
+                  (change)="setAll($event.checked)">
+     Tất cả
+    </mat-checkbox>
+  </span>
+          <span class="example-list-section">
+    <ul style="list-style-type: none">
+      <li *ngFor="let subtask of roles">
+        <mat-checkbox multiple [(ngModel)]="subtask.complete" [ngModelOptions]="{standalone: true}"
+                      (ngModelChange)="updateAllComplete()">
+
+        </mat-checkbox>
+        {{subtask.quyen}}
+      </li>
+    </ul>
+<!--            {{roles|json}}-->
+  </span>
+        </section>
+
+      </div>
+      <!--      <div class="col-2" *ngIf="roles.length>0">-->
+      <!--        {{roles | json}}-->
+
+      <!--      </div>-->
+    </div>
+
+    <div class="row">
+      <div class="col-3"></div>
+      <div class="col-6 text-center">
+        <button class="btn btn-primary" *ngIf="typeDialog=== 'add'" (click)="onAddAccount()">Thêm</button>
+        <button class="btn btn-primary" *ngIf="typeDialog=== 'update'" (click)="onUpdateAccount()">Cập nhật</button>
+        <button class="btn btn-danger ml-3" (click)="onCloseDialog()">Hủy</button>
+      </div>
+      <div class="col-3"></div>
+
+    </div>
+  </form>
+  <br>
+</div>
+
+
+
+

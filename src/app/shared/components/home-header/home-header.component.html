@@ -9,11 +9,12 @@
     <div class="col-10">
       <div class="row header-one">
         <div class="col-5 one-left">
-          <p class="text-primary pull-right">Hôm nay: {{ now | date : 'dd-MM-yyyy hh:mm:ss a' }}</p>
-          <a style="text-decoration: none" href="tel:0347373332"><i class="fa fa-phone"></i>
+          <p class="text-primary pull-right">{{ 'APP_FEATURE.HEADER.TODAY' | translate}}
+            : {{ now | date : 'dd-MM-yyyy hh:mm:ss a' }}</p>
+          <a style="text-decoration: none;color: azure" href="tel:0347373332"><i class="fa fa-phone"></i>
             0347373332</a>
           <br>
-          <a style="text-decoration: none"
+          <a style="text-decoration: none;color: azure"
              href="mailto:cwatch@gmail.com}}"><i class="fa fa-envelope"></i>
             cwatch@gmail.com</a>
 
@@ -24,29 +25,29 @@
             <button class="btn nut-account  btn-outline-success dropdown-toggle" type="button" id="dropdownMenuButton"
                     data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               <b *ngIf="checkUser()">{{getNameUser()}}</b><i *ngIf="!checkUser()" class="fa fa-user"
-                                                             aria-hidden="true"></i>Tài khoản
+                                                             aria-hidden="true"></i>{{ 'APP_FEATURE.HEADER.ACCOUNT' | translate}}
             </button>
             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
               <!--              <a class="dropdown-item" href="#">Action</a>-->
               <!--              <a class="dropdown-item" href="#">Another action</a>-->
               <!--              <a class="dropdown-item" href="#">Something else here</a>-->
               <button mat-menu-item *ngIf="!checkUser()" (click)="register()">
-                Đăng kí tài khoản
+                {{ 'APP_FEATURE.HEADER.REGISTER' | translate}}
               </button>
               <button mat-menu-item *ngIf="!checkUser()" (click)="logIn()">
-                Đăng nhập
+                {{ 'APP_FEATURE.HEADER.LOG_IN' | translate}}
               </button>
               <button mat-menu-item *ngIf="checkUser()" (click)="logOut()">
-                Đăng xuất
+                {{ 'APP_FEATURE.HEADER.LOG_OUT' | translate}}
               </button>
-              <button mat-menu-item *ngIf="checkUser()" (click)="logOut()">
-                Đổi mật khẩu
+              <button mat-menu-item *ngIf="checkUser()" (click)="changePass()">
+                {{ 'APP_FEATURE.HEADER.CHANGE_PASSWORD' | translate}}
               </button>
               <button mat-menu-item *ngIf="checkUser()" (click)="informationShow()">
-                Thông tin cá nhân
+                {{ 'APP_FEATURE.HEADER.PRIVATE_INFO' | translate}}
               </button>
               <button mat-menu-item *ngIf="checkUser()" (click)="logOut()">
-                Lịch sử mua hàng
+                {{ 'APP_FEATURE.HEADER.BOUGHT_HISTORY' | translate}}
               </button>
             </div>
           </div>
@@ -56,12 +57,14 @@
                     data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               <b style="color: rgba(165, 42, 42, 0.66)">{{translate.currentLang == 'vi' ? 'VI' : 'EN'}}</b>
               <i class="fa fa-language" aria-hidden="true"></i>
-              Ngôn ngữ
+              {{ 'APP_FEATURE.HEADER.LANGUAGE' | translate}}
             </button>
 
             <div class="dropdown-menu" aria-labelledby="dropdownMenuLanguage">
-              <a class="dropdown-item" href="javascript:;" (click)="translate.use('vi')">Tiếng Việt</a>
-              <a class="dropdown-item" href="javascript:;" (click)="translate.use('en')">Tiếng Anh</a>
+              <a class="dropdown-item" href="javascript:;"
+                 (click)="translate.use('vi')">{{ 'APP_FEATURE.HEADER.VIETNAM' | translate}}</a>
+              <a class="dropdown-item" href="javascript:;"
+                 (click)="translate.use('en')">{{ 'APP_FEATURE.HEADER.ENGLISH' | translate}}</a>
             </div>
           </div>
         </div>
@@ -69,10 +72,11 @@
         <div class="col-3">
           <!--          <form id="search-site" autocomplete="on" class="form-horizontal">-->
           <div class="input-group">
-            <input type="text" [(ngModel)]="valueSearch" class="form-control" placeholder="Bạn muốn tìm gì...">
+            <input type="text" [(ngModel)]="valueSearch" class="form-control"
+                   placeholder="{{ 'APP_FEATURE.HEADER.TITLE_SEARCH' | translate}}...">
             <span>
                 <button class="btn btn-primary" type="submit" aria-label="tìm kiếm" (click)="onSearch()"><i
-                  class="fa fa-search"></i> Tìm kiếm</button>
+                  class="fa fa-search"></i>{{ 'APP_FEATURE.HEADER.BUTTON_SEARCH' | translate}}</button>
               </span>
           </div>
 
@@ -84,19 +88,19 @@
         <nav>
           <a class="d-inline-block" title="Điện thoại di động, smartphone" routerLink="/" [routerLinkActiveOptions]="{exact:
 true}" routerLinkActive="active">
-            <i class="fa fa-home"></i>Trang chủ
+            <i class="fa fa-home"></i>{{ 'APP_FEATURE.HEADER.HOME' | translate}}
           </a>
           <a class="d-inline-block" title="Điện thoại di động, smartphone" routerLink="/product"
              routerLinkActive="active"
              [routerLinkActiveOptions]="{exact:
 true}">
-            <i class="fa fa-mobile"></i>Sản phẩm
+            <i class="fa fa-mobile"></i>{{ 'APP_FEATURE.HEADER.PRODUCT' | translate}}
           </a>
 
           <a class="d-inline-block" title="Hỏi đáp" (click)="checkCart()" routerLink="/product/cart"
              routerLinkActive="active" [routerLinkActiveOptions]="{exact:
 true}">
-            Giỏ hàng
+            {{ 'APP_FEATURE.HEADER.CART' | translate}}
             <mat-icon [matBadge]="prods.length">
               notifications
             </mat-icon>
@@ -135,6 +139,11 @@ true}">
           <a class="d-inline-block" routerLink="/routing" routerLinkActive="active"
              title="Phụ kiện điện thoại di động, phụ kiện tablet, phụ kiện laptop">
             <i class="fa fa-headphones"></i>Routing DEmo
+          </a>
+
+          <a class="d-inline-block" routerLink="/admin" routerLinkActive="active"
+             title="Phụ kiện điện thoại di động, phụ kiện tablet, phụ kiện laptop">
+            <i class="fa fa-headphones"></i>Quản trị viên
           </a>
 
         </nav>

@@ -19,26 +19,30 @@
 <!--</div>-->
 
 <mat-sidenav-container>
-  <mat-sidenav mode="side" [(opened)]="isOpenNav">Menu
+  <mat-sidenav mode="side" [(opened)]="isOpenNav">Admin
 
     <ul class="list-group">
-      <li class="list-group-item" routerLink="/user/" routerLinkActive="active" [routerLinkActiveOptions]="{exact:
-      true}" (click)="guiIdLenGiaoDien(1)">List
+      <li class="list-group-item" routerLink="/user/list"
+          routerLinkActive="active"
+          [routerLinkActiveOptions]="{exact: true}">
+        Quản lý tài khoản
       </li>
-      <li class="list-group-item" routerLink="/user/create" routerLinkActive="active" (click)="guiIdLenGiaoDien(2)">
-        Form
+      <li class="list-group-item" routerLink="/user/create"
+          [routerLinkActiveOptions]="{exact: true}"
+          routerLinkActive="active">
+        Quản lý sản phẩm
       </li>
       <li class="list-group-item">Morbi leo risus</li>
       <li class="list-group-item">Porta ac consectetur ac</li>
       <li class="list-group-item">Vestibulum at eros</li>
     </ul>
-
+    <button class="btn btn-primary" *ngIf="isOpenNav" (click)="isOpenNav=!isOpenNav">Đóng menu</button>
 
   </mat-sidenav>
-  <mat-sidenav-content>Main :chúng ta phải xây dựng phân trang, nút next -> previous
+  <mat-sidenav-content>
     <router-outlet></router-outlet>
     <br>
-    <button (click)="isOpenNav=!isOpenNav">Toggle SideBar</button>
+    <button class="btn btn-primary" *ngIf="!isOpenNav" (click)="isOpenNav=!isOpenNav">Mở menu</button>
     <!--    <button *ngIf="!isOpenNav">Open SideBar</button>-->
   </mat-sidenav-content>
 </mat-sidenav-container>

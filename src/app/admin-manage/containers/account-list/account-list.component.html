@@ -1,0 +1,162 @@
+<!--Content-->
+<!--<div class="container-fluid">-->
+
+<div class="page-inner">
+
+  <header class="page-title-bar">
+    <div class="">
+      <b class="lead" style="color: cornflowerblue">
+        <!--        <app-page-header [heading]="('APP_FEATURE.USER.ACCOUNT.TITLE' | translate)"></app-page-header>-->
+        {{('APP_FEATURE.USER.ACCOUNT.TITLE' | translate)}}
+      </b>
+
+      <button mat-button class="btn-search float-right" [disabled]="searchForm.invalid"
+              style="border: 1px solid gray" (click)="onAdd()">
+        <mat-icon>add</mat-icon>
+        Thêm mới
+      </button>
+
+      <!--      <div class="ml-auto">-->
+      <!--      </div>-->
+    </div>
+
+
+  </header>
+  <hr>
+
+  <div class="listview">
+    <br>
+    <!--    form search-->
+    <section class="action-search-advance">
+
+      <form class="" [formGroup]="searchForm">
+        <div class="row">
+
+          <div class="col-3">
+            <mat-form-field style="width: 95%;height: 40px;padding-top: 6px">
+              <input matInput type="text" formControlName="tenDangNhap" placeholder="Tên đăng nhập"/>
+            </mat-form-field>
+          </div>
+
+          <div class="col-3">
+            <mat-form-field style="width: 95%;height: 40px;padding-top: 6px">
+              <input matInput type="text" formControlName="email" placeholder="Email"/>
+            </mat-form-field>
+          </div>
+
+          <div class="col-3">
+<!--            <input type="number" class="form-control" formControlName="pageSize" placeholder="Số lượng kết quả trên 1 trang">-->
+            <mat-form-field style="width: 95%;height: 40px;padding-top: 6px">
+              <input matInput type="number" formControlName="pageSize" placeholder="Số lượng kết quả trên 1 trang"/>
+            </mat-form-field>
+          </div>
+
+          <!--          <div class="col-2 ">-->
+          <!--            <mat-form-field style="width: 95%;height: 40px;padding-top: 6px" *ngIf="getListStatus() as list">-->
+          <!--              <mat-select placeholder="Trạng thái yêu cầu" multiple formControlName="status">-->
+          <!--                <mat-select-trigger *ngIf="searchForm.get('status').value[0]==='ALL'">-->
+          <!--                  Tất cả-->
+          <!--                </mat-select-trigger>-->
+
+          <!--                <mat-option #allSelected (click)="toggleAllSelection(allSelected, searchForm.controls.status, list)"-->
+          <!--                            [value]="'ALL'">Tất cả-->
+          <!--                </mat-option>-->
+
+          <!--                <ng-container *ngFor="let item of list">-->
+          <!--                  <mat-option [value]="item.code"-->
+          <!--                              (click)="tosslePerOne(allSelected.viewValue, allSelected, searchForm.value.status)">-->
+          <!--                    {{item.name}}</mat-option>-->
+          <!--                </ng-container>-->
+
+          <!--              </mat-select>-->
+          <!--            </mat-form-field>-->
+
+          <!--          </div>-->
+
+          <!--          <div class="col-sm-2">-->
+          <!--            <mat-form-field class="w-100" style="padding-top: 6px">-->
+          <!--              <mat-label>Ngày tạo</mat-label>-->
+          <!--              <input matInput-->
+          <!--                     [matDatepicker]="rquestDate"-->
+          <!--                     id="rquestDate"-->
+          <!--                     formControlName="rquestDate"-->
+          <!--              >-->
+          <!--              <mat-datepicker-toggle matSuffix [for]="rquestDate"></mat-datepicker-toggle>-->
+          <!--              <mat-datepicker #rquestDate></mat-datepicker>-->
+          <!--            </mat-form-field>-->
+          <!--          </div>-->
+
+          <div class="col-3">
+            <button mat-button class="btn-search" [disabled]="searchForm.invalid"
+                    style="border: 1px solid gray" (click)="onSearch()">
+              <mat-icon>search</mat-icon>
+              Tra cứu
+            </button>
+
+            <button mat-button class="btn-search ml-3"
+                    style="border: 1px solid gray" (click)="searchForm.patchValue({tenDangNhap: '', email: '', pageSize: 10})">
+              <mat-icon>clear</mat-icon>
+              Xóa
+            </button>
+          </div>
+
+
+
+        </div> <!-- end row 2 -->
+
+      </form>
+
+    </section>
+    <br>
+    <!--end: form search-->
+    <app-list-child
+      [violates]="data"
+      (editData)="onEdit($event)"
+      (deleteData)="onDelete($event)"
+    >
+    </app-list-child>
+
+    <!--Phan trang-->
+    <div class="row">
+      <!--      <div class="col-sm-4">-->
+      <!--      </div>-->
+
+      <div class="col-sm-8 d-flex justify-content-end">
+        <div *ngIf="pagination" class="display-result"
+             style="margin-top: 4px;margin-left: 40px">
+          Hiển thị <span *ngIf="pagination.totalElements === 0; else haveData">0</span>
+          <ng-template #haveData><span>{{(pagination.size) * (currentPage - 1) + 1}}</span></ng-template>
+          -
+          <span *ngIf="currentPage === pagination.totalPages; else template ">{{pagination.totalElements}}</span>
+          <ng-template #template>{{(pagination.size) * (currentPage)}}</ng-template>
+          / {{pagination.totalElements}}
+        </div>
+      </div>
+      <div class="col-sm-3 d-flex justify-content-end">
+        <div class="list-pagination">
+          <ngb-pagination
+            class="d-inline-block"
+            *ngIf="pagination"
+            [collectionSize]="pagination.totalElements"
+            [(page)]="currentPage"
+            [pageSize]="pagination.size"
+            [maxSize]="10"
+            [ellipses]="true"
+            [rotate]="true"
+            [boundaryLinks]="true"
+            (pageChange)="goToPage($event)"
+            size="sm"
+          >
+          </ngb-pagination>
+        </div>
+      </div>
+      <!--End: phan trang-->
+
+    </div>
+  </div>
+
+  <!--End: content-->
+</div>
+
+<!--</div>-->
+<!--End: content-->

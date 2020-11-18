@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import {ProductService} from '../../services/product.service';
 import {ToastrService} from 'ngx-toastr';
+import {DomSanitizer} from "@angular/platform-browser";
 
 @Component({
   selector: 'app-product-view-detail',
@@ -14,6 +15,7 @@ export class ProductViewDetailComponent implements OnInit {
   images: any;
 
   constructor(private activatedRoute: ActivatedRoute,
+              private sanitizer: DomSanitizer,
               private productService: ProductService,
               private toastrService: ToastrService) { }
 
@@ -24,9 +26,10 @@ export class ProductViewDetailComponent implements OnInit {
       .subscribe(params => {
         const maSanPham = params.maSanPham;
         const idSanPham = params.id;
+        debugger
 
         // lấy thông tin sản phẩm
-        this.productService.getProductByMaSanPham$(maSanPham).subscribe(e => {
+        this.productService.getAProduct(idSanPham).subscribe(e => {
           debugger
           if (e){
             if (e.success){
@@ -53,8 +56,13 @@ export class ProductViewDetailComponent implements OnInit {
   }
 
   // hiển thị ảnh nếu tên ảnh là 1 số và nhiều dấu cách phía sau
-  displayImg(imgName: string): string{
-    return Number(imgName.replace(' ', '')).toString();
+  // displayImg(imgName: string): string{
+  //   return Number(imgName.replace(' ', '')).toString();
+  // }
+
+  // hiển thị ảnh
+  handleGetAvatar(avatar: string) {
+    return this.sanitizer.bypassSecurityTrustResourceUrl(`data:image/png;base64, ${avatar}`);
   }
 
 }

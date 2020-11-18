@@ -3,7 +3,7 @@ import {DataService} from '../../services/data.service';
 import {Product} from '../../models/product.model';
 import {Router} from '@angular/router';
 import {ToastrService} from 'ngx-toastr';
-import {TranslateService} from "@ngx-translate/core";
+import {TranslateService} from '@ngx-translate/core';
 
 @Component({
   selector: 'app-home-header',
@@ -54,6 +54,10 @@ export class HomeHeaderComponent implements OnInit {
 
     this.toastrService.success('Đăng xuất thành công', '');
     this.router.navigate(['']);
+  }
+
+  changePass(){
+    this.router.navigate(['/user/change-password']);
   }
 
   // xem thông tin cá nhân

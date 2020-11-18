@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {UserManagementService} from '../../services/user-management.service';
+import {UserManagementService} from '../../../admin-manage/services/user-management.service';
 import {ToastrService} from 'ngx-toastr';
 import {Router} from '@angular/router';
 
@@ -49,6 +49,7 @@ export class LoginHomeComponent implements OnInit {
           const userStore: any = {};
           userStore.tenDangNhap = e.data.tenDangNhap;
           userStore.matKhau = e.data.matKhau;
+          userStore.email = e.data.email;
           // userStore.memoryPass = this.formLogin.value.memoryPass;
           localStorage.setItem('user', JSON.stringify(userStore));
 
@@ -59,7 +60,6 @@ export class LoginHomeComponent implements OnInit {
             localStorage.removeItem('memoryUser');
           }
 
-          console.log('dt', e);
           this.toastrService.success('Đăng Nhập Thành Công', '');
           this.router.navigate(['/product/']);
         }else {
@@ -70,5 +70,9 @@ export class LoginHomeComponent implements OnInit {
       this.toastrService.warning('Thông tin nhập không hợp lệ', 'Thất bại');
     }
   }
+
+  // onTypePass(){
+  //   this.formLogin.controls.password.patchValue(btoa(this.formLogin.value.password));
+  // }
 
 }

@@ -1,134 +1,149 @@
 <div class="container" *ngIf="data" style="background: floralwhite">
-  <div class="row text-center">
-    <h2 class="tieu-de" >
+  <br>
+  <div class="row">
+    <h2 class="tieu-de">
       Thông số kĩ thuật
     </h2>
+
   </div>
-  <div class="row" class="noi-dung">
-
-    <div class="col-3">
-      Tên sản phẩm
-    </div>
-    <div class="col-5">
-      {{data.tenSanPham}}
-    </div>
-
-    <div class="col-3">
-      Giá
-    </div>
-    <div class="col-5">
-      {{data.gia}}
-    </div>
-
-    <div class="col-3">
-      Đối tượng sử dụng
-    </div>
-    <div class="col-5">
-      {{data.doiTuongSuDung}}
-    </div>
-
-    <div class="col-3">
-      Kích thước bề mặt
-    </div>
-    <div class="col-5">
-      {{data.kichThuocBeMat}}
-    </div>
-
-    <div class="col-3">
-      Chất liệu mặt kính
-    </div>
-    <div class="col-5">
-      {{data.chatLieuMatKinh}}
-    </div>
-
-    <div class="col-3">
-      Chất liệu dây
-    </div>
-    <div class="col-5">
-      {{data.chatLieuDay}}
-    </div>
-
-    <div class="col-3">
-      Độ dày
-    </div>
-    <div class="col-5">
-      {{data.doDay}}
-    </div>
-
-    <div class="col-3">
-      Độ dài
-    </div>
-    <div class="col-5">
-      {{data.doDai}}
-    </div>
-
-    <div class="col-3">
-      Độ rộng của dây
-    </div>
-    <div class="col-5">
-      {{data.doRongCuaDay}}
-    </div>
-
-    <div class="col-3">
-      Kiểu khóa
-    </div>
-    <div class="col-5">
-      {{data.kieuKhoa}}
-    </div>
-
-
-    <div class="col-3">
-      Chất liệu vỏ máy
-    </div>
-    <div class="col-5">
-      {{data.chatLieuVoMay}}
-    </div>
-
-
-    <div class="col-3">
-      Máy
-    </div>
-    <div class="col-5">
-      {{data.may}}
-    </div>
-
-    <div class="col-3">
-      Khả năng chịu nước
-    </div>
-    <div class="col-5">
-      {{data.khaNangChiuNuoc}}
-    </div>
-
-
-    <div class="col-3">
-      Giảm giá
-    </div>
-    <div class="col-5">
-      {{data.giamGia}}
-    </div>
-
-
-    <div class="col-3">
-      Thương hiệu
-    </div>
-    <div class="col-5">
-      {{data.idThuongHieu}}
-    </div>
-
-    <div class="col-3">
-      Loại sản phẩm
-    </div>
-    <div class="col-5">
-      {{data.idLoaiSanPham}}
-    </div>
-  </div>
+  <hr>
   <div class="row">
-    <img style="height: 250px;width: 240px"
-         src="/assets/images/product/{{displayImg(data.img)}}.jpg">
-  </div>
-  <div class="row" *ngIf="images">
-    <div class="anh" *ngFor="let img of images">
-      <img style="height: 250px;width: 230px" src="/assets/images/product/{{img.tenAnh}}" />
+    <div class="col-4">
+<!--      <div class="row">-->
+      <div class="limit">
+        <img
+             [src]="handleGetAvatar(data.imgBase64)">
+<!--        <img style="height: 250px;width: 240px"-->
+<!--                 src="/assets/images/product/{{displayImg(data.img)}}.jpg">-->
+      </div>
+      <hr>
+      <div class="row" *ngIf="images">
+        <div class="col-4 limit" *ngFor="let img of images">
+          <img  [src]="handleGetAvatar(img.imgBase64)"/>
+        </div>
+          <!--      <img style="height: 250px;width: 230px" src="/assets/images/product/{{img.tenAnh}}" />-->
+      </div>
+    </div>
+    <div class="col-1"></div>
+    <div class="col-7">
+      <div class="row">
+
+        <div class="col-4">
+          Tên sản phẩm
+        </div>
+        <div class="col-8">
+          <b>{{data.tenSanPham}}</b>
+        </div>
+
+        <div class="col-4">
+          Giá
+        </div>
+        <div class="col-8">
+          {{data.gia}}
+        </div>
+
+        <div class="col-3">
+          Đối tượng sử dụng
+        </div>
+        <div class="col-5">
+          {{data.doiTuongSuDung}}
+        </div>
+
+        <div class="col-3">
+          Kích thước bề mặt
+        </div>
+        <div class="col-5">
+          {{data.kichThuocBeMat}}
+        </div>
+
+        <div class="col-3">
+          Chất liệu mặt kính
+        </div>
+        <div class="col-5">
+          {{data.chatLieuMatKinh}}
+        </div>
+
+        <div class="col-3">
+          Chất liệu dây
+        </div>
+        <div class="col-5">
+          {{data.chatLieuDay}}
+        </div>
+
+        <div class="col-3">
+          Độ dày
+        </div>
+        <div class="col-5">
+          {{data.doDay}}
+        </div>
+
+        <div class="col-3">
+          Độ dài
+        </div>
+        <div class="col-5">
+          {{data.doDai}}
+        </div>
+
+        <div class="col-3">
+          Độ rộng của dây
+        </div>
+        <div class="col-5">
+          {{data.doRongCuaDay}}
+        </div>
+
+        <div class="col-3">
+          Kiểu khóa
+        </div>
+        <div class="col-5">
+          {{data.kieuKhoa}}
+        </div>
+
+
+        <div class="col-3">
+          Chất liệu vỏ máy
+        </div>
+        <div class="col-5">
+          {{data.chatLieuVoMay}}
+        </div>
+
+
+        <div class="col-3">
+          Máy
+        </div>
+        <div class="col-5">
+          {{data.may}}
+        </div>
+
+        <div class="col-3">
+          Khả năng chịu nước
+        </div>
+        <div class="col-5">
+          {{data.khaNangChiuNuoc}}
+        </div>
+
+
+        <div class="col-3">
+          Giảm giá
+        </div>
+        <div class="col-5">
+          {{data.giamGia}}
+        </div>
+
+
+        <div class="col-3">
+          Thương hiệu
+        </div>
+        <div class="col-5">
+          {{data.idThuongHieu}}
+        </div>
+
+        <div class="col-3">
+          Loại sản phẩm
+        </div>
+        <div class="col-5">
+          {{data.idLoaiSanPham}}
+        </div>
+      </div>
     </div>
   </div>
 

@@ -1,51 +1,7 @@
-.homeproduct .item img.icon-imgNew {
-  width: 50px;
-  height: auto;
-  position: absolute;
-  left: 162px;
-  top: 90px;
-}
 
-.homeproduct .item img {
-  display: block;
-  width: 180px;
-  height: 180px;
-  margin: 15px auto;
-}
-
-.homeproduct .item label {
-  display: inline-block;
-  position: absolute;
-  top: 187px;
-  left: 10px;
-  font-size: 11px;
-  color: #fff;
-  font-weight: 600;
-  background: #3fb846;
-  border-radius: 2px;
-  padding: 0 5px;
-  height: 18px;
-}
-.homeproduct .item a {
-  display: block;
-  overflow: hidden;
-  background: #fff;
-  padding: 10px 0;
-}
-
-.homeproduct li img.icon-imgNew.cate42 {
-  top: 140px;
-}
-
-.homeproduct .item {
-  float: left;
-  position: relative;
-  width: 19.905%;
-  overflow: hidden;
-  border-right: 1px solid #eee;
-  border-bottom: 1px solid #eee;
-}
-
-span.mat-badge-content {
-  font-size: 11px !important;
+.mat-badge-content {
+  width: 25px;
+  height: 25px;
+  line-height: 24px;
+  right: -28px !important;
 }

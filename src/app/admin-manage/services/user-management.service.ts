@@ -15,7 +15,6 @@ export class UserManagementService {
   login(data: any) {
     const payload = data;
 
-    debugger
     return this.httpClient
       .post<any>(`http://localhost:8081/user/login`, payload)
       .pipe(catchError((httpError: any) => {
@@ -121,6 +120,66 @@ export class UserManagementService {
 
   // xóa tài khoản admin
   deleteAccountManyRoles(data: any) {
+    const payload = data;
+
+    debugger
+    return this.httpClient
+      .post<any>(`http://localhost:8081/account/delete/many-roles`, payload)
+      .pipe(catchError((httpError: any) => {
+        return throwError(httpError);
+      }));
+  }
+
+  // lấy danh sách sản phẩm admin
+  getAllProduct(data: any) {
+    const payload = data;
+
+    debugger
+    return this.httpClient
+      .post<any>(`http://localhost:8081/product/`, payload)
+      .pipe(catchError((httpError: any) => {
+        return throwError(httpError);
+      }));
+  }
+
+  // thêm sản phẩm
+  getAProductAdmin(data: any) {
+    const payload = data;
+
+    debugger
+    return this.httpClient
+      .post<any>(`http://localhost:8081/product/get`, payload)
+      .pipe(catchError((httpError: any) => {
+        return throwError(httpError);
+      }));
+  }
+
+  // thêm sản phẩm
+  addProductAdmin(data: any) {
+    const payload = data;
+
+    debugger
+    return this.httpClient
+      .post<any>(`http://localhost:8081/product/add`, payload)
+      .pipe(catchError((httpError: any) => {
+        return throwError(httpError);
+      }));
+  }
+
+  // cập nhật tài khoản admin
+  updateProductAdmin(data: any) {
+    const payload = data;
+
+    debugger
+    return this.httpClient
+      .post<any>(`http://localhost:8081/product/update`, payload)
+      .pipe(catchError((httpError: any) => {
+        return throwError(httpError);
+      }));
+  }
+
+  // xóa tài khoản admin
+  deleteProductAdmin(data: any) {
     const payload = data;
 
     debugger

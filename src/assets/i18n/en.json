@@ -6,6 +6,32 @@
       "NOTIFICATION": "Notification",
       "ERROR": "Error",
       "TITLE": "Vietnamese"
+    },
+    "HEADER": {
+      "TODAY": "Today",
+      "ACCOUNT": "Account",
+      "REGISTER": "Register Account",
+      "LOG_IN": "Login",
+      "LOG_OUT": "Logout",
+      "CHANGE_PASSWORD": "Change password",
+      "PRIVATE_INFO": "Private information",
+      "BOUGHT_HISTORY": "Bought history",
+      "LANGUAGE": "Language",
+      "VIETNAM": "Vietnamese",
+      "ENGLISH": "English",
+      "TITLE_SEARCH": "What do you want ? ",
+      "BUTTON_SEARCH": "Search",
+      "HOME": "Home",
+      "PRODUCT": "Product",
+      "CART": "Cart"
+    },
+    "USER": {
+      "ACCOUNT": {
+        "TITLE": "Account management"
+      }
+    },
+    "PRODUCT": {
+      "TITLE": "Product management"
     }
   }
 }
