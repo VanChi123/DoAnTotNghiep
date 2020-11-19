@@ -9,142 +9,166 @@
   <hr>
   <div class="row">
     <div class="col-4">
-<!--      <div class="row">-->
+      <!--      <div class="row">-->
       <div class="limit">
         <img
-             [src]="handleGetAvatar(data.imgBase64)">
-<!--        <img style="height: 250px;width: 240px"-->
-<!--                 src="/assets/images/product/{{displayImg(data.img)}}.jpg">-->
+          [src]="handleGetAvatar(data.imgBase64)">
+        <!--        <img style="height: 250px;width: 240px"-->
+        <!--                 src="/assets/images/product/{{displayImg(data.img)}}.jpg">-->
       </div>
       <hr>
       <div class="row" *ngIf="images">
         <div class="col-4 limit" *ngFor="let img of images">
-          <img  [src]="handleGetAvatar(img.imgBase64)"/>
+          <img [src]="handleGetAvatar(img.imgBase64)"/>
         </div>
-          <!--      <img style="height: 250px;width: 230px" src="/assets/images/product/{{img.tenAnh}}" />-->
+        <!--      <img style="height: 250px;width: 230px" src="/assets/images/product/{{img.tenAnh}}" />-->
       </div>
     </div>
     <div class="col-1"></div>
     <div class="col-7">
       <div class="row">
+        <table class="table table-bordered">
+          <!--          <thead>-->
+          <!--&lt;!&ndash;          <tr>&ndash;&gt;-->
+          <!--&lt;!&ndash;            <th>Firstname</th>&ndash;&gt;-->
+          <!--&lt;!&ndash;            <th>Lastname</th>&ndash;&gt;-->
+          <!--&lt;!&ndash;&lt;!&ndash;            <th>Email</th>&ndash;&gt;&ndash;&gt;-->
+          <!--&lt;!&ndash;          </tr>&ndash;&gt;-->
+          <!--          </thead>-->
+          <tbody>
+          <tr>
+            <td>Tên sản phẩm</td>
+            <td><b>{{data.tenSanPham}}</b></td>
+          </tr>
+          <tr>
+            <td>Giá</td>
+            <td><b> {{data.gia}}</b></td>
+          </tr>
+          <tr>
+            <td>Đối tượng sử dụng</td>
+            <td><b> {{data.doiTuongSuDung}}</b></td>
+          </tr>
+          <tr>
+            <td>Kích thước bề mặt</td>
+            <td>
+              <b>{{data.kichThuocBeMat}}</b>
+            </td>
+          </tr>
 
-        <div class="col-4">
-          Tên sản phẩm
-        </div>
-        <div class="col-8">
-          <b>{{data.tenSanPham}}</b>
-        </div>
-
-        <div class="col-4">
-          Giá
-        </div>
-        <div class="col-8">
-          {{data.gia}}
-        </div>
-
-        <div class="col-3">
-          Đối tượng sử dụng
-        </div>
-        <div class="col-5">
-          {{data.doiTuongSuDung}}
-        </div>
-
-        <div class="col-3">
-          Kích thước bề mặt
-        </div>
-        <div class="col-5">
-          {{data.kichThuocBeMat}}
-        </div>
-
-        <div class="col-3">
-          Chất liệu mặt kính
-        </div>
-        <div class="col-5">
-          {{data.chatLieuMatKinh}}
-        </div>
-
-        <div class="col-3">
-          Chất liệu dây
-        </div>
-        <div class="col-5">
-          {{data.chatLieuDay}}
-        </div>
-
-        <div class="col-3">
-          Độ dày
-        </div>
-        <div class="col-5">
-          {{data.doDay}}
-        </div>
-
-        <div class="col-3">
-          Độ dài
-        </div>
-        <div class="col-5">
-          {{data.doDai}}
-        </div>
-
-        <div class="col-3">
-          Độ rộng của dây
-        </div>
-        <div class="col-5">
-          {{data.doRongCuaDay}}
-        </div>
-
-        <div class="col-3">
-          Kiểu khóa
-        </div>
-        <div class="col-5">
-          {{data.kieuKhoa}}
-        </div>
+          <tr>
+            <td>Chất liệu mặt kính</td>
+            <td>
+              <b>{{data.chatLieuMatKinh}}</b>
+            </td>
+          </tr>
 
 
-        <div class="col-3">
-          Chất liệu vỏ máy
-        </div>
-        <div class="col-5">
-          {{data.chatLieuVoMay}}
-        </div>
+          <tr>
+            <td>Chất liệu dây</td>
+            <td>
+              <b>{{data.chatLieuDay}}</b>
+            </td>
+          </tr>
+
+          <tr>
+            <td>Độ dày</td>
+            <td>
+              <b>{{data.doDay}}</b>
+            </td>
+          </tr>
+          <tr>
+            <td>Độ dài</td>
+            <td>
+              <b>{{data.doDai}}</b>
+            </td>
+          </tr>
+          <tr>
+            <td>Độ rộng của dây</td>
+            <td>
+              <b>{{data.doRongCuaDay}}</b>
+            </td>
+          </tr>
+          <tr>
+            <td>Kiểu khóa</td>
+            <td>
+              <b>{{data.kieuKhoa}}</b>
+            </td>
+          </tr>
+          <tr>
+            <td>Chất liệu vỏ máy</td>
+            <td>
+              <b>{{data.chatLieuVoMay}}</b>
+            </td>
+          </tr>
+          <tr>
+            <td>Máy</td>
+            <td>
+              <b>{{data.may}}</b>
+            </td>
+          </tr>
+          <tr>
+            <td>Khả năng chịu nước</td>
+            <td>
+              <b>{{data.khaNangChiuNuoc}}</b>
+            </td>
+          </tr>
+          <tr>
+            <td>KGiảm giá</td>
+            <td>
+              <b>{{data.giamGia}}</b>
+            </td>
+          </tr>
+          <tr>
+            <td>Thương hiệu</td>
+            <td>
+              <b>{{data.thuongHieuEntity.tenThuongHieu}}</b>
+            </td>
+          </tr>
+          <tr>
+            <td>Loại sản phẩm</td>
+            <td>
+              <b>{{data.loaiSanPham.tenLoaiSanPham}}</b>
+            </td>
+          </tr>
+
+          </tbody>
+        </table>
 
 
-        <div class="col-3">
-          Máy
-        </div>
-        <div class="col-5">
-          {{data.may}}
-        </div>
+      </div>
+    </div>
+  </div>
+  <hr>
+  <div class="row">
+    <h5>{{data.binhLuans.length}} Bình Luận</h5>
+    <p>Sắp xếp theo Thời gian bình luận</p>
+    <label class="radio-inline"><input type="radio" name="optradio" value="desc" (click)="onClickRadio($event.target.value)" checked>Giảm</label>
+    <label class="radio-inline"><input type="radio" name="optradio" value="asc" (click)="onClickRadio($event.target.value)">Tăng</label>
+  </div>
 
-        <div class="col-3">
-          Khả năng chịu nước
+  <div class="row" *ngFor="let bl of binhLuans">
+    <div class="col-12">
+      <div class="card">
+        <div class="card-header">
+          From: <b>{{bl.tenKhachHang}}</b>
         </div>
-        <div class="col-5">
-          {{data.khaNangChiuNuoc}}
-        </div>
-
-
-        <div class="col-3">
-          Giảm giá
-        </div>
-        <div class="col-5">
-          {{data.giamGia}}
-        </div>
-
-
-        <div class="col-3">
-          Thương hiệu
-        </div>
-        <div class="col-5">
-          {{data.idThuongHieu}}
-        </div>
-
-        <div class="col-3">
-          Loại sản phẩm
-        </div>
-        <div class="col-5">
-          {{data.idLoaiSanPham}}
+        <div class="card-body">
+          <h5 class="card-title">Nội dung bình luận</h5>
+          <p class="card-text">{{bl.noiDung}}.</p>
+          <footer class="blockquote-footer"><cite >Thời gian: {{bl.ngayGio}}</cite></footer>
+          <!--        <a href="#" class="btn btn-primary">Go somewhere</a>-->
         </div>
       </div>
     </div>
+
+  </div>
+  <hr>
+  <div class="row">
+    <div class="col-12">
+      <textarea class="form-control" rows="3" #cmt placeholder="Để lại bình luận của bạn" type="text" ></textarea>
+      <button class="btn btn-primary" (click)="onSendComment(cmt.value)">Gửi Bình luận</button>
+    </div>
+
   </div>
 
 </div>

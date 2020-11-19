@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import {ProductService} from '../../services/product.service';
 import {ToastrService} from 'ngx-toastr';
-import {DomSanitizer} from "@angular/platform-browser";
+import {DomSanitizer} from '@angular/platform-browser';
+import * as _ from 'lodash';
 
 @Component({
   selector: 'app-product-view-detail',
@@ -13,6 +14,7 @@ export class ProductViewDetailComponent implements OnInit {
 
   data: any;
   images: any;
+  binhLuans: any[];
 
   constructor(private activatedRoute: ActivatedRoute,
               private sanitizer: DomSanitizer,
@@ -34,6 +36,8 @@ export class ProductViewDetailComponent implements OnInit {
           if (e){
             if (e.success){
               this.data = e.data;
+              this.binhLuans = e.data.binhLuans;
+              this.orderBinhLuans('desc');
             }else {
               this.toastrService.warning('Không tồn tại sản phẩm', '', {positionClass: 'toast-top-center', timeOut: 2000});
             }
@@ -63,6 +67,34 @@ export class ProductViewDetailComponent implements OnInit {
   // hiển thị ảnh
   handleGetAvatar(avatar: string) {
     return this.sanitizer.bypassSecurityTrustResourceUrl(`data:image/png;base64, ${avatar}`);
+  }
+
+  // sắp xếp bình luận
+  orderBinhLuans(type: string){
+    this.binhLuans = _.orderBy(this.binhLuans, ['ngayGio'], [type]);
+  }
+
+  // chọn lựa chọn sắp xếp bình luận
+  onClickRadio(e){
+    // console.log('e', e);
+    if (e === 'asc'){
+      this.orderBinhLuans('asc');
+    }else {
+      this.orderBinhLuans('desc');
+    }
+  }
+
+  // kiểm tra xem user có đăng nhập hay không để hiển thị nút gửi bình luận
+  checkUser(){
+    if (localStorage.getItem('user')){
+      return true;
+    }else {
+      return  false;
+    }
+  }
+
+  onSendComment(e){
+    console.log('e', e);
   }
 
 }
