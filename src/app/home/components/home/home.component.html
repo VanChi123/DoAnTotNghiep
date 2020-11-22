@@ -2,168 +2,194 @@
 
 <!--<app-type-header></app-type-header>-->
 <!--    form search-->
-<section>
-  <div class="row">
 
-    <div class="col-2">
-    </div>
+<!--tìm kiếm-->
+<div class="div tim-kiem">
+  <section>
+    <div class="row">
 
-    <div class="col-4">
-      <p style="padding: 4px">Tìm kiếm nâng cao
-        <span>
+      <div class="col-2">
+      </div>
+
+      <div class="col-4">
+        <p style="padding: 4px">Tìm kiếm nâng cao
+          <span>
       <i class="fa fa-caret-down" style="padding: 2px 11px; background: lightgray;" *ngIf="!showSearch"
          (click)="showSearch = !showSearch" aria-hidden="true"></i>
       <i class="fa fa-caret-up" style="padding: 2px 11px; background: lightgray;" *ngIf="showSearch"
          (click)="showSearch = !showSearch" aria-hidden="true"></i>
       </span>
-      </p>
-    </div>
-  </div>
-
-</section>
-
-<section class="action-search-advance" *ngIf="showSearch">
-
-  <form class="" [formGroup]="searchForm">
-    <div class="row">
-
-      <div class="col-2">
-        <!--        <mat-form-field style="width: 95%;height: 45px;padding-top: 6px">-->
-        <!--          <input matInput type="text" formControlName="codeProduct" placeholder="Mã sản phẩm"/>-->
-        <!--        </mat-form-field>-->
-      </div>
-
-      <div class="col-2">
-        <mat-form-field style="width: 95%;height: 45px;padding-top: 6px">
-          <input matInput type="text" formControlName="nameProduct" placeholder="Tên sản phẩm"/>
-        </mat-form-field>
-      </div>
-
-      <div class="col-2">
-        <mat-form-field style="width: 95%;height: 45px;padding-top: 6px">
-          <mat-label>Thương hiệu</mat-label>
-          <mat-select formControlName="thuongHieu" multiple>
-            <mat-select-trigger *ngIf="searchForm.get('thuongHieu').value[0]===0">
-              Tất cả
-            </mat-select-trigger>
-            <mat-option #th (click)="toggleAllSelection(th, searchForm.controls.thuongHieu, models )" [value]="0">Tất
-              cả
-            </mat-option>
-            <mat-option *ngFor="let item of models" [value]="item.id"
-                        (click)="tosslePerOne(th.viewValue, th, searchForm.value.thuongHieu.length, models.length)">
-              {{item.tenThuongHieu}}
-            </mat-option>
-          </mat-select>
-        </mat-form-field>
-      </div>
-
-      <div class="col-2">
-        <mat-form-field style="width: 95%;height: 45px;padding-top: 6px">
-          <mat-label>Loại sản phẩm</mat-label>
-          <mat-select formControlName="loaiSanPham" multiple>
-
-            <mat-select-trigger *ngIf="searchForm.get('loaiSanPham').value[0]===0">
-              Tất cả
-            </mat-select-trigger>
-            <mat-option #lsp (click)="toggleAllSelection(lsp, searchForm.controls.loaiSanPham, categories )"
-                        [value]="0">Tất cả
-            </mat-option>
-            <mat-option *ngFor="let item of categories" [value]="item.id"
-                        (click)="tosslePerOne(lsp.viewValue, lsp, searchForm.value.loaiSanPham.length, categories.length)">
-              {{item.tenLoaiSanPham}}
-            </mat-option>
-          </mat-select>
-        </mat-form-field>
+        </p>
       </div>
     </div>
-    <br>
-    <div class="row">
-      <div class="col-2">
 
+  </section>
+
+  <section class="action-search-advance" *ngIf="showSearch">
+
+    <form class="" [formGroup]="searchForm">
+      <div class="row">
+
+        <div class="col-2">
+          <!--        <mat-form-field style="width: 95%;height: 45px;padding-top: 6px">-->
+          <!--          <input matInput type="text" formControlName="codeProduct" placeholder="Mã sản phẩm"/>-->
+          <!--        </mat-form-field>-->
+        </div>
+
+        <div class="col-2">
+          <mat-form-field style="width: 95%;height: 45px;padding-top: 6px">
+            <input matInput type="text" formControlName="nameProduct" placeholder="Tên sản phẩm"/>
+          </mat-form-field>
+        </div>
+
+        <div class="col-2">
+          <mat-form-field style="width: 95%;height: 45px;padding-top: 6px">
+            <mat-label>Thương hiệu</mat-label>
+            <mat-select formControlName="thuongHieu" multiple>
+              <mat-select-trigger *ngIf="searchForm.get('thuongHieu').value[0]===0">
+                Tất cả
+              </mat-select-trigger>
+              <mat-option #th (click)="toggleAllSelection(th, searchForm.controls.thuongHieu, models )" [value]="0">Tất
+                cả
+              </mat-option>
+              <mat-option *ngFor="let item of models" [value]="item.id"
+                          (click)="tosslePerOne(th.viewValue, th, searchForm.value.thuongHieu.length, models.length)">
+                {{item.tenThuongHieu}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+
+        <div class="col-2">
+          <mat-form-field style="width: 95%;height: 45px;padding-top: 6px">
+            <mat-label>Loại sản phẩm</mat-label>
+            <mat-select formControlName="loaiSanPham" multiple>
+
+              <mat-select-trigger *ngIf="searchForm.get('loaiSanPham').value[0]===0">
+                Tất cả
+              </mat-select-trigger>
+              <mat-option #lsp (click)="toggleAllSelection(lsp, searchForm.controls.loaiSanPham, categories )"
+                          [value]="0">Tất cả
+              </mat-option>
+              <mat-option *ngFor="let item of categories" [value]="item.id"
+                          (click)="tosslePerOne(lsp.viewValue, lsp, searchForm.value.loaiSanPham.length, categories.length)">
+                {{item.tenLoaiSanPham}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
       </div>
+      <br>
+      <div class="row">
+        <div class="col-2">
 
-      <div class="col-2">
-        <mat-form-field style="width: 95%;height: 45px;padding-top: 6px">
-          <input matInput type="number" formControlName="priceLower" placeholder="Giá từ"/>
-        </mat-form-field>
-      </div>
+        </div>
 
-      <div class="col-2">
-        <mat-form-field style="width: 95%;height: 45px;padding-top: 6px">
-          <input matInput type="number" formControlName="priceUpper" placeholder="Giá đến"/>
-        </mat-form-field>
-      </div>
+        <div class="col-2">
+          <mat-form-field style="width: 95%;height: 45px;padding-top: 6px">
+            <input matInput type="number" formControlName="priceLower" placeholder="Giá từ"/>
+          </mat-form-field>
+        </div>
 
-      <div class="col-2">
-        <!--            <input type="number" class="form-control" formControlName="pageSize" placeholder="Số lượng kết quả trên 1 trang">-->
-        <mat-form-field style="width: 95%;height: 45px;padding-top: 6px">
-          <input matInput type="number" formControlName="pageSize" placeholder="Số lượng kết quả trên 1 trang"/>
-        </mat-form-field>
-      </div>
+        <div class="col-2">
+          <mat-form-field style="width: 95%;height: 45px;padding-top: 6px">
+            <input matInput type="number" formControlName="priceUpper" placeholder="Giá đến"/>
+          </mat-form-field>
+        </div>
 
-      <div class="col-2">
-        <button mat-button class="btn-search" [disabled]="searchForm.invalid"
-                style="border: 1px solid gray" (click)="onSearch(searchForm.value)">
-          <mat-icon>search</mat-icon>
-          Tra cứu
-        </button>
+        <div class="col-2">
+          <!--            <input type="number" class="form-control" formControlName="pageSize" placeholder="Số lượng kết quả trên 1 trang">-->
+          <mat-form-field style="width: 95%;height: 45px;padding-top: 6px">
+            <input matInput type="number" formControlName="pageSize" placeholder="Số lượng kết quả trên 1 trang"/>
+          </mat-form-field>
+        </div>
 
-        <button mat-button class="btn-search ml-3"
-                style="border: 1px solid gray" (click)="searchForm.patchValue({codeProduct: '',
+        <div class="col-2">
+          <button mat-button class="btn-search" [disabled]="searchForm.invalid"
+                  style="border: 1px solid gray" (click)="onSearch(searchForm.value)">
+            <mat-icon>search</mat-icon>
+            Tra cứu
+          </button>
+
+          <button mat-button class="btn-search ml-3"
+                  style="border: 1px solid gray" (click)="searchForm.patchValue({codeProduct: '',
                                                                       nameProduct: '',
                                                                       loaiSanPham: '',
                                                                       thuongHieu: '',
                                                                       priceLower: '',
                                                                       priceUpper: '',
                                                                       pageSize: 6})">
-          <mat-icon>clear</mat-icon>
-          Xóa
-        </button>
-      </div>
+            <mat-icon>clear</mat-icon>
+            Xóa
+          </button>
+        </div>
 
 
-    </div> <!-- end row 2 -->
+      </div> <!-- end row 2 -->
 
-  </form>
+    </form>
 
-</section>
+  </section>
 
-<section>
   <div class="row mt-4">
+    <div class="col-2"></div>
+    <div class="col-8">
+      <hr>
+    </div>
+    <div class="col-2"></div>
 
-    <div class="col-2">
-    </div>
-
-    <div class="col-1">
-      <p style="padding: 4px">Bộ lọc</p>
-    </div>
-    <div class="col-4">
-      <mat-form-field style="width: 95%;height: 40px">
-        <mat-label>Giá</mat-label>
-        <mat-select [(ngModel)]="valueFilter" (ngModelChange)="onChooseFilter()">
-          <mat-option value="asc">Giá thấp đến cao</mat-option>
-          <mat-option value="desc">Giá cao xuống thấp</mat-option>
-        </mat-select>
-      </mat-form-field>
-    </div>
   </div>
 
-</section>
+  <section>
+    <div class="row">
 
-<br>
-<hr>
-<!--end: form search-->
-<ng-container *ngIf="data&&data.length > 0;else elseBlock">
-  <app-a-product-list [products]="data">
-  </app-a-product-list>
+      <div class="col-2">
+      </div>
 
-  <mat-paginator [length]="dataFull.totalElements" (page)="onChangePage($event)"
-                 [pageSize]="pageMeta.pageSize"
-                 [pageSizeOptions]="numberOfProductSearch()"
-  >
-  </mat-paginator>
-</ng-container>
+      <div class="col-2">
+        <p style="padding: 4px">Bộ lọc sắp xếp</p>
+      </div>
+      <div class="col-3">
+        <mat-form-field style="width: 60%;height: 40px">
+          <mat-label>Giá</mat-label>
+          <mat-select [(ngModel)]="valueFilter" (ngModelChange)="onChooseFilter()">
+            <mat-option value="asc">Giá thấp đến cao</mat-option>
+            <mat-option value="desc">Giá cao xuống thấp</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
 
-<ng-template #elseBlock>
-  <h4 class="text-center">Không có kết quả tìm kiếm</h4>
-</ng-template>
+      <div class="col-3">
+        <mat-form-field style="width: 60%;height: 40px">
+          <mat-label>Số *</mat-label>
+          <mat-select [(ngModel)]="valueFilter" (ngModelChange)="onChooseFilter()">
+            <mat-option value="asc">Số * giảm dần</mat-option>
+            <mat-option value="desc">Số * tăng đần</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+
+    </div>
+
+  </section>
+</div>
+<!--end: tìm kiếm-->
+
+<div class="sanpham">
+  <ng-container *ngIf="data&&data.length > 0;else elseBlock">
+    <app-a-product-list [products]="data">
+    </app-a-product-list>
+
+    <mat-paginator [length]="dataFull.totalElements" (page)="onChangePage($event)"
+                   [pageSize]="pageMeta.pageSize"
+                   [pageSizeOptions]="numberOfProductSearch()"
+    >
+    </mat-paginator>
+  </ng-container>
+
+  <ng-template #elseBlock>
+    <h4 class="text-center">Không có kết quả tìm kiếm</h4>
+  </ng-template>
+</div>
+
+

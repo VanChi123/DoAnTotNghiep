@@ -1,20 +1,31 @@
-import {Component, ElementRef, Input, OnChanges, OnInit, SimpleChanges} from '@angular/core';
+import {Component, ElementRef, Input, OnChanges, OnDestroy, OnInit, SimpleChanges} from '@angular/core';
 import {Product} from '../../models/product.model';
 import {DataService} from '../../services/data.service';
-import {DomSanitizer} from "@angular/platform-browser";
+import {DomSanitizer} from '@angular/platform-browser';
+import {Router} from '@angular/router';
+import {takeUntil} from 'rxjs/operators';
+import {Subject} from 'rxjs';
+import {ToastrService} from 'ngx-toastr';
 
 @Component({
   selector: 'app-product-detail',
   templateUrl: './product-detail.component.html',
   styleUrls: ['./product-detail.component.scss']
 })
-export class ProductDetailComponent implements OnInit, OnChanges {
+export class ProductDetailComponent implements OnInit, OnChanges, OnDestroy {
+
+  private unsubcribe$ = new Subject<void>();
+
   @Input() product: any;
 
   prods: any[];
+  // user: any; // lấy thông tin user để hiển thị snar phẩm yêu thích bởi tài khoản này hay không
 
   constructor(private data: DataService,
               private sanitizer: DomSanitizer,
+              private router: Router,
+              private dataService: DataService,
+              private toastrService: ToastrService
               ) {
     this.data.currentMessage.subscribe(messa => {
       this.prods = messa;
@@ -26,12 +37,13 @@ export class ProductDetailComponent implements OnInit, OnChanges {
     this.data.currentMessage.subscribe(messa => {
       this.prods = messa;
     });
+
+    // this.user = JSON.parse(localStorage.getItem('user')); // lấy ko có thì sẽ trả về null
+    // console.log('this, user', this.user);
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-    if (this.product){
-      debugger
-    }
+
   }
 
   // thêm 1 sản phẩm vào giỏ hàng
@@ -90,6 +102,32 @@ export class ProductDetailComponent implements OnInit, OnChanges {
       numberArr.push(i);
     }
     return numberArr;
+  }
+
+  // click vào nút yêu thích
+  onFavorite(choose: boolean){
+    const user = JSON.parse(localStorage.getItem('user'));
+
+    if ( user){
+      console.log('user', user.tenDangNhap, ' và ', this.product.id);
+      this.dataService.favoriteProduct({tenDangNhap: user.tenDangNhap, idSanPham: this.product.id})
+        .pipe(takeUntil(this.unsubcribe$)).subscribe(e => {
+          if (e.success){
+            this.toastrService.success('Thêm sản phẩm vào yêu thích', 'Thành công');
+          }
+          if (!e.success){
+            this.toastrService.warning('Thêm sản phẩm vào yêu thích', 'Thất bại');
+          }
+      });
+    }else {
+      // nếu chưa đăng nhập thì chuyển ssang trang đăng nhập
+      this.router.navigate(['/user/login']);
+    }
+  }
+
+  ngOnDestroy(): void {
+    this.unsubcribe$.next();
+    this.unsubcribe$.complete();
   }
 }
 

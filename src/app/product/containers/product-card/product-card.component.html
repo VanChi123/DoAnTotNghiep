@@ -1,40 +1,148 @@
-<div class="container" *ngIf="listProductInCart.length>0">
-  <div class="row"  *ngFor="let product of listProductInCart">
-    <div class="col-3">
-      <img style="width: 100px;height: 80px" src="/assets/images/product/{{displayImg(product.img)}}.jpg">
-    </div>
-    <div class="col-2">
-      <h5>{{product.tenSanPham}}</h5>
-    </div>
-    <div class="col-2">
-      <h5>Giá: {{product.gia}}</h5>
-    </div>
-    <div class="col-2">
-      <span class="material-icons" [ngClass]="{'noProduct': checkQuantityInCart(product.maSanPham) === 0  }"  (click)="removeAProduct(product.maSanPham)">
+<ng-container *ngIf="listProductInCart.length>0;else elseBlock">
+  <div class="noi-dung" style="background: #f8f8f8;padding-bottom: 15px">
+    <div class="container">
+      <div class="row" *ngFor="let product of listProductInCart">
+        <div class="col-3">
+          <!--          <img style="width: 100px;height: 80px" src="/assets/images/product/{{displayImg(product.img)}}.jpg">-->
+        </div>
+        <div class="col-2">
+          <h5>{{product.tenSanPham}}</h5>
+        </div>
+        <div class="col-2">
+          <h5>Giá: {{product.gia}}</h5>
+        </div>
+        <div class="col-2">
+      <span class="material-icons" [ngClass]="{'noProduct': checkQuantityInCart(product.maSanPham) === 0  }"
+            (click)="removeAProduct(product.maSanPham)">
         remove
       </span>
-      <input type="number" min="0" [(ngModel)]="product.soLuong" style="width: 40px">
-      <span class="material-icons" (click)="addAProduct(product.maSanPham)">
+          <input type="number" min="0" [(ngModel)]="product.soLuong" style="width: 40px">
+          <span class="material-icons" (click)="addAProduct(product.maSanPham)">
         add
       </span>
-      <button class="btn btn-info" (click)="removeAllProduct(product.maSanPham)">Xóa</button>
-    </div>
-    <div class="col-1">
-      tỉ lệ giảm giá : {{(product.giamGia/100) | percent}}
+          <button class="btn btn-info" (click)="removeAllProduct(product.maSanPham)">Xóa</button>
+        </div>
+        <div class="col-1">
+          tỉ lệ giảm giá : {{(product.giamGia / 100) | percent}}
+        </div>
+
+        <div class="col-1">
+          tiền giảm giá: <span>{{product.soLuong * (product.giamGia * product.gia * 0.01) | currency: 'VND'}}</span>
+        </div>
+        <div class="col-1">
+          Thành tiền : <span
+          #thanhTien>{{(product.gia - (product.giamGia * product.gia * 0.01)) * product.soLuong|currency: 'VND'}}</span>
+        </div>
+      </div>
+      <br>
+      <div class="row">
+        <div class="col-6"></div>
+        <div class="col-6 text-right text-danger">
+          Tổng tiền sản phẩm: {{total() | currency : 'VND'}}
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-6"></div>
+        <div class="col-6 text-right text-danger">
+          Tổng thanh toán: {{total() - total() * giamGiaHoaDon() | currency : 'VND'}}
+        </div>
+      </div>
+      <hr>
+
     </div>
 
-    <div class="col-1">
-      tiền giảm giá: <span >{{product.soLuong *(product.giamGia * product.gia * 0.01) | currency: 'VND'}}</span>
-    </div>
-    <div class="col-1">
-      Thành tiền : <span #thanhTien>{{(product.gia - (product.giamGia * product.gia * 0.01))*product.soLuong|currency: 'VND'}}</span>
+    <form [formGroup]="formThanhToan">
+      <div class="container">
+
+        <div class="row">
+          <div class="col-2"></div>
+          <div class="col-3">
+            Họ tên khách hàng
+          </div>
+          <div class="col-5">
+            <input type="text" formControlName="tenKhachHang" class="form-control">
+          </div>
+          <div class="col-2"></div>
+        </div>
+
+        <div class="row">
+          <div class="col-2"></div>
+          <div class="col-3">
+            Số điện thoại
+          </div>
+          <div class="col-5">
+            <input type="text" formControlName="soDienThoai" class="form-control">
+          </div>
+          <div class="col-2"></div>
+        </div>
+
+        <div class="row">
+          <div class="col-2"></div>
+          <div class="col-3">
+            Giới tính
+          </div>
+          <div class="col-5">
+
+            <!--         phải dùng [value] mới được thay vì value-->
+            <label class="radio-inline"><input type="radio" [value]="true"
+                                               formControlName="gioiTinh">Nam </label>
+            <label class="radio-inline ml-5"><input type="radio" [value]="false" formControlName="gioiTinh">Nữ</label>
+          </div>
+          <div class="col-2"></div>
+        </div>
+
+        <div class="row">
+          <div class="col-2"></div>
+          <div class="col-3">
+            Địa chỉ
+          </div>
+          <div class="col-5">
+            <input type="text" formControlName="diaChi" class="form-control">
+          </div>
+          <div class="col-2"></div>
+        </div>
+
+        <div class="row">
+          <div class="col-2"></div>
+          <div class="col-3">
+            Cách thức nhận hàng
+          </div>
+          <div class="col-5">
+
+            <!--         phải dùng [value] mới được thay vì value-->
+            <label class="radio-inline"><input type="radio" [value]="'a'"
+                                               formControlName="htgh">Giao tận nơi </label>
+            <label class="radio-inline ml-5"><input type="radio" [value]="'b'" formControlName="htgh">Nhận hàng tại cửa hàng</label>
+          </div>
+          <div class="col-2"></div>
+        </div>
+        <hr>
+        <div class="row">
+          <div class="col-2">
+          </div>
+          <div class="col-3">
+            Mã giảm giá được áp dụng:
+          </div>
+          <div class="col-5">
+            Giảm giá {{giamGiaHoaDon()}} %
+          </div>
+        </div>
+
+        <div class="row">
+          <button class="btn btn-warning"  style="margin: auto; margin-top: 5px;" (click)="onCreateOrder()">Đặt hàng</button>
+        </div>
+      </div>
+    </form>
+  </div>
+
+</ng-container>
+
+<ng-template #elseBlock>
+  <div class="container">
+    <div class="row">
+      <h4 class="text-warning text-center">Không có sản phẩm trong giỏ hàng</h4>
     </div>
   </div>
-  <br>
-  <div class="row">
-    <div class="col-6"></div>
-    <div class="col-6 text-right text-danger">
-      Tổng tiền: {{total() | currency : 'VND'}}
-    </div>
-</div>
-</div>
+</ng-template>
+

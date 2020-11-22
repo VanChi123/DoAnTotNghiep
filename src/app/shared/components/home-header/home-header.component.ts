@@ -69,6 +69,10 @@ export class HomeHeaderComponent implements OnInit {
     this.router.navigate(['/user/login']);
   }
 
+  favoriteProduct(){
+    this.router.navigate(['/product/favorite']);
+  }
+
   register(){
     this.router.navigate(['/user/register']);
   }

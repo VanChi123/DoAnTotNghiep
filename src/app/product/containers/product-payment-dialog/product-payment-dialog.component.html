@@ -1,0 +1,30 @@
+<div class="container" style="padding: 30px">
+  <div class="row">
+    <div class="col-4">Nhập số tài khoản <span class="text-danger">*</span></div>
+    <div class="col-8">
+      <input type="text" class="form-control" placeholder="Số tài khoản">
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-4">Nhập số tiền <span class="text-danger">*</span></div>
+    <div class="col-8">
+      <input type="number" class="form-control" [(ngModel)]="soTien" placeholder="Số tiền">
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-4">Nhập mật mã<span class="text-danger">*</span></div>
+    <div class="col-8">
+      <input type="password" class="form-control">
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-12">
+      <button class="btn btn-primary" (click)="dialogRef.close({result: true, soTienDaTra: soTien })" style="margin: auto">Thanh toán</button>
+      <button class="btn btn-primary" (click)="dialogRef.close({result: false})" style="margin: auto">Hủy</button>
+    </div>
+  </div>
+
+</div>

@@ -140,7 +140,7 @@
   </div>
   <hr>
   <div class="row">
-    <h5>{{data.binhLuans.length}} Bình Luận</h5>
+    <h5 class="ml-10">{{data.binhLuans.length}} Bình Luận</h5>
     <p>Sắp xếp theo Thời gian bình luận</p>
     <label class="radio-inline"><input type="radio" name="optradio" value="desc" (click)="onClickRadio($event.target.value)" checked>Giảm</label>
     <label class="radio-inline"><input type="radio" name="optradio" value="asc" (click)="onClickRadio($event.target.value)">Tăng</label>
@@ -150,12 +150,13 @@
     <div class="col-12">
       <div class="card">
         <div class="card-header">
-          From: <b>{{bl.tenKhachHang}}</b>
+          <marquee behavior="" direction="">From: <b>{{bl.tenKhachHang}}</b>
+            | <i class="fa fa-phone-square" aria-hidden="true"></i>Số điện thoại: <b>{{bl.soDienThoai.replace(bl.soDienThoai.substring(0,3),'***')}}</b></marquee>
         </div>
         <div class="card-body">
           <h5 class="card-title">Nội dung bình luận</h5>
           <p class="card-text">{{bl.noiDung}}.</p>
-          <footer class="blockquote-footer"><cite >Thời gian: {{bl.ngayGio}}</cite></footer>
+          <footer class="blockquote-footer"><cite >Thời gian: {{bl.ngayGio | date : 'dd-MM-yyyy hh:mm:ss a'}}</cite></footer>
           <!--        <a href="#" class="btn btn-primary">Go somewhere</a>-->
         </div>
       </div>
@@ -166,7 +167,17 @@
   <div class="row">
     <div class="col-12">
       <textarea class="form-control" rows="3" #cmt placeholder="Để lại bình luận của bạn" type="text" ></textarea>
-      <button class="btn btn-primary" (click)="onSendComment(cmt.value)">Gửi Bình luận</button>
+    </div>
+    <div class="col-6">
+      <input class="form-control" #name placeholder="Nhập tên của bạn" type="text" />
+    </div>
+    <div class="col-6">
+      <input class="form-control" #phone placeholder="Nhập số điện thoại" type="text" />
+    </div>
+    <div class="col-12">
+      <button class="btn btn-primary" *ngIf="checkUser()"
+              [disabled]="name.value.replace('\\s+', ' ') === ''|| name.value.replace('\\s+', ' ') === ' '"
+              (click)="onSendComment(cmt.value, name.value, phone.value)">Gửi Bình luận</button>
     </div>
 
   </div>

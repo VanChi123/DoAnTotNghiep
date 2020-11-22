@@ -28,6 +28,8 @@ export class HomeComponent implements OnInit, OnDestroy {
   showSearch = false;
   valueFilter: any;
 
+  user: any;
+
   constructor(private userManagementService: UserManagementService,
               private fb: FormBuilder,
               private dataService: DataService,
@@ -69,7 +71,37 @@ export class HomeComponent implements OnInit, OnDestroy {
       if (value && value.data) {
         this.dataFull = value.data;
         this.data = value.data.content;
+
         // this.pagination = value.data;
+
+        // tạo field yêu thích cho sản phẩm
+        // if (this.product){
+        //   console.log('div vao 1');
+        //   console.log('user', this.user);
+
+        this.user = JSON.parse(localStorage.getItem('user'));
+        if (this.user){
+          const tenDangNhap = this.user.tenDangNhap;
+          // debugger
+          // kiểm tra xem người dùng đăng nhập có snar phẩm yêu thích này ko
+          if (tenDangNhap) {
+            console.log('người dùng tồn tại');
+            this.data.forEach(ef => {
+              const valueExist = ef.taiKhoanEntities.find(ex => ex.tenDangNhap === tenDangNhap);
+              debugger
+              if (valueExist) {
+                ef.isFavorites = true;
+              } else {
+                ef.isFavorites = false;
+              }
+            });
+          } else {
+            this.data.forEach(e => {
+              e.isFavorites = false;
+            });
+          }
+        }
+
       }
     });
 
@@ -81,6 +113,10 @@ export class HomeComponent implements OnInit, OnDestroy {
     // });
 
     // this.productss$ = this.productService.getProductss('a');
+  }
+
+  getFavoriteListProductByUserName(tenDangNhap: string){
+
   }
 
   // click bất kì sự kiện nào của paginator đều thay có event trả ra hết các thông số

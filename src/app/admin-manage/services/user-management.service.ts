@@ -189,4 +189,15 @@ export class UserManagementService {
         return throwError(httpError);
       }));
   }
+
+  // lấy danh sách sản phẩm được yêu thihs bởi 1 tài khoản
+  getProductFavorite(data: any) {
+    const payload = data;
+
+    return this.httpClient
+      .post<any>(`http://localhost:8081/account/get-list-favorite`, payload)
+      .pipe(catchError((httpError: any) => {
+        return throwError(httpError);
+      }));
+  }
 }

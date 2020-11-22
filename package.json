@@ -30,6 +30,7 @@
     "lodash": "^4.17.20",
     "moment": "^2.29.1",
     "ngx-toastr": "^13.0.0",
+    "pdfmake-unicode": "0.0.1",
     "rxjs": "~6.5.4",
     "tslib": "^1.10.0",
     "zone.js": "~0.10.2"

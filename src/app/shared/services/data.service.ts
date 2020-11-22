@@ -36,4 +36,15 @@ export class DataService {
       }));
   }
 
+  // yêu thích sản phẩm
+  favoriteProduct(body: any) {
+    const payload = body;
+
+debugger
+    return this.httpClient
+      .post<any>(`http://localhost:8081/account/favorite`, payload)
+      .pipe(catchError((httpError: any) => {
+        return throwError(httpError);
+      }));
+  }
 }

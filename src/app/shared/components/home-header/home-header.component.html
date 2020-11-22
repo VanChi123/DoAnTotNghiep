@@ -37,6 +37,11 @@
               <button mat-menu-item *ngIf="!checkUser()" (click)="logIn()">
                 {{ 'APP_FEATURE.HEADER.LOG_IN' | translate}}
               </button>
+
+              <button mat-menu-item *ngIf="checkUser()" (click)="favoriteProduct()">
+                Sản phẩm yêu thích
+              </button>
+
               <button mat-menu-item *ngIf="checkUser()" (click)="logOut()">
                 {{ 'APP_FEATURE.HEADER.LOG_OUT' | translate}}
               </button>

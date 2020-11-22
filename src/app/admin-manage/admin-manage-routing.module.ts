@@ -1,6 +1,12 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import {AccountListComponent, AdminHomeComponent, ProductAddComponent, ProductListComponent} from './containers';
+import {
+  AccountListComponent,
+  AdminHomeComponent,
+  OrderListComponent,
+  ProductAddComponent,
+  ProductListComponent
+} from './containers';
 
 const routes: Routes = [
   {
@@ -28,6 +34,12 @@ const routes: Routes = [
     path: 'product-update/:id',
     data: { breadcrumb: 'Cập nhật sản phẩm' },
     component: ProductAddComponent
+  }
+  ,
+  {
+    path: 'order-list',
+    data: { breadcrumb: 'Quản lý đơn hàng' },
+    component: OrderListComponent
   }
 ];
 

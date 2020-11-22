@@ -8,7 +8,7 @@ import * as fromContainers from './containers';
 import {SharedModule} from '../shared/shared.module';
 import {MatTabsModule} from '@angular/material/tabs';
 import {MatIconModule} from '@angular/material/icon';
-import {FormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {MatPaginatorModule} from '@angular/material/paginator';
 
 @NgModule({
@@ -17,6 +17,7 @@ import {MatPaginatorModule} from '@angular/material/paginator';
     ...fromContainers.containers
   ],
   imports: [
+    ReactiveFormsModule,
     CommonModule, // dùng cho thằng pipe: json
     ProductRoutingModule,
     SharedModule,

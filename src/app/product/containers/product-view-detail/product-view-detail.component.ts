@@ -1,24 +1,33 @@
-import { Component, OnInit } from '@angular/core';
-import {ActivatedRoute} from '@angular/router';
+import {Component, OnDestroy, OnInit} from '@angular/core';
+import {ActivatedRoute, Router} from '@angular/router';
 import {ProductService} from '../../services/product.service';
 import {ToastrService} from 'ngx-toastr';
 import {DomSanitizer} from '@angular/platform-browser';
 import * as _ from 'lodash';
+import {CommentService} from '../../services/comment.service';
+import {takeUntil} from 'rxjs/operators';
+import {Subject} from 'rxjs';
 
 @Component({
   selector: 'app-product-view-detail',
   templateUrl: './product-view-detail.component.html',
   styleUrls: ['./product-view-detail.component.scss']
 })
-export class ProductViewDetailComponent implements OnInit {
+export class ProductViewDetailComponent implements OnInit, OnDestroy {
+  private unsubcribe$ = new Subject<void>();
 
   data: any;
   images: any;
   binhLuans: any[];
 
+  maSanPham: any;
+  idSanPham: any;
+
   constructor(private activatedRoute: ActivatedRoute,
               private sanitizer: DomSanitizer,
               private productService: ProductService,
+              private commentService: CommentService,
+              private router: Router,
               private toastrService: ToastrService) { }
 
   ngOnInit(): void {
@@ -26,13 +35,11 @@ export class ProductViewDetailComponent implements OnInit {
     this.activatedRoute
       .params
       .subscribe(params => {
-        const maSanPham = params.maSanPham;
-        const idSanPham = params.id;
-        debugger
+        this.maSanPham = params.maSanPham;
+        this.idSanPham = params.id;
 
         // lấy thông tin sản phẩm
-        this.productService.getAProduct(idSanPham).subscribe(e => {
-          debugger
+        this.productService.getAProduct(this.idSanPham).subscribe(e => {
           if (e){
             if (e.success){
               this.data = e.data;
@@ -45,8 +52,7 @@ export class ProductViewDetailComponent implements OnInit {
         });
 
         // lấy ảnh sản phẩm
-        this.productService.getImgById(idSanPham).subscribe(e => {
-          debugger
+        this.productService.getImgById(this.idSanPham).subscribe(e => {
           if (e){
             if (e.success){
               this.images = e.data;
@@ -54,7 +60,6 @@ export class ProductViewDetailComponent implements OnInit {
               this.toastrService.warning('Không tồn ảnh nào', '', {positionClass: 'toast-top-center', timeOut: 2000});
             }
           }
-
         });
       });
   }
@@ -93,8 +98,38 @@ export class ProductViewDetailComponent implements OnInit {
     }
   }
 
-  onSendComment(e){
-    console.log('e', e);
+  onSendComment(cmt: string, name: string, phone: string){
+    const user = JSON.parse(localStorage.getItem('user'));
+
+    this.commentService.addComment({
+        idSanPham: this.data.id,
+        tenDangNhap: user.tenDangNhap,
+        ngayGio: new Date(),
+        noiDung: cmt,
+        tenKhachHang: name,
+        soDienThoai: phone
+      }
+    ).pipe(takeUntil(this.unsubcribe$)).subscribe(e => {
+      if (e && e.success) {
+        this.toastrService.success('Gửi bình luận', 'Thành công');
+        this.reloadComponent();
+        // this.router.navigate(['/product/view/', this.maSanPham, this.idSanPham]);
+      }else {
+        this.toastrService.warning('Gửi bình luận', 'Thất bại');
+      }
+    });
+
+  }
+
+  reloadComponent() {
+    this.router.routeReuseStrategy.shouldReuseRoute = () => false;
+    this.router.onSameUrlNavigation = 'reload';
+    this.router.navigate(['/product/view/', this.maSanPham, this.idSanPham]);
+  }
+
+  ngOnDestroy(): void {
+    this.unsubcribe$.next();
+    this.unsubcribe$.complete();
   }
 
 }

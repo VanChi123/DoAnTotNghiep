@@ -1,0 +1,13 @@
+
+<div class="sanpham">
+  <ng-container *ngIf="data&&data.length > 0;else elseBlock">
+    <app-a-product-list [products]="data">
+    </app-a-product-list>
+  </ng-container>
+
+  <ng-template #elseBlock>
+    <h4 class="text-center">Không có sản phẩm nào</h4>
+  </ng-template>
+</div>
+
+

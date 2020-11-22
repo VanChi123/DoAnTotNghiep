@@ -1,0 +1,81 @@
+<p>order-list works!</p>
+<table class="table table-hover table-condensed table-bordered">
+  <thead class="text-center">
+  <tr class="text-dark">
+    <th rowspan="2" style="width: 3%;">STT</th>
+    <th rowspan="2" scope="col" sortable="maSanPham" >
+      Mã đơn hàng
+    </th>
+    <th rowspan="2" scope="col" sortable="tenSanPham" >NGày tạo</th>
+    <th rowspan="2" scope="col" sortable="thuongHieu" >Thương hiệu</th>
+    <th rowspan="2" scope="col" sortable="loaiSanPham" >Loại sản phẩm</th>
+    <th rowspan="2" scope="col" sortable="gia" >
+      Giá
+    </th>
+    <th rowspan="2" scope="col">
+      Hành động
+    </th>
+
+  </tr>
+  </thead>
+  <tbody *ngIf="this.listOrder && this.listOrder.length > 0">
+  <!--  mình sẽ cho hiện màu theo quyền-->
+  <tr *ngFor="let user of listOrder; let i=index">
+
+    <td class="text-center">
+      <i>{{i + 1}}</i>
+    </td>
+        <td>{{user.maHoaDon}}</td>
+    <td>
+            {{user.ngayTao |date : 'dd-MM-yyyy hh:mm:ss a'}}
+
+    </td>
+
+    <td>
+            {{ user.email }}
+
+    </td>
+
+    <td>
+      <!--      {{ user.email }}-->
+<!--      <ngb-highlight [result]="user.thuongHieuEntity.tenThuongHieu" [term]="filter.value"></ngb-highlight>-->
+    </td>
+
+    <td>
+      <!--      {{ user.email }}-->
+<!--      <ngb-highlight [result]="user.loaiSanPham.tenLoaiSanPham" [term]="filter.value"></ngb-highlight>-->
+    </td>
+    <td>
+      <!--      {{ getListQuyenSuDung(i) }}-->
+      <!--      <ngb-highlight [result]="getListQuyenSuDung(i)" [term]="filter.value"></ngb-highlight>-->
+<!--      <ngb-highlight [result]="user.gia |currency: 'VND'" [term]="filter.value"></ngb-highlight>-->
+    </td>
+    <td class="text-center">
+      <!--      <i class="fa fa-pencil-square-o" [matTooltip]="'Sửa'" (click)="!(itemrow.status==='XOA_HUY'||itemrow.status==='CHO_PHE_DUYET') ? onEditTemplate(i) : null"  [ngClass]="{'fa-disabled': (itemrow.status==='XOA_HUY'||itemrow.status==='CHO_PHE_DUYET')}" style="padding: 0px 3px;color: blue;font-size: 130%" aria-hidden="true"></i>-->
+
+      <!--      <i class="fa fa-times" [matTooltip]="'Hủy'" (click)="!(itemrow.status!== 'SOAN_THAO' && itemrow.status!=='TU_CHOI') ? onDeleteTemplate(itemrow._id) : null" [ngClass]="{'fa-disabled': itemrow.status!== 'SOAN_THAO' && itemrow.status!=='TU_CHOI' }" style="padding: 0px 3px;color: blue;font-size: 130%" aria-hidden="true"></i>-->
+      <!--    -->
+      <!--      <i class="fa fa-history" (click)="viewHistory(i)" [matTooltip]="'Lịch sử'" style="padding: 0px 3px;color: blue;font-size: 130%" aria-hidden="true"></i>-->
+      <i class="fa fa-pencil-square-o" [matTooltip]="'Thanh toán'" (click)="onEdit(user)" style="padding: 0px 3px;color: blue;font-size: 130%"
+         aria-hidden="true"></i>
+
+    </td>
+    <!--    <td>{{printStatus(user.status)}}</td>-->
+    <!--    <td>{{ user.rquestDate | date:'dd/MM/yyyy hh:mm:ss'}}</td>-->
+
+  </tr>
+  </tbody>
+  <tbody *ngIf="(!listOrder || listOrder?.length===0);else elseBlock">
+  <tr>
+    <td colspan="10" class="text-center font-italic">Không tìm thấy kết quả thỏa điều kiện!</td>
+  </tr>
+  </tbody>
+
+  <ng-template #elseBlock>
+    <tbody>
+    <tr>
+    </tr>
+    </tbody>
+  </ng-template>
+
+</table>

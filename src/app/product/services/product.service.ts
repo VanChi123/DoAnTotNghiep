@@ -91,4 +91,63 @@ export class ProductService {
         return throwError(httpError);
       }));
   }
+
+  // lấy 1 hóa đơn
+  getOrder(body: any) {
+    const payload = body;
+
+    return this.httpClient
+      .post<any>(`http://localhost:8081/order/get`, payload)
+      .pipe(catchError((httpError: any) => {
+        return throwError(httpError);
+      }));
+  }
+
+  // lấy tất cả hóa đơn ( quản lý hóa đơn)
+  getAllOrder(body: any) {
+    // const payload = body;
+
+    return this.httpClient
+      .get<any>(`http://localhost:8081/order/get-all`)
+      .pipe(catchError((httpError: any) => {
+        return throwError(httpError);
+      }));
+  }
+
+
+  // thêm mới hóa đơn
+  addOrder(body: any) {
+    const payload = body;
+
+    return this.httpClient
+      .post<any>(`http://localhost:8081/order/add`, payload)
+      .pipe(catchError((httpError: any) => {
+        return throwError(httpError);
+      }));
+  }
+
+  // cập nhật thanh toán hóa đơn
+  updateOrderPayment(body: any) {
+    debugger
+    const payload = body;
+
+    return this.httpClient
+      .post<any>(`http://localhost:8081/order/update-payment`, payload)
+      .pipe(catchError((httpError: any) => {
+        return throwError(httpError);
+      }));
+  }
+
+  // thanh toán hóa đơn
+  orderPayment(body: any) {
+    debugger
+    const payload = body;
+
+    return this.httpClient
+      .post<any>(`http://localhost:8081/order/payment`, payload)
+      .pipe(catchError((httpError: any) => {
+        return throwError(httpError);
+      }));
+  }
+
 }

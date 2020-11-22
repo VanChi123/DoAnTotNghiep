@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import {CommonModule, DatePipe} from '@angular/common';
 
 import { AdminManageRoutingModule } from './admin-manage-routing.module';
 import * as fromContainers from './containers';
@@ -52,6 +52,9 @@ import {ViewImageComponent} from "./containers";
   ],
   entryComponents: [
     ViewImageComponent
+  ],
+  providers: [
+    // DatePipe // sử dụng date pipe trong pdf make, tuy nhiên ko lên chả biết tại sao
   ]
 })
 export class AdminManageModule { }

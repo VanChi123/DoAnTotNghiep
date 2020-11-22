@@ -1,6 +1,11 @@
 import {AfterViewInit, Component, ElementRef, OnInit, QueryList, ViewChildren} from '@angular/core';
 import {DataService} from '../../../shared/services/data.service';
 import {Product} from '../../../shared/models/product.model';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {UserManagementService} from "../../../admin-manage/services/user-management.service";
+import {ProductService} from "../../services/product.service";
+import {ToastrService} from "ngx-toastr";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-product-card',
@@ -10,6 +15,9 @@ import {Product} from '../../../shared/models/product.model';
 export class ProductCardComponent implements OnInit, AfterViewInit {
 
   listProductInCart: Product[];
+
+  user: any;
+  formThanhToan: FormGroup;
 
   @ViewChildren('thanhTien') thanhTien: QueryList<ElementRef>;
   // định dùng để tính tổng giá tiền theo ViewChildren nhưng ko đc vì nó phức tạp đoạn text chứa kí tự vnd và , và 1 số lỗi khác
@@ -21,9 +29,34 @@ export class ProductCardComponent implements OnInit, AfterViewInit {
 
   }
 
-  constructor(private data: DataService) { }
+  constructor(private data: DataService,
+              private formBuilder: FormBuilder,
+              private userManagementService: UserManagementService,
+              private productService: ProductService,
+              private toastrService: ToastrService,
+              private router: Router,
+              ) {
+    this.formThanhToan = this.formBuilder.group({
+      tenKhachHang: ['', Validators.compose([Validators.required])],
+      soDienThoai: ['', Validators.compose([Validators.required])],
+      gioiTinh: ['', Validators.compose([Validators.required])],
+      diaChi: ['', Validators.compose([Validators.required])],
+      htgh: ['', Validators.compose([Validators.required])], // hình thwucs giao hàng : a/ b
+      giamGiaHoaDon: ['0']
+    });
+  }
 
   ngOnInit(): void {
+    this.user = JSON.parse(localStorage.getItem('user'));
+
+    if (this.user){
+      this.userManagementService.getUser({typeAccount: 'customer', userName: this.user.tenDangNhap}).subscribe(e => {
+          this.formThanhToan.patchValue(e.data);
+        }
+      );
+    }
+
+    // lấy danh sách sản phẩm trong giỏ hàng
     this.data.currentMessage.subscribe(listProduct => {
       this.listProductInCart = listProduct;
     });
@@ -87,6 +120,20 @@ export class ProductCardComponent implements OnInit, AfterViewInit {
     return total;
   }
 
+  // giảm giá hóa đơn: trả về phần trăm giảm giá cho hóa đơn có trị giá đạt định mức tương ứng
+  giamGiaHoaDon(){
+    if (this.total() > 10000000){
+      return 0.15;
+    }else if (this.total() > 5000000){
+      return 0.1;
+    }else if (this.total() > 1000000){
+      return 0.05;
+    }else {
+      return 0;
+    }
+  }
+
+
   // kiểm tra xem số lượng sản phẩm của một mã ( các sản phẩm đều chắc chắn có rồi): nếu 0 còn thì nút - sẽ bị disable
   checkQuantityInCart(maSP: string): number{
     for (let i = 0; i  < this.listProductInCart.length; i++){
@@ -99,5 +146,39 @@ export class ProductCardComponent implements OnInit, AfterViewInit {
   // hiển thị ảnh
   displayImg(imgName: string): string{
     return Number(imgName.replace(' ', '')).toString();
+  }
+
+  // đặt hàng click
+  onCreateOrder(){
+    debugger
+    let gghd = this.giamGiaHoaDon() * 100;
+    let idgghd;
+    if (gghd === 5){
+      idgghd = 5;
+    }else if (gghd === 10){
+      idgghd = 3;
+    }else if (gghd === 15){
+      idgghd = 2;
+    }else if (gghd === 20){
+      idgghd = 1;
+    }else {
+      idgghd = 4;
+    }
+
+    this.productService.addOrder({
+      tongTien: this.total(),
+      tongTienPhaiTra: this.total() - this.total() * this.giamGiaHoaDon(),
+      tienGiamGia: this.total() * gghd,
+      trangThai: 0,
+      idGiamGia: idgghd,
+      tenDangNhap: JSON.parse(localStorage.getItem('user')).tenDangNhap
+    }).subscribe(e => {
+      if (e.success){
+        this.toastrService.success('Thành công', '');
+        this.router.navigate(['/product/payment', e.data.id]);
+      }else {
+        this.toastrService.warning('Thất bại', '');
+      }
+    });
   }
 }

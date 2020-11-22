@@ -11,6 +11,7 @@ import {ToastrModule} from 'ngx-toastr';
 import {LoginGuardGuard} from './user/guards/login-guard.guard';
 import {CoreModule} from './core/core.module';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import {DatePipe} from '@angular/common';
 
 @NgModule({
   declarations: [ // gọi componnent nào ở app.component.html thì phải khai báo ở đây
@@ -32,6 +33,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
   ],
   providers: [LoginGuardGuard,
+    DatePipe // cái này phải sử dụng ở đây, dùng ở trong module nó ko được ????
   ],
   exports: [],
   bootstrap: [AppComponent]
