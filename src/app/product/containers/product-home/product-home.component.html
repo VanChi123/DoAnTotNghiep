@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container" >
   <div class="row">
     <mat-tab-group [selectedIndex]="0" #x (selectedTabChange)="onChangeTab(x)">
       <mat-tab label="Sản Phẩm Bán Chạy Trong Tháng">
@@ -13,7 +13,6 @@
                            [pageSize]="pageMeta.pageSize"
                           [pageSizeOptions]="numberOfProductSearch()"
                            >
-
             </mat-paginator>
           </ng-container>
         </ng-template>
@@ -29,23 +28,6 @@
       <mat-tab label="Sản Phẩm Trung Cấp"> Content 3</mat-tab>
     </mat-tab-group>
   </div>
-  <div class="row">
-    <div class="col-3">
-      <app-product-detail></app-product-detail>
-    </div>
-    <div class="col-3">
-      <app-product-detail></app-product-detail>
-    </div>
-    <div class="col-3">
-      <app-product-detail></app-product-detail>
-    </div>
-    <div class="col-3">
-      <app-product-detail></app-product-detail>
-    </div>
-    <div class="col-3">
-      <app-product-detail></app-product-detail>
-    </div>
-  </div>
 
 </div>
-<!--xxxx {{(productss$|async)|json}}-->
+

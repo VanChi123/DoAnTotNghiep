@@ -7,7 +7,7 @@ import {
   ProductViewDetailComponent
 } from './containers';
 import {LoginGuardGuard} from '../user/guards/login-guard.guard';
-import {ProductPaymentComponent} from "./containers/product-payment/product-payment.component";
+import {ProductPaymentComponent} from './containers/product-payment/product-payment.component';
 
 
 const routes: Routes = [

@@ -1,25 +1,5 @@
-<!--<p>user-home works!</p>-->
-<!--<div class="container">-->
-<!--  <div class="row">-->
-<!--    <div class="col-3">-->
-<!--      <ul class="list-group">-->
-<!--        <li class="list-group-item" routerLink="/user/" routerLinkActive="active" [routerLinkActiveOptions]="{exact:-->
-<!--true}" (click)="guiIdLenGiaoDien(1)">List</li>-->
-<!--        <li class="list-group-item" routerLink="/user/create" routerLinkActive="active"  (click)="guiIdLenGiaoDien(2)">Form</li>-->
-<!--        <li class="list-group-item">Morbi leo risus</li>-->
-<!--        <li class="list-group-item">Porta ac consectetur ac</li>-->
-<!--        <li class="list-group-item">Vestibulum at eros</li>-->
-<!--      </ul>-->
-<!--    </div>-->
-<!--    <div class="col-9">-->
-<!--      chúng ta phải xây dựng phân trang, nút next -> previous-->
-<!--      <router-outlet></router-outlet>-->
-<!--    </div>-->
-<!--  </div>-->
-<!--</div>-->
-
 <mat-sidenav-container>
-  <mat-sidenav mode="side" [(opened)]="isOpenNav">Admin
+  <mat-sidenav mode="side" [(opened)]="isOpenNav">Quản trị viên
 
     <ul class="list-group">
       <li class="list-group-item" routerLink="/admin/account-list"
@@ -32,23 +12,58 @@
           routerLinkActive="active">
         Quản lý sản phẩm
       </li>
+
+      <li class="list-group-item" routerLink="/admin/model-list"
+          [routerLinkActiveOptions]="{exact: true}"
+          routerLinkActive="active">
+        Quản lý Thương hiệu
+      </li>
+      <li class="list-group-item" routerLink="/admin/cat-list"
+          [routerLinkActiveOptions]="{exact: true}"
+          routerLinkActive="active">
+        Quản lý Loại sản phẩm
+      </li>
       <li class="list-group-item" routerLink="/admin/order-list"
           [routerLinkActiveOptions]="{exact: true}"
           routerLinkActive="active">
         Quản lý đơn hàng
       </li>
+
+      <li class="list-group-item" routerLink="/admin/star-list"
+          [routerLinkActiveOptions]="{exact: true}"
+          routerLinkActive="active">
+        Quản lý Danh mục Số sao
+      </li>
+      <hr>
+      <li class="list-group-item" routerLink="/admin/cart-list"
+          [routerLinkActiveOptions]="{exact: true}"
+          routerLinkActive="active">
+        Quản lý Giỏ hàng
+      </li>
+      <li class="list-group-item" routerLink="/admin/customer-list"
+          [routerLinkActiveOptions]="{exact: true}"
+          routerLinkActive="active">
+        Quản lý Khách hàng
+      </li>
     </ul>
-    <button class="btn btn-primary" *ngIf="isOpenNav" (click)="isOpenNav=!isOpenNav">Đóng menu</button>
+    <br>
+    <br>
+    <button class="btn btn-outline-info" *ngIf="isOpenNav" (click)="isOpenNav=!isOpenNav">
+      <i class="fa fa-arrow-circle-left" aria-hidden="true"></i>
+    </button>
 
   </mat-sidenav>
   <mat-sidenav-content>
     <router-outlet></router-outlet>
     <br>
-    <button class="btn btn-primary" *ngIf="!isOpenNav" (click)="isOpenNav=!isOpenNav">Mở menu</button>
+    <button class="btn btn-outline-info" *ngIf="!isOpenNav" (click)="isOpenNav=!isOpenNav">
+      <i class="fa fa-arrow-circle-right" aria-hidden="true"></i>
+    </button>
     <!--    <button *ngIf="!isOpenNav">Open SideBar</button>-->
   </mat-sidenav-content>
 </mat-sidenav-container>
 
 <!--có một cách khác để gọi nav ra là : #nav vào mat-sidenav-->
 <!--và ở button gọi các phươn thức: (click)="nav.close()/open()/toogle()"-->
+
 

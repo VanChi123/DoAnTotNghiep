@@ -30,12 +30,20 @@ export class HomeComponent implements OnInit, OnDestroy {
 
   user: any;
 
+  prods: any[]; // load sản phẩm trong giỏ hàng
+
   constructor(private userManagementService: UserManagementService,
               private fb: FormBuilder,
               private dataService: DataService,
-              private translateService: TranslateService
-
+              private translateService: TranslateService,
   ) {
+    this.dataService.currentMessage.subscribe(messa => {
+      debugger
+      if (messa) {
+        this.prods = messa;
+      }
+    });
+
     this.searchForm = this.fb.group({
       codeProduct: ['', Validators.compose([ Validators.maxLength(50), Validators.pattern('[a-zA-z0-9_-]*$')])], // tên đăng nhập
       nameProduct: ['', Validators.compose([Validators.maxLength(50)])],

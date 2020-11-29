@@ -1,20 +1,21 @@
 import { Injectable } from '@angular/core';
 import {BehaviorSubject, throwError} from 'rxjs';
 import {Product} from '../models/product.model';
-import {catchError} from "rxjs/operators";
-import {HttpClient} from "@angular/common/http";
+import {catchError} from 'rxjs/operators';
+import {HttpClient} from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
 })
 export class DataService {
 
-  private messageSource = new BehaviorSubject([]);
-  currentMessage = this.messageSource.asObservable();
+  public messageSource = new BehaviorSubject([]);
+  public currentMessage = this.messageSource.asObservable();
 
   constructor(private httpClient: HttpClient) { }
 
-  changeMessage(prod: Product[]) {
+  changeMessage(prod: any[]) {
+    debugger
     this.messageSource.next(prod);
   }
 
@@ -40,11 +41,29 @@ export class DataService {
   favoriteProduct(body: any) {
     const payload = body;
 
-debugger
     return this.httpClient
       .post<any>(`http://localhost:8081/account/favorite`, payload)
       .pipe(catchError((httpError: any) => {
         return throwError(httpError);
       }));
   }
+
+  // lấy danh sách khách hàng
+  getAllCustomer() {
+    return this.httpClient
+      .get<any>(`http://localhost:8081/customer/`)
+      .pipe(catchError((httpError: any) => {
+        return throwError(httpError);
+      }));
+  }
+
+  // lấy danh sách sản phẩm
+  getAllProducts() {
+    return this.httpClient
+      .get<any>(`http://localhost:8081/product/`)
+      .pipe(catchError((httpError: any) => {
+        return throwError(httpError);
+      }));
+  }
+
 }

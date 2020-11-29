@@ -5,6 +5,11 @@ import {AdminHomeComponent} from './admin-manage/containers/admin-home/admin-hom
 
 const routes: Routes = [
   {
+  path: 'home',
+  data: { breadcrumb: 'Trang chủ' },
+  loadChildren: () => import('./home/home.module').then(m => m.HomeModule)
+},
+  {
     path: 'user',
     data: { breadcrumb: 'User' },
     component: UserHomeComponent, // có 1 component chứa router outlet để hiển thị các link khác
@@ -27,21 +32,17 @@ const routes: Routes = [
     data: { breadcrumb: 'APP_FEATURE.COMMON.TITLE' },
     loadChildren: () => import('./routing/routing.module').then(m => m.RoutingModule)
   },
-  {
-    path: '',
-    data: { breadcrumb: 'Trang chủ' },
-    loadChildren: () => import('./home/home.module').then(m => m.HomeModule)
-  },
+
   // khi load trang chủ thì vào home
   {
     path: '',
-    redirectTo: '/',
+    redirectTo: '/home',
     pathMatch: 'full'
   },
   // cho mặc định những route không đúng về home
   {
     path: '**',
-    redirectTo: '/',
+    redirectTo: '/home',
     pathMatch: 'full'
   }
 

@@ -1,0 +1,277 @@
+<!--Content-->
+<!--<div class="container-fluid">-->
+
+<div class="page-inner">
+
+  <header class="page-title-bar">
+    <div class="hd">
+      <b class="lead" style="color: cornflowerblue">
+        <!--        <app-page-header [heading]="('APP_FEATURE.USER.ACCOUNT.TITLE' | translate)"></app-page-header>-->
+        <!--        {{('APP_FEATURE.USER.ACCOUNT.TITLE' | translate)}}-->
+        Quản lý Giỏ hàng
+      </b>
+
+      <button mat-button class="btn-search float-right"
+              style="border: 1px solid gray" (click)="addForm=true">
+        <mat-icon>add</mat-icon>
+        Thêm mới
+      </button>
+    </div>
+
+  </header>
+  <hr>
+  <div class="col-12 p-0">
+    <form>
+      <div class="form-group form-inline">
+        Tìm kiếm trong trang: <input class="form-control ml-2" type="text" [formControl]="filter"/>
+      </div>
+    </form>
+  </div>
+
+  <table class="table table-hover table-condensed table-bordered">
+    <thead class="text-center th-text-middle" style="background-color: rgba(240,240,240,0.84)">
+    <tr class="text-dark">
+<!--      <th rowspan="2" style="width: 3%;">STT</th>-->
+      <th rowspan="2" style="width: 3%;">Id</th>
+      <th rowspan="2" scope="col">
+        Tên khách hàng
+      </th>
+      <th rowspan="2" scope="col">
+        Tên sản phẩm
+      </th>
+      <th rowspan="2" scope="col">
+        Chi tiết sản phẩm
+      </th>
+      <th rowspan="2" scope="col">
+        Số lượng
+      </th>
+<!--      <th rowspan="2" scope="col">-->
+<!--        Khách hàng-->
+<!--      </th>-->
+
+<!--      <th rowspan="2" scope="col">-->
+<!--        Sản phẩm-->
+<!--      </th>-->
+
+      <th scope="col">
+        Hành động
+      </th>
+
+    </tr>
+    </thead>
+    <tbody *ngIf="list">
+    <tr *ngIf="addForm">
+<!--      <td class="text-center">-->
+<!--        <i></i>-->
+<!--      </td>-->
+
+      <td class="text-center">
+        <i>Id: Auto Generate</i>
+      </td>
+      <td>
+<!--        <input type="number" class="form-control"  [(ngModel)]="soSao" />-->
+        <select class="form-control"
+                [(ngModel)]="khachHang">
+          <option *ngFor="let kh of customerList" [value]="kh.id">{{kh.tenKhachHang}}</option>
+        </select>
+      </td>
+
+      <td>
+        <!--        <input type="number" class="form-control"  [(ngModel)]="soSao" />-->
+        <select class="form-control"
+                (ngModelChange)="onChangeSanPhamAdd($event)"
+                [(ngModel)]="sanPham">
+          <option *ngFor="let kh of productList" [value]="kh.id">{{kh.tenSanPham}}</option>
+        </select>
+      </td>
+
+      <td>
+        <select class="form-control"
+                [(ngModel)]="chiTietSanPham">
+          <option *ngFor="let pr of ctspList" [value]="pr.id"
+          >
+            <!--              {{toStr(pr)}}-->
+            <ul>
+              <li>Id: {{pr.id}}</li>
+              <!--                <li>Đối tượng sử dụng: {{pr.doiTuongSuDung}}</li>-->
+              <!--                <li>Kích thước bề mặt: {{pr.kichThuocBeMat}}</li>-->
+              <!--                <li>Kích thước bề mặt: {{pr.kichThuocBeMat}}</li>-->
+              <li>Độ dày: {{pr.doDay}}</li>
+              <li>Độ dài: {{pr.doDai}}</li>
+              <li>Độ rộng của dây: {{pr.doRongCuaDay}}</li>
+            </ul>
+          </option>
+        </select>
+      </td>
+
+      <td>
+        <!--        <input type="number" class="form-control"  [(ngModel)]="soSao" />-->
+        <input type="number" class="form-control"
+                [(ngModel)]="soLuong" />
+      </td>
+
+      <td class="text-center">
+        <i class="fa fa-plus-square" [matTooltip]="'Thêm mới'" (click)="onAdd()"
+           style="padding: 0px 3px;color: blue;font-size: 130%"
+           aria-hidden="true"></i>
+
+        <i class="fa fa-times" [matTooltip]="'Xóa'" (click)="addForm=false"
+           style="padding: 0px 3px;color: blue;font-size: 130%"
+           aria-hidden="true"></i>
+
+      </td>
+    </tr>
+    <tr *ngFor="let model of list; let i=index">
+<!--      <td class="text-center">-->
+<!--        <i>{{i + 1}}</i>-->
+<!--      </td>-->
+
+      <td class="text-center">
+        <b>{{model.id}}</b>
+      </td>
+
+      <td class="text-center">
+        <ngb-highlight *ngIf="!model.check" [result]="model.tenKhachHang" [term]="filter.value"></ngb-highlight>
+<!--        <input type="text" *ngIf="model.check" disabled class="form-control"-->
+<!--               [(ngModel)]="model.tenKhachHang"/>-->
+        <label>
+          <select *ngIf="model.check" class="form-control"
+                  (ngModelChange)="onChangeKhachHang(i, $event)"
+                  [(ngModel)]="model.khachHangEntity.id">
+            <option *ngFor="let kh of customerList" [value]="kh.id">{{kh.tenKhachHang}}</option>
+          </select>
+        </label>
+      </td>
+
+
+      <td >
+        <ngb-highlight *ngIf="!model.check" [result]="model.tenSanPham" [term]="filter.value"></ngb-highlight>
+<!--        <input type="text" disabled *ngIf="model.check" class="form-control"-->
+<!--               [(ngModel)]="model.tenSanPham"/>-->
+        <label>
+          <select *ngIf="model.check" class="form-control"
+                  (ngModelChange)="onChangeSanPham(i, $event)"
+                  #idSanPham
+                  [(ngModel)]="model.sanPhamEntity.id">
+            <option *ngFor="let pr of productList" [value]="pr.id">{{pr.tenSanPham}}</option>
+          </select>
+        </label>
+      </td>
+
+      <td>
+        <ngb-highlight *ngIf="!model.check" [result]="model.idChiTietSanPham" [term]="filter.value"></ngb-highlight>
+<!--        <input type="number" *ngIf="model.check" class="form-control"-->
+<!--               [(ngModel)]="model.idChiTietSanPham"/>-->
+        <label>
+          <select *ngIf="model.check" class="form-control"
+                  (ngModelChange)="onChangeCTSP(i, $event, model)"
+                  [(ngModel)]="model.idChiTietSanPham">
+            <option *ngFor="let pr of ctspList" [value]="pr.id"
+            >
+<!--              {{toStr(pr)}}-->
+              <ul>
+                <li>Id: {{pr.id}}</li>
+<!--                <li>Đối tượng sử dụng: {{pr.doiTuongSuDung}}</li>-->
+<!--                <li>Kích thước bề mặt: {{pr.kichThuocBeMat}}</li>-->
+<!--                <li>Kích thước bề mặt: {{pr.kichThuocBeMat}}</li>-->
+                <li>Độ dày: {{pr.doDay}}</li>
+                <li>Độ dài: {{pr.doDai}}</li>
+                <li>Độ rộng của dây: {{pr.doRongCuaDay}}</li>
+              </ul>
+            </option>
+          </select>
+        </label>
+      </td>
+
+      <td>
+        <ngb-highlight *ngIf="!model.check" [result]="model.soLuong" [term]="filter.value"></ngb-highlight>
+        <input type="number" *ngIf="model.check" class="form-control"
+               [(ngModel)]="model.soLuong"/>
+      </td>
+
+<!--      <td >-->
+<!--        <ngb-highlight *ngIf="!model.check" [result]="model.khachHangEntity.tenKhachHang" [term]="filter.value"></ngb-highlight>-->
+<!--        <label>-->
+<!--          <select *ngIf="model.check" class="form-control"-->
+<!--                  (ngModelChange)="onChangeKhachHang(i, $event)"-->
+<!--                 [(ngModel)]="model.khachHangEntity.id">-->
+<!--            <option *ngFor="let kh of customerList" [value]="kh.id">{{kh.tenKhachHang}}</option>-->
+<!--          </select>-->
+<!--        </label>-->
+
+<!--      </td>-->
+
+<!--      <td>-->
+<!--        <ngb-highlight *ngIf="!model.check" [result]="model.sanPhamEntity.tenSanPham" [term]="filter.value"></ngb-highlight>-->
+<!--        <label>-->
+<!--          <select *ngIf="model.check" class="form-control"-->
+<!--                  (ngModelChange)="onChangeSanPham(i, $event)"-->
+<!--                  [(ngModel)]="model.sanPhamEntity.id">-->
+<!--            <option *ngFor="let pr of productList" [value]="pr.id">{{pr.tenSanPham}}</option>-->
+<!--          </select>-->
+<!--        </label>-->
+<!--      </td>-->
+
+      <td class="text-center">
+        <!--        chưa bấm nút sửa-->
+        <i class="fa fa-pencil-square-o" *ngIf="!model.check" [matTooltip]="'Sửa'" (click)="model.check=true"
+           style="padding: 0px 3px;color: blue;font-size: 130%"
+           aria-hidden="true"></i>
+
+        <i class="fa fa-times" [matTooltip]="'Xóa'" *ngIf="!model.check" (click)="onDelete(model.id)"
+           style="padding: 0px 3px;color: blue;font-size: 130%"
+           aria-hidden="true"></i>
+        <!--        end: chưa bấm nút sửa-->
+
+        <!--        đã bấm nút sửa-->
+        <i class="fa fa-pencil-square-o" *ngIf="model.check" [matTooltip]="'Xác nhận'" (click)="onEdit(model)"
+           style="padding: 0px 3px;color: blue;font-size: 130%"
+           aria-hidden="true"></i>
+
+        <i class="fa fa-times" [matTooltip]="'Hủy'" *ngIf="model.check" (click)="model.check=false"
+           style="padding: 0px 3px;color: blue;font-size: 130%"
+           aria-hidden="true"></i>
+        <!--        end: đã bấm nút sửa-->
+
+      </td>
+    </tr>
+    </tbody>
+  </table>
+
+  <!--Phan trang-->
+  <div class="row">
+    <!--      <div class="col-sm-4">-->
+    <!--      </div>-->
+
+    <div class="col-sm-8 d-flex justify-content-end">
+      <div *ngIf="pagination" class="display-result"
+           style="margin-top: 4px;margin-left: 40px">
+        Hiển thị <span *ngIf="pagination.totalElements === 0; else haveData">0</span>
+        <ng-template #haveData><span>{{(pagination.size) * (currentPage - 1) + 1}}</span></ng-template>
+        -
+        <span *ngIf="currentPage === pagination.totalPages; else template ">{{pagination.totalElements}}</span>
+        <ng-template #template>{{(pagination.size) * (currentPage)}}</ng-template>
+        / {{pagination.totalElements}}
+      </div>
+    </div>
+    <div class="col-sm-3 d-flex justify-content-end">
+      <div class="list-pagination">
+        <ngb-pagination
+          class="d-inline-block"
+          *ngIf="pagination"
+          [collectionSize]="pagination.totalElements"
+          [(page)]="currentPage"
+          [pageSize]="pagination.size"
+          [maxSize]="10"
+          [ellipses]="true"
+          [rotate]="true"
+          [boundaryLinks]="true"
+          (pageChange)="goToPage($event)"
+          size="sm"
+        >
+        </ngb-pagination>
+      </div>
+    </div>
+    <!--End: phan trang-->
+</div>
+

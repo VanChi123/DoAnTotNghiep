@@ -1,15 +1,14 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
-import {Router} from "@angular/router";
-import {FormBuilder} from "@angular/forms";
-import {ToastrService} from "ngx-toastr";
-import {TranslateService} from "@ngx-translate/core";
+import {Router} from '@angular/router';
+import {FormBuilder} from '@angular/forms';
+import {ToastrService} from 'ngx-toastr';
+import {TranslateService} from '@ngx-translate/core';
 import {UserManagementService} from "../../services/user-management.service";
 import {MatDialog} from "@angular/material/dialog";
 import {DataService} from "../../../shared/services";
 import {ProductService} from "../../../product/services/product.service";
 import {Subject} from "rxjs";
 import {takeUntil} from "rxjs/operators";
-import {ProductPaymentDialogComponent} from "../../../product/containers/product-payment-dialog/product-payment-dialog.component";
 import {OrderPaymentComponent} from "..";
 
 @Component({

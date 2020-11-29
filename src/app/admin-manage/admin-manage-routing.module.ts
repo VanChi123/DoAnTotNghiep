@@ -1,11 +1,11 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import {
-  AccountListComponent,
-  AdminHomeComponent,
+  AccountListComponent, CartListComponent,
+  CategoryListComponent, CustomerListComponent, ModelListComponent,
   OrderListComponent,
   ProductAddComponent,
-  ProductListComponent
+  ProductListComponent, StarListComponent
 } from './containers';
 
 const routes: Routes = [
@@ -40,6 +40,31 @@ const routes: Routes = [
     path: 'order-list',
     data: { breadcrumb: 'Quản lý đơn hàng' },
     component: OrderListComponent
+  }  ,
+  {
+    path: 'model-list',
+    data: { breadcrumb: 'Quản lý thương hiệu' },
+    component: ModelListComponent
+  },
+  {
+    path: 'cat-list',
+    data: { breadcrumb: 'Quản lý Danh mục sản phẩm' },
+    component: CategoryListComponent
+  },
+  {
+    path: 'star-list',
+    data: { breadcrumb: 'Quản lý Danh mục số sao' },
+    component: StarListComponent
+  },
+  {
+    path: 'cart-list',
+    data: { breadcrumb: 'Quản lý Giỏ hàng' },
+    component: CartListComponent
+  },
+  {
+    path: 'customer-list',
+    data: { breadcrumb: 'Quản lý Khách hàng' },
+    component: CustomerListComponent
   }
 ];
 

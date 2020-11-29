@@ -1,10 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {ProductService} from '../../services/product.service';
-import {Observable} from 'rxjs';
-import {Product} from "../../../shared/models/product.model";
-import {DataService} from "../../../shared/services/data.service";
-import {map} from "rxjs/operators";
-import {PageMetaModel} from "../../../shared/models/pageMeta.model";
+import {PageMetaModel} from '../../../shared/models/pageMeta.model';
 
 @Component({
   selector: 'app-product-home',
@@ -12,10 +8,9 @@ import {PageMetaModel} from "../../../shared/models/pageMeta.model";
   styleUrls: ['./product-home.component.scss']
 })
 export class ProductHomeComponent implements OnInit {
-
   pageMeta: PageMetaModel;
   dataFull: any;
-  // productss$: Observable<any>;
+
   constructor(private productService: ProductService,
               ) { }
 
@@ -24,16 +19,12 @@ export class ProductHomeComponent implements OnInit {
     // (và class phải cho có thể null mấy thằng thuộc tính này : pageSize?:number)
     this.pageMeta.pageSize = 6;
     this.pageMeta.pageNumber = 0;
-    debugger
     this.productService.getProducts(this.pageMeta).subscribe(response =>
       {
-        debugger
         if (response){
           this.dataFull = response.data;
         }
       });
-
-    // this.productss$ = this.productService.getProductss('a');
   }
 
   onChangeTab(t: any){
@@ -57,7 +48,6 @@ export class ProductHomeComponent implements OnInit {
     this.pageMeta.pageNumber = event.pageIndex;
     this.productService.getProducts(this.pageMeta).subscribe(response =>
     {
-      debugger
       if (response){
         this.dataFull = response.data;
       }

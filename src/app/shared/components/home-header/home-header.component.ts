@@ -13,7 +13,7 @@ import {TranslateService} from '@ngx-translate/core';
 export class HomeHeaderComponent implements OnInit {
 
   // số lượng sản phẩm trong giỏ hàng
-  prods: Product[];
+  prods: any[];
 
   // dữ liệu tìm kiếm
   valueSearch: any;
@@ -30,23 +30,47 @@ export class HomeHeaderComponent implements OnInit {
               private toastrService: ToastrService,
               public translate: TranslateService
               ) {
-    // this.data.currentMessage.subscribe(messa => {
-    //   this.prods = messa;
+
+    // lấy danh sách sản phẩm trong giỏ hàng
+    // this.data.currentMessage.subscribe(listProduct => {
+    //   debugger
+    //   if (listProduct){
+    //     this.prods = listProduct;
+    //   }
     // });
-    setInterval(() => {
-      this.now = new Date();
-    }, 1);
+
+
+    // this.data.currentMessage.subscribe(messa => {
+    //   debugger
+    //   if (messa){
+    //     this.prods = messa;
+    //   }
+    //
+    // });
+
+    // setInterval(() => {
+    //   this.now = new Date();
+    // }, 1);
   }
 
   ngOnInit(): void {
 
-    this.data.currentMessage.subscribe(messa => {
-      this.prods = messa;
-    });
+    // this.data.currentMessage.subscribe(messa => {
+    //   this.prods = messa;
+    // });
   }
 
   checkCart(){
     console.log('cart have: ', this.prods);
+  }
+
+  soLuongGioHang(){
+    this.prods = JSON.parse(localStorage.getItem('cart'));
+    if (!this.prods){
+      return 0;
+    }else {
+      return this.prods.length;
+    }
   }
 
   logOut(){

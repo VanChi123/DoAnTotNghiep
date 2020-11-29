@@ -10,23 +10,25 @@ import {MatTabsModule} from '@angular/material/tabs';
 import {MatIconModule} from '@angular/material/icon';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {MatPaginatorModule} from '@angular/material/paginator';
+import {MatBadgeModule} from '@angular/material/badge';
 
 @NgModule({
   declarations: [
     ...fromComponents.components,
     ...fromContainers.containers
   ],
-  imports: [
-    ReactiveFormsModule,
-    CommonModule, // dùng cho thằng pipe: json
-    ProductRoutingModule,
-    SharedModule,
-    MatTabsModule,
-    MatIconModule,
-    FormsModule,
-    MatPaginatorModule,
+    imports: [
+        ReactiveFormsModule,
+        CommonModule, // dùng cho thằng pipe: json
+        ProductRoutingModule,
+        SharedModule,
+        MatTabsModule,
+        MatIconModule,
+        FormsModule,
+        MatPaginatorModule,
+        MatBadgeModule,
 
-  ],
+    ],
   exports: [
     fromComponents.AProductListComponent
   ]

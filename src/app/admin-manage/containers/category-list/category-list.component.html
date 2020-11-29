@@ -1,0 +1,110 @@
+<!--Content-->
+<!--<div class="container-fluid">-->
+
+<div class="page-inner">
+
+  <header class="page-title-bar">
+    <div class="hd">
+      <b class="lead" style="color: cornflowerblue">
+        <!--        <app-page-header [heading]="('APP_FEATURE.USER.ACCOUNT.TITLE' | translate)"></app-page-header>-->
+        <!--        {{('APP_FEATURE.USER.ACCOUNT.TITLE' | translate)}}-->
+        Quản lý Loại sản phẩm
+      </b>
+
+      <button mat-button class="btn-search float-right"
+              style="border: 1px solid gray" (click)="addForm=true">
+        <mat-icon>add</mat-icon>
+        Thêm mới
+      </button>
+    </div>
+
+  </header>
+  <hr>
+  <div class="col-12 p-0">
+    <form>
+      <div class="form-group form-inline">
+        Tìm kiếm trong trang: <input class="form-control ml-2" type="text" [formControl]="filter"/>
+      </div>
+    </form>
+  </div>
+
+  <table class="table table-hover table-condensed table-bordered">
+    <thead class="text-center th-text-middle" style="background-color: rgba(240,240,240,0.84)">
+    <tr class="text-dark">
+      <th rowspan="2" style="width: 3%;">STT</th>
+      <th rowspan="2" style="width: 3%;">Id</th>
+      <th rowspan="2" scope="col">
+        Tên Loại sản phẩm
+
+      <th rowspan="2" scope="col">
+        Hành động
+      </th>
+
+    </tr>
+    </thead>
+    <tbody *ngIf="danhMucList">
+    <tr *ngIf="addForm">
+      <td class="text-center">
+        <i></i>
+      </td>
+
+      <td class="text-center">
+        <i>Id: Auto Generate</i>
+      </td>
+      <td>
+        <input type="text" class="form-control" rows="3" [(ngModel)]="ten" />
+      </td>
+
+      <td class="text-center">
+        <i class="fa fa-plus-square" [matTooltip]="'Thêm mới'" (click)="onAdd()"
+           style="padding: 0px 3px;color: blue;font-size: 130%"
+           aria-hidden="true"></i>
+
+        <i class="fa fa-times" [matTooltip]="'Xóa'" (click)="addForm=false"
+           style="padding: 0px 3px;color: blue;font-size: 130%"
+           aria-hidden="true"></i>
+
+      </td>
+    </tr>
+    <tr *ngFor="let model of danhMucList; let i=index">
+      <td class="text-center">
+        <i>{{i + 1}}</i>
+      </td>
+
+      <td class="text-center">
+        <i>{{model.id}}</i>
+      </td>
+
+      <td>
+        <ngb-highlight *ngIf="!model.check" [result]="model.tenLoaiSanPham" [term]="filter.value"></ngb-highlight>
+        <input type="text" *ngIf="model.check" class="form-control" rows="1"
+               [(ngModel)]="model.tenLoaiSanPham"/>
+      </td>
+
+      <td class="text-center">
+        <!--        chưa bấm nút sửa-->
+        <i class="fa fa-pencil-square-o" *ngIf="!model.check" [matTooltip]="'Sửa'" (click)="model.check=true"
+           style="padding: 0px 3px;color: blue;font-size: 130%"
+           aria-hidden="true"></i>
+
+        <i class="fa fa-times" [matTooltip]="'Xóa'" *ngIf="!model.check" (click)="onDelete(model.id)"
+           style="padding: 0px 3px;color: blue;font-size: 130%"
+           aria-hidden="true"></i>
+        <!--        end: chưa bấm nút sửa-->
+
+        <!--        đã bấm nút sửa-->
+        <i class="fa fa-pencil-square-o" *ngIf="model.check" [matTooltip]="'Xác nhận'" (click)="onEdit(model)"
+           style="padding: 0px 3px;color: blue;font-size: 130%"
+           aria-hidden="true"></i>
+
+        <i class="fa fa-times" [matTooltip]="'Hủy'" *ngIf="model.check" (click)="model.check=false"
+           style="padding: 0px 3px;color: blue;font-size: 130%"
+           aria-hidden="true"></i>
+        <!--        end: đã bấm nút sửa-->
+
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+
